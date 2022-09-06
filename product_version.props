@@ -1,0 +1,7 @@
+<Project>
+	<PropertyGroup>
+		<ProductVersion>prerelease</ProductVersion>
+		<VersionPrefix>0.1.0</VersionPrefix>
+		<VersionSuffix>devel</VersionSuffix>
+	</PropertyGroup>
+</Project>

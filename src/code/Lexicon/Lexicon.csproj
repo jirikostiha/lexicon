@@ -6,11 +6,17 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
+        <Description> Core abstractions and functionalities. </Description>
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
         <NeutralLanguage>en-US</NeutralLanguage>
         <AnalysisLevel>latest-recommended</AnalysisLevel>
         <NoWarn>CA1725,CA1716</NoWarn>
     </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.2" />
+    </ItemGroup>
 
 </Project>

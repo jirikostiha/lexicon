@@ -5,12 +5,10 @@ VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution Items", "solution Items", "{8ABEA7BE-2CB6-499A-A09E-7D836F189422}"
 	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
 		directory.build.props = directory.build.props
 		..\participants.props = ..\participants.props
 		..\product.props = ..\product.props
 		..\product_version.props = ..\product_version.props
-		source code.ruleset = source code.ruleset
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "quality", "quality", "{0A927ED1-E2A0-4128-AF7A-CF7152E404F5}"

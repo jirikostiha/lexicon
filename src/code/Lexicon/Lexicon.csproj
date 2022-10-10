@@ -15,8 +15,11 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Remove="WordRecordsFilter.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
         <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.2" />
     </ItemGroup>
 
 </Project>

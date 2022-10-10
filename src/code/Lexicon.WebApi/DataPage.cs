@@ -16,16 +16,11 @@
         /// <summary>
         /// Count of data items per one page.
         /// </summary>
-        public int ItemsPerPage { get; set; }
+        public int ItemsPerPage { get; set; } = 100;
 
         /// <summary>
         /// Data items.
         /// </summary>
         public IList<T>? Items { get; set; }
-
-        /// <summary> Default setup </summary>
-        //public static DataPage<T> Default => new DataPage<T>()
-        //{
-        //};
     }
 }

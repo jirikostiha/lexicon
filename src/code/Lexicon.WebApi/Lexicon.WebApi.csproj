@@ -15,6 +15,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Remove="Controllers\WordsImportController.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
         <PackageReference Include="Autofac" Version="6.4.0" />

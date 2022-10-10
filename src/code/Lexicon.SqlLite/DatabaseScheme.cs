@@ -4,7 +4,7 @@
     {
         public static string WordsTable => @"CREATE TABLE Words (
             word TEXT NOT NULL PRIMARY KEY,
-            class TEXT NOT NULL,
-            language TEXT NOT NULL)";
+            language INT NOT NULL,
+            class INT NOT NULL)";
     }
 }

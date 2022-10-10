@@ -1,30 +1,31 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <LangVersion>latest</LangVersion>
-    <NeutralLanguage>en-US</NeutralLanguage>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <IsPackable>false</IsPackable>
-    <IsPublishable>false</IsPublishable>
-    <IsTestProject>true</IsTestProject>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <NeutralLanguage>en-US</NeutralLanguage>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <IsPackable>false</IsPackable>
+        <IsPublishable>false</IsPublishable>
+        <IsTestProject>true</IsTestProject>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="FakeItEasy" Version="7.3.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.2" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
-    <PackageReference Include="MSTest.TestAdapter" Version="2.2.10" />
-    <PackageReference Include="MSTest.TestFramework" Version="2.2.10" />
-    <PackageReference Include="coverlet.collector" Version="3.1.2">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="FakeItEasy" Version="7.3.1" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.2" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
+        <PackageReference Include="MSTest.TestAdapter" Version="2.2.10" />
+        <PackageReference Include="MSTest.TestFramework" Version="2.2.10" />
+        <PackageReference Include="coverlet.collector" Version="3.1.2">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\code\Lexicon.WebApi\Lexicon.WebApi.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\code\Lexicon.WebApi\Lexicon.WebApi.csproj" />
+    </ItemGroup>
 
 </Project>

@@ -6,7 +6,7 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <Description> SQLite adapter based on 'System.Data.SQLite'. </Description>
+        <Description>Command line interface to Lexicon Api.</Description>
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
         <NeutralLanguage>en-US</NeutralLanguage>
@@ -15,13 +15,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Remove="SqLiteHelper.cs" />
-    </ItemGroup>
-
-    <ItemGroup>
         <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.0.0" />
-        <PackageReference Include="SqlKata" Version="2.4.0" />
-        <PackageReference Include="System.Data.SQLite" Version="1.0.116" />
+        <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+        <PackageReference Include="Spectre.Console" Version="0.45.0" />
     </ItemGroup>
 
     <ItemGroup>

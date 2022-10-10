@@ -9,10 +9,12 @@
     {
         public static IEnumerable<WordRecord> Filter(IEnumerable<WordRecord> records, WordFilter filter)
         {
-            return records
-                .Where(x => x.Metadata.Language == filter.Language)
-                .Where(x => x.Metadata.Class == filter.Class)
-                .Where(x => x.Word.StartsWith(filter.StartWith, StringComparison.InvariantCulture));
+            return records;
+
+            //return records
+            //    .Where(x => filter.Language == null || filter.Language == x.Metadata.Language)
+            //    .Where(x => filter.Class == null || filter.Class == x.Metadata.Class)
+            //    .Where(x => x.Word.StartsWith(filter.StartWith, StringComparison.InvariantCulture));
         }
     }
 }

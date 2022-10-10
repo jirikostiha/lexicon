@@ -11,12 +11,20 @@
     using Microsoft.AspNetCore.Mvc;
     using SerilogTimings;
 
+//separate export, import
+//get all filter options
+
+//ODapa web api - filtering
+//paging example - rest.schneids.net - paginng example
+//fluent validation
+//mediatR - ?
+
     /// <summary>
     /// Words quering controller.
     /// </summary>
-    [Route("api/[controller]/[action]")]
+    [Route("api/words")]  //wo action?
     [ApiController]
-    public class WordController : ControllerBase
+    public class WordsController : ControllerBase
     {
         private const int PageSizeMin = 4;
         private const int PageSizeMax = 100_000;
@@ -25,17 +33,13 @@
 
         private WordMultiSourceProvider _multiSourceProvider;
 
-        private readonly ICsvFormatter _csvFormatter;
-
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="multiSourceProvider"> multi source provider of words </param>
-        /// <param name="csvFormatter"> csv word formatter </param>
-        public WordController(WordMultiSourceProvider multiSourceProvider, ICsvFormatter csvFormatter)
+        public WordsController(WordMultiSourceProvider multiSourceProvider)
         {
             _multiSourceProvider = multiSourceProvider;
-            _csvFormatter = csvFormatter;
         }
 
         /// <summary>
@@ -83,35 +87,6 @@
             };
 
             return Ok(dataPage);
-        }
-
-        /// <summary>
-        /// Export filtered word records.
-        /// </summary>
-        /// <param name="filter"> Data filter </param>
-        /// <param name="ct"> Cancelation token </param>
-        [HttpPost]
-        public async Task<IActionResult> ExportToCsv(
-            [FromBody] MultiSourceWordFilter filter,
-            CancellationToken ct = default)
-        {
-            WordRecord[]? records = null;
-            using (Operation.Time("Getting {0} records from sources.", nameof(WordRecord)))
-            {
-                records = (await _multiSourceProvider.GetByFilterAsync(filter, ct)
-                    .ConfigureAwait(false))
-                .ToArray();
-            }
-
-            byte[]? bytes = null;
-            using (Operation.Time("Exporting {0} records to csv.", nameof(WordRecord)))
-            {
-                var content = await _csvFormatter.FormatAsync(records, ct)
-                    .ConfigureAwait(false);
-                 bytes = Encoding.ASCII.GetBytes(content);
-            }
-
-            return File(bytes, "application/octet-stream", "Words.csv");
         }
     }
 }

@@ -13,18 +13,17 @@
     [TestClass]
     public class WordControllerTests
     {
-        private readonly ICsvFormatter _csvFormatter = A.Fake<ICsvFormatter>();
         private readonly IWordProvider _provider = A.Fake<IWordProvider>();
         
         private WordMultiSourceProvider _multiSourceProvider;
-        private WordController _controller;
+        private WordsController _controller;
 
         [TestInitialize]
         public void SetUp()
         {
             var providers = new List<(string, IWordProvider)>() { ("fake", _provider) };
             _multiSourceProvider = new WordMultiSourceProvider(new SourceProvider(providers));
-            _controller = new WordController(_multiSourceProvider, _csvFormatter);
+            _controller = new WordsController(_multiSourceProvider);
         }
 
         [TestMethod]

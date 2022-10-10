@@ -74,10 +74,7 @@ try
         builder.RegisterModule(new CoreModule(context.Configuration));
     });
 
-    builder.Services.AddControllers(opts =>
-    {
-        //opts.Filters.Add<SerilogLoggingActionFilter>();
-    });
+    builder.Services.AddControllers();
 
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     builder.Services.AddEndpointsApiExplorer();

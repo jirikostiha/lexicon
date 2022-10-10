@@ -46,14 +46,22 @@
         }
 
         [TestMethod]
-        public async Task GetByFilter_LanguageCondition_ReturnThatLanguageOnly()
+        public async Task GetByFilter_FullCondition_ReturnFiltered()
         {
             var repo = await Helper.CreateRepoWithFilledInMemoryDbAsync();
-            var filter = new WordFilter() { Language = Language.Czech };
+            var filter = new WordFilter() { 
+                Language = Language.Czech,
+                Class = WordClass.Noun,
+                StartsWith = "J"
+            };
 
             var records = (await repo.GetByFilterAsync(filter)).ToArray();
 
-            var inputFiltered = WordSets.All.Where(x => x.Metadata.Language == Language.Czech).ToArray();
+            var inputFiltered = WordSets.All.Where(x => 
+                x.Metadata.Language == Language.Czech
+                && x.Metadata.Class == WordClass.Noun
+                && x.Word.StartsWith("J")
+            ).ToArray();
             Assert.AreEqual(inputFiltered.Length, records.Length);
             CollectionAssert.AreEquivalent(inputFiltered, records);
         }

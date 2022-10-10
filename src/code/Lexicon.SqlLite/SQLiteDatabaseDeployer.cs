@@ -26,6 +26,7 @@
         public async Task CreateDatabaseAsync(CancellationToken ct = default)
         {
             using var connection = new SQLiteConnection(_options.ConnectionString);
+            
             await connection.OpenAsync(ct)
                 .ConfigureAwait(false);
 

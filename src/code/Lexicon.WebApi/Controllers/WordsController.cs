@@ -19,11 +19,6 @@
     [ApiController]
     public class WordsController : ControllerBase
     {
-        private const int PageSizeMin = 4;
-        private const int PageSizeMax = 100_000;
-        private const int PageNumberMin = 0;
-        private const int PageNumberMax = 10_000;
-
         private readonly ILogger<WordsController> _logger;
         private readonly WordMultiSourceProvider _multiSourceProvider;
 
@@ -53,14 +48,14 @@
             [FromQuery] int pageSize,
             CancellationToken ct = default)
         {
-            if (page < PageNumberMin)
-                return BadRequest($"Parameter '{nameof(page)}' is less than minimal value ({PageNumberMin}).");
-            if (page > PageNumberMax)
-                return BadRequest($"Parameter '{nameof(page)}' is greater than maximal value ({PageNumberMax}).");
-            if (pageSize < PageSizeMin)
-                return BadRequest($"Parameter '{nameof(pageSize)}' is less than minimal value ({PageNumberMin}).");
-            if (pageSize > PageSizeMax)
-                return BadRequest($"Parameter '{nameof(pageSize)}' is greater than maximal value ({PageNumberMax}).");
+               if (page < Pagination.PageNumberMin)
+                return BadRequest($"Parameter '{nameof(page)}' is less than minimal value ({Pagination.PageNumberMin}).");
+            if (page > Pagination.PageNumberMax)
+                return BadRequest($"Parameter '{nameof(page)}' is greater than maximal value ({Pagination.PageNumberMax}).");
+            if (pageSize < Pagination.PageSizeMin)
+                return BadRequest($"Parameter '{nameof(pageSize)}' is less than minimal value ({Pagination.PageNumberMin}).");
+            if (pageSize > Pagination.PageSizeMax)
+                return BadRequest($"Parameter '{nameof(pageSize)}' is greater than maximal value ({Pagination.PageNumberMax}).");
 
             WordRecord[]? records = null;
             using (Operation.Time("Getting {0} records from sources.", nameof(WordRecord)))
@@ -102,14 +97,14 @@
             [FromBody] MultiSourceWordFilter? filter = null,
             CancellationToken ct = default)
         {
-            if (page < PageNumberMin)
-                return BadRequest($"Parameter '{nameof(page)}' is less than minimal value ({PageNumberMin}).");
-            if (page > PageNumberMax)
-                return BadRequest($"Parameter '{nameof(page)}' is greater than maximal value ({PageNumberMax}).");
-            if (pageSize < PageSizeMin)
-                return BadRequest($"Parameter '{nameof(pageSize)}' is less than minimal value ({PageNumberMin}).");
-            if (pageSize > PageSizeMax)
-                return BadRequest($"Parameter '{nameof(pageSize)}' is greater than maximal value ({PageNumberMax}).");
+            if (page < Pagination.PageNumberMin)
+                return BadRequest($"Parameter '{nameof(page)}' is less than minimal value ({Pagination.PageNumberMin}).");
+            if (page > Pagination.PageNumberMax)
+                return BadRequest($"Parameter '{nameof(page)}' is greater than maximal value ({Pagination.PageNumberMax}).");
+            if (pageSize < Pagination.PageSizeMin)
+                return BadRequest($"Parameter '{nameof(pageSize)}' is less than minimal value ({Pagination.PageNumberMin}).");
+            if (pageSize > Pagination.PageSizeMax)
+                return BadRequest($"Parameter '{nameof(pageSize)}' is greater than maximal value ({Pagination.PageNumberMax}).");
 
             WordRecord[]? records = null;
             using (Operation.Time("Getting {0} records from sources.", nameof(WordRecord)))

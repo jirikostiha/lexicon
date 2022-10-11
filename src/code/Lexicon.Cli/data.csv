@@ -1,5 +1,6 @@
-test1; 0; 0
-test2; 0; 0
-test3; 0; 0
-test4; 1; 0
-test5; 1; 1
+Word,Language,Class
+test1,0,0
+test2,0,0
+test3,0,0
+test4,1,0
+test5,1,1

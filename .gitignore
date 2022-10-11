@@ -1,5 +1,6 @@
 [Bb]in/
 [Ll]ib/
+[Aa]sm/
 
 #---binaries---
 *.dll

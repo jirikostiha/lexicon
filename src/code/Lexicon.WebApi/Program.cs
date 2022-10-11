@@ -49,8 +49,7 @@ try
         config.Sources.Clear();
         var env = hostingContext.HostingEnvironment;
 
-        config.SetBasePath(appPath);
-        config
+        config.SetBasePath(appPath)
             .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
             .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: false, reloadOnChange: false)
             .AddCommandLine(args);

@@ -12,22 +12,25 @@
 
     public class CsvHelperFormatter : ICsvFormatter
     {
+        private readonly CsvConfiguration _csvConfiguration;
+
+        public CsvHelperFormatter(CsvConfiguration? csvConfiguration = null)
+        {
+            _csvConfiguration = csvConfiguration ?? new CsvConfiguration(CultureInfo.InvariantCulture);
+        }
+
         public async Task<string> FormatAsync<T>(IEnumerable<T> items, CancellationToken ct = default)
         {
             var csv = new StringBuilder();
-
-            var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
-            {
-                Delimiter = ";",
-            };
-
             await using var textWriter = new StringWriter(csv);
-            await using var csvWriter = new CsvWriter(textWriter, csvConfig);
+            await using var csvWriter = new CsvWriter(textWriter, _csvConfiguration);
 
-            await csvWriter.WriteRecordsAsync(items, ct);
+            await csvWriter.WriteRecordsAsync(items, ct)
+                .ConfigureAwait(false);
 
             // make sure all records are flushed to stream
-            await csvWriter.FlushAsync();
+            await csvWriter.FlushAsync()
+                .ConfigureAwait(false);
 
             return csv.ToString();
         }

@@ -35,6 +35,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lexicon.Cli", "code\Lexicon
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lexicon__Tests", "quality\Lexicon__Tests\Lexicon__Tests.csproj", "{D41FB88B-E9DB-4DC5-8942-E2AA45EA4950}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lexicon.Data__Tests", "quality\Lexicon.Data__Tests\Lexicon.Data__Tests.csproj", "{8B99A5AE-5A90-4E37-8B8F-997B9630F6D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{D41FB88B-E9DB-4DC5-8942-E2AA45EA4950}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D41FB88B-E9DB-4DC5-8942-E2AA45EA4950}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D41FB88B-E9DB-4DC5-8942-E2AA45EA4950}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B99A5AE-5A90-4E37-8B8F-997B9630F6D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B99A5AE-5A90-4E37-8B8F-997B9630F6D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B99A5AE-5A90-4E37-8B8F-997B9630F6D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B99A5AE-5A90-4E37-8B8F-997B9630F6D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,6 +96,7 @@ Global
 		{BCDF05BA-F8BC-4F81-AF42-335D4336E5E2} = {0A927ED1-E2A0-4128-AF7A-CF7152E404F5}
 		{18B2D96F-4076-4BA4-B544-6D38BFA23B74} = {0A927ED1-E2A0-4128-AF7A-CF7152E404F5}
 		{D41FB88B-E9DB-4DC5-8942-E2AA45EA4950} = {0A927ED1-E2A0-4128-AF7A-CF7152E404F5}
+		{8B99A5AE-5A90-4E37-8B8F-997B9630F6D2} = {0A927ED1-E2A0-4128-AF7A-CF7152E404F5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AE703196-5935-41FB-83E8-8DC5D4797DCF}

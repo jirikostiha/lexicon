@@ -26,10 +26,10 @@
 
         public static RootCommand Create()
         {
-            var configFileOption = new Option<FileInfo?>(
-            name: "--configFile",
-            description: "The file of an app configuration.");
-            configFileOption.AddAlias("-cf");
+            //var configFileOption = new Option<FileInfo?>(
+            //name: "--configFile",
+            //description: "The file of an app configuration.");
+            //configFileOption.AddAlias("-cf");
 
             var sourceDataFileOption = new Option<FileInfo?>(
             name: "--dataFile",
@@ -37,17 +37,17 @@
             sourceDataFileOption.AddAlias("-df");
 
             var rootCommand = new RootCommand(Title);
-            rootCommand.AddOption(configFileOption);
+            //rootCommand.AddOption(configFileOption);
             rootCommand.AddOption(sourceDataFileOption);
 
             var deployCommand = new Command("deploy", "Deploy a database.")
             {
-                configFileOption,
+                //configFileOption,
                 sourceDataFileOption
             };
             rootCommand.AddCommand(deployCommand);
 
-            deployCommand.SetHandler(async (configFile, sourceFile) =>
+            deployCommand.SetHandler(async (sourceFile) =>
             {
                 var config = LoadConfiguration();
                 var sectionName = SQLiteOptions.Name;
@@ -57,7 +57,7 @@
                 await DeploySqlDatabase(options, sourceFile ?? new FileInfo("data.csv"), default);
 
             },
-                configFileOption, sourceDataFileOption);
+                /*configFileOption,*/ sourceDataFileOption);
 
             return rootCommand;
         }
@@ -80,10 +80,12 @@
 
         public static IConfiguration LoadConfiguration()
         {
+            var cd = Directory.GetCurrentDirectory();
             IConfiguration config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
+                //.SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
-                .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}.json", optional: true)
+                //.AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}.json", optional: true)
+                .AddJsonFile($"appsettings.Development.json", optional: false)
                 .Build();
 
             return config;

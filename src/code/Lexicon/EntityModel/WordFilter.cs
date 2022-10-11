@@ -7,7 +7,7 @@ namespace Lexicon.EntityModel
     {
         public List<string>? SourceIds { get; set; }
 
-        public WordFilter WordFilter { get; set; } = WordFilter.Empty;
+        public WordFilter? WordFilter { get; set; } = WordFilter.Empty;
 
         public static MultiSourceWordFilter Empty => new()
         {

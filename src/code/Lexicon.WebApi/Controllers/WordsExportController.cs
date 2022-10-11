@@ -9,8 +9,8 @@
     using Lexicon.EntityModel;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
     using SerilogTimings;
-
 
     /// <summary>
     /// Words export controller.
@@ -19,8 +19,8 @@
     [ApiController]
     public class WordsExportController : ControllerBase
     {
-        private WordMultiSourceProvider _multiSourceProvider;
-
+        private readonly ILogger<WordsExportController> _logger;
+        private readonly WordMultiSourceProvider _multiSourceProvider;
         private readonly ICsvFormatter _csvFormatter;
 
         /// <summary>
@@ -28,8 +28,9 @@
         /// </summary>
         /// <param name="multiSourceProvider"> multi source provider of words </param>
         /// <param name="csvFormatter"> csv word formatter </param>
-        public WordsExportController(WordMultiSourceProvider multiSourceProvider, ICsvFormatter csvFormatter)
+        public WordsExportController(WordMultiSourceProvider multiSourceProvider, ICsvFormatter csvFormatter, ILogger<WordsExportController> logger)
         {
+            _logger = logger;
             _multiSourceProvider = multiSourceProvider;
             _csvFormatter = csvFormatter;
         }
@@ -52,6 +53,8 @@
                 .ToArray();
             }
 
+            _logger.LogInformation("Got {Count} records.", records.Length);
+
             byte[]? bytes = null;
             using (Operation.Time("Exporting {0} records to csv.", nameof(WordRecord)))
             {
@@ -59,6 +62,8 @@
                     .ConfigureAwait(false);
                  bytes = Encoding.ASCII.GetBytes(content);
             }
+
+            _logger.LogDebug("Exported size is {Size} bytes .", bytes.Length);
 
             return File(bytes, "application/octet-stream", "Words.csv");
         }

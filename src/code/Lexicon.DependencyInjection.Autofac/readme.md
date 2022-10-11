@@ -1,4 +1,6 @@
-## Lexicon Dependency Injection
+## Dependency Injection
+
+Assembling all together.  
 
 ### Techs
 #### Autofac

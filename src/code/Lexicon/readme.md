@@ -1,5 +1,6 @@
 ## Lexicon core
 
+Very basic general code defining the product.  
 
 ### Exit codes  
 example 1: https://web.archive.org/web/20110115230351/http://www.barricane.com/c-error-codes-include-errno  

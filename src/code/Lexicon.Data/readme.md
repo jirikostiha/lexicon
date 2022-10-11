@@ -1,4 +1,5 @@
-## Lexicon Data
+## Data
+Contains basic and shared logic for all data adapter projects.  
 
 ### Techs
 #### CsvHelper

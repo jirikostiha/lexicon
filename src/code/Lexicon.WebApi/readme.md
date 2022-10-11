@@ -1,4 +1,4 @@
-## Lexicon REST API  
+## REST API  
 
 ### Techs  
 

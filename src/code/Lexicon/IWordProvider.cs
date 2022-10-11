@@ -7,17 +7,17 @@
 
     public interface IWordProvider
     {
-        public Task<IEnumerable<WordRecord>> GetByFilterAsync(WordFilter filter, CancellationToken cancellationToken = default);
+        public Task<IEnumerable<WordRecord>> GetByFilterAsync(WordFilter filter, CancellationToken ct = default);
     }
 
     public interface IWordRepository : IWordProvider
     {
-        public Task Save(WordRecord record, CancellationToken cancellationToken = default);
+        public Task Save(WordRecord record, CancellationToken ct = default);
 
-        public Task SaveAll(IEnumerable<WordRecord> record, CancellationToken cancellationToken = default);
+        public Task SaveAll(IEnumerable<WordRecord> record, CancellationToken ct = default);
 
-        public Task Remove(string word, CancellationToken cancellationToken = default);
+        public Task Remove(string word, CancellationToken ct = default);
 
-        public Task Clear(CancellationToken cancellationToken = default);
+        public Task Clear(CancellationToken ct = default);
     }
 }

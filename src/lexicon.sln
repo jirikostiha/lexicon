@@ -5,6 +5,7 @@ VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution Items", "solution Items", "{8ABEA7BE-2CB6-499A-A09E-7D836F189422}"
 	ProjectSection(SolutionItems) = preProject
+		..\.gitignore = ..\.gitignore
 		directory.build.props = directory.build.props
 		..\license.txt = ..\license.txt
 		..\participants.props = ..\participants.props

@@ -12,7 +12,7 @@ class Program
     {
         try
         {
-            var rootCommand = new RootCommandFactory().Create();
+            var rootCommand = RootCommandFactory.Create();
 
             return rootCommand.InvokeAsync(args).Result;
         }

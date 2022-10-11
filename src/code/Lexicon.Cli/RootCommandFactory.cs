@@ -1,14 +1,19 @@
 ﻿namespace Lexicon.Cli
 {
     using System;
+    using System.Linq;
+    using System.Collections.Generic;
     using System.CommandLine;
     using System.CommandLine.Builder;
     using System.CommandLine.Invocation;
     using System.Configuration;
+    using System.Globalization;
     using System.IO;
-    using System.Linq;
+    using System.Threading;
     using System.Threading.Tasks;
+    using CsvHelper;
     using Lexicon;
+    using Lexicon.EntityModel;
     using Lexicon.SqlLite;
     using Microsoft.Extensions.Configuration;
 
@@ -22,12 +27,14 @@
         public static RootCommand Create()
         {
             var configFileOption = new Option<FileInfo?>(
-            name: "--config",
+            name: "--configFile",
             description: "The file of an app configuration.");
+            configFileOption.AddAlias("-cf");
 
             var sourceDataFileOption = new Option<FileInfo?>(
-            name: "--sourceFile",
+            name: "--dataFile",
             description: "The file of a source data.");
+            sourceDataFileOption.AddAlias("-df");
 
             var rootCommand = new RootCommand(Title);
             rootCommand.AddOption(configFileOption);
@@ -47,18 +54,28 @@
                 var section = config.GetSection(sectionName);
                 var options = section.Get<SQLiteOptions>();
 
+                await DeploySqlDatabase(options, sourceFile ?? new FileInfo("data.csv"), default);
+
             },
                 configFileOption, sourceDataFileOption);
 
             return rootCommand;
         }
 
-        public static async Task DeploySqlDatabase(SQLiteOptions options, FileInfo csvData)
+        public static async Task DeploySqlDatabase(SQLiteOptions options, FileInfo csvDataFile, CancellationToken ct)
         {
+            var records = new List<WordRecord>();
+            using (var reader = new StreamReader(csvDataFile.FullName))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                records = await csv.GetRecordsAsync<WordRecord>(ct)
+                    .ToListAsync(ct)
+                    .ConfigureAwait(false);
+            }
 
-            var deployer = new SQLiteDatabaseDeployer(options, null);
-            await deployer.CreateDatabaseAsync();
-            await deployer.FillAsync();
+            var deployer = new SQLiteDatabaseDeployer(options, () => records);
+            await deployer.CreateDatabaseAsync(ct);
+            await deployer.FillAsync(ct);
         }
 
         public static IConfiguration LoadConfiguration()
@@ -71,6 +88,5 @@
 
             return config;
         }
-
     }
 }

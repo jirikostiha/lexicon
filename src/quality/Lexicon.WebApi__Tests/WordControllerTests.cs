@@ -8,11 +8,14 @@
     using Lexicon.TestReady;
     using Lexicon.WebApi.Controllers;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging.Abstractions;
+    using Microsoft.Extensions.Logging;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class WordControllerTests
     {
+        private readonly ILogger<WordsController> _logger = new NullLogger<WordsController>();
         private readonly IWordProvider _provider = A.Fake<IWordProvider>();
         
         private WordMultiSourceProvider _multiSourceProvider;
@@ -23,7 +26,7 @@
         {
             var providers = new List<(string, IWordProvider)>() { ("fake", _provider) };
             _multiSourceProvider = new WordMultiSourceProvider(new SourceProvider(providers));
-            _controller = new WordsController(_multiSourceProvider);
+            _controller = new WordsController(_multiSourceProvider, _logger);
         }
 
         [TestMethod]

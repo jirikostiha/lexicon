@@ -10,7 +10,7 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
-    public class SQLiteDatabaseDeployerTest
+    public class SQLiteDatabaseDeployerTests
     {
         [TestMethod]
         public async Task CreateDatabaseAsync_InMemory_Empty()

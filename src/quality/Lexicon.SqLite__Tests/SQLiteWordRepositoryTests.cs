@@ -9,7 +9,7 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
-    public class SQLiteWordRepositoryTest
+    public class SQLiteWordRepositoryTests
     {
         [TestMethod]
         public async Task Save_SingleRecord_CountIsOne()

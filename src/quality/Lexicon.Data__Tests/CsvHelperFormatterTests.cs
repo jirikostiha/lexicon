@@ -17,7 +17,7 @@
     public class CsvHelperFormatterTests
     {
         [TestMethod()]
-        public async Task GetByFilterAsync_NoFilter_RecordsFromAllSources()
+        public async Task FormatAsync_SeveralRecords_Formatted()
         {
             var formatter = new CsvHelperFormatter();
             var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)

@@ -7,7 +7,6 @@
     using System.Threading.Tasks;
     using CommunityToolkit.Diagnostics;
     using Lexicon.EntityModel;
-    using Lexicon.SqlLite;
 
     public class HardCodedWordProvider : IWordProvider
     {

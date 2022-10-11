@@ -1,8 +1,17 @@
 ## Lexicon
+Is a demonstration project. It shows the possibility of implementing the service with a database.  
+Provides words for other services such as Markov's word generator.  
+
+### Usage
 
 
-heavily used: single resp, async progr
 
-points of interests
+### Key points  
+async progr  
+single resp  
 
-konvence
+
+
+### Special conventions
+ns  
+proj names  

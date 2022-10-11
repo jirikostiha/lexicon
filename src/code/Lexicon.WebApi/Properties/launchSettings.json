@@ -4,7 +4,7 @@
     "Lexicon.WebApi": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "swagger",
+      "launchUrl": "api/words?page=0&pageSize=100",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Production"
       },

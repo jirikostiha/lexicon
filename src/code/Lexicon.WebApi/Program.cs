@@ -9,10 +9,8 @@ using System;
 
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
 using System.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -21,7 +19,6 @@ using Serilog.Core;
 using Serilog.Sinks.SystemConsole;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
-using Lexicon.WebApi;
 using Lexicon.DependencyInjection.Autofac;
 using Lexicon;
 
@@ -48,6 +45,7 @@ try
     {
         config.Sources.Clear();
         var env = hostingContext.HostingEnvironment;
+        Log.Information("HostingEnvironment: {0}", env.EnvironmentName);
 
         config.SetBasePath(appPath)
             .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)

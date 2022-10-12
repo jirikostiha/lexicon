@@ -17,6 +17,9 @@
             _recordsProvider = recordsProvider ?? (() => Enumerable.Empty<WordRecord>());
         }
 
+        public Task<long> CountAsync(CancellationToken ct = default) 
+            => Task.FromResult(_recordsProvider().LongCount());
+
         public Task<IEnumerable<WordRecord>> GetByFilterAsync(WordFilter filter, CancellationToken ct = default)
         {
             Guard.IsNotNull(filter);

@@ -7,6 +7,8 @@
 
     public interface IWordProvider
     {
+        public Task<long> CountAsync(CancellationToken ct = default);
+
         public Task<IEnumerable<WordRecord>> GetByFilterAsync(WordFilter filter, CancellationToken ct = default);
     }
 

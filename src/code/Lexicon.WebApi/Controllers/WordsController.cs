@@ -48,7 +48,7 @@
             [FromQuery] int pageSize,
             CancellationToken ct = default)
         {
-               if (page < Pagination.PageNumberMin)
+            if (page < Pagination.PageNumberMin)
                 return BadRequest($"Parameter '{nameof(page)}' is less than minimal value ({Pagination.PageNumberMin}).");
             if (page > Pagination.PageNumberMax)
                 return BadRequest($"Parameter '{nameof(page)}' is greater than maximal value ({Pagination.PageNumberMax}).");

@@ -8,6 +8,7 @@
     using System.Threading;
     using System.Threading.Tasks;
     using CommunityToolkit.Diagnostics;
+    using FluentValidation;
     using Lexicon;
     using Lexicon.EntityModel;
     using SqlKata;
@@ -75,6 +76,9 @@
         {
             Guard.IsNotNull(record);
 
+            var validator = new WordRecordValidator();
+            validator.ValidateAndThrow(record);
+
             using var connection = new SQLiteConnection(_options.ConnectionString);
             await connection.OpenAsync(ct)
                 .ConfigureAwait(false);
@@ -104,6 +108,11 @@
 
             if (!records.Any())
                 return;
+
+            var validator = new WordRecordValidator();
+            // How to validate and throw errors of all items at once?
+            foreach (var record in records)
+                validator.ValidateAndThrow(record);
 
             using var connection = new SQLiteConnection(_options.ConnectionString);
             await connection.OpenAsync(ct)

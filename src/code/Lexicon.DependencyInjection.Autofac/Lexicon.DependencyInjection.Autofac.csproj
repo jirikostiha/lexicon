@@ -22,8 +22,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Lexicon.Data\Lexicon.Data.csproj" />
-      <ProjectReference Include="..\Lexicon.SqlLite\Lexicon.SqLite.csproj" />
+        <ProjectReference Include="..\Lexicon.SQLite\Lexicon.SQLite.csproj" />
+        <ProjectReference Include="..\Lexicon.Data\Lexicon.Data.csproj" />
     </ItemGroup>
 
 </Project>

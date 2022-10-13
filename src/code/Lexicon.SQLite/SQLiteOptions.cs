@@ -1,4 +1,4 @@
-﻿namespace Lexicon.SqlLite
+﻿namespace Lexicon.SQLite
 {
     public record SQLiteOptions
     {

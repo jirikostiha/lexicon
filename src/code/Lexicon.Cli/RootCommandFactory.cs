@@ -10,7 +10,7 @@
     using System.Threading.Tasks;
     using CsvHelper;
     using Lexicon.EntityModel;
-    using Lexicon.SqlLite;
+    using Lexicon.SQLite;
     using Microsoft.Extensions.Configuration;
 
     /// <summary>

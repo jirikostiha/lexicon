@@ -2,7 +2,7 @@
 {
     using global::Autofac;
     using Lexicon;
-    using Lexicon.SqlLite;
+    using Lexicon.SQLite;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Options;
 

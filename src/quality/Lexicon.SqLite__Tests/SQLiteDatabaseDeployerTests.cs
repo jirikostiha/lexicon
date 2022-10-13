@@ -5,7 +5,7 @@
     using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
-    using Lexicon.SqlLite;
+    using Lexicon.SQLite;
     using Lexicon.TestReady;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -63,7 +63,7 @@
         [TestCleanup]
         public void Cleanup()
         {
-            //File.Delete(Helper.TestDbFile);
+            File.Delete(Helper.TestDbFile);
         }
     }
 }

@@ -1,15 +1,11 @@
-﻿namespace Lexicon
+﻿namespace Lexicon.Data
 {
     using System;
     using System.Collections.Generic;
     using System.Globalization;
-    using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
-    using CsvHelper;
     using CsvHelper.Configuration;
-    using Lexicon.Data;
-    using Lexicon.EntityModel;
     using Lexicon.TestReady;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -19,11 +15,11 @@
         [TestMethod()]
         public async Task FormatAsync_SeveralRecords_Formatted()
         {
-            var formatter = new CsvHelperFormatter();
             var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
             {
                 HasHeaderRecord = true,
             };
+            var formatter = new CsvHelperFormatter(csvConfig);
 
             var csvString = await formatter.FormatAsync(WordSets.CzechMaleNames, default);
 

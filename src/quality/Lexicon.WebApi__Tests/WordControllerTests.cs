@@ -30,7 +30,7 @@
         }
 
         [TestMethod]
-        public async Task Get()
+        public async Task Get_EmptyFilter_FirstPage()
         {
             var filter = MultiSourceWordFilter.Empty;
             A.CallTo(() => _provider.GetByFilterAsync(filter.WordFilter, default))

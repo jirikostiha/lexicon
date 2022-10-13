@@ -1,4 +1,4 @@
-﻿namespace Lexicon
+﻿namespace Lexicon.SQLite
 {
     using System;
     using System.Collections.Generic;

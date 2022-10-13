@@ -1,4 +1,4 @@
-﻿namespace Lexicon
+﻿namespace Lexicon.TestReady
 {
     using System;
     using System.Collections.Generic;

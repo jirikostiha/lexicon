@@ -4,15 +4,11 @@
     using System.Linq;
     using System.Collections.Generic;
     using System.CommandLine;
-    using System.CommandLine.Builder;
-    using System.CommandLine.Invocation;
-    using System.Configuration;
     using System.Globalization;
     using System.IO;
     using System.Threading;
     using System.Threading.Tasks;
     using CsvHelper;
-    using Lexicon;
     using Lexicon.EntityModel;
     using Lexicon.SqlLite;
     using Microsoft.Extensions.Configuration;
@@ -26,23 +22,16 @@
 
         public static RootCommand Create()
         {
-            //var configFileOption = new Option<FileInfo?>(
-            //name: "--configFile",
-            //description: "The file of an app configuration.");
-            //configFileOption.AddAlias("-cf");
-
             var sourceDataFileOption = new Option<FileInfo?>(
             name: "--dataFile",
             description: "The file of a source data.");
             sourceDataFileOption.AddAlias("-df");
 
             var rootCommand = new RootCommand(Title);
-            //rootCommand.AddOption(configFileOption);
             rootCommand.AddOption(sourceDataFileOption);
 
             var deployCommand = new Command("deploy", "Deploy a database.")
             {
-                //configFileOption,
                 sourceDataFileOption
             };
             rootCommand.AddCommand(deployCommand);
@@ -57,7 +46,7 @@
                 await DeploySqlDatabase(options, sourceFile ?? new FileInfo("data.csv"), default);
 
             },
-                /*configFileOption,*/ sourceDataFileOption);
+                sourceDataFileOption);
 
             return rootCommand;
         }
@@ -82,7 +71,6 @@
         {
             var cd = Directory.GetCurrentDirectory();
             IConfiguration config = new ConfigurationBuilder()
-                //.SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
                 //.AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}.json", optional: true)
                 .AddJsonFile($"appsettings.Development.json", optional: false)

@@ -1,1 +1,0 @@
-dotnet publish .\src\lexicon.sln --output .\asm\app

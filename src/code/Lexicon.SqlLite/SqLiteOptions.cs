@@ -2,7 +2,7 @@
 {
     public record SQLiteOptions
     {
-        //base name
+        /// <summary> Base name </summary>
         public const string Name = "SQLite";
 
         public string? ConnectionString { get; set; }

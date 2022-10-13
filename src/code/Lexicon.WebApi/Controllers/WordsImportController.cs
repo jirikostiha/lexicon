@@ -7,45 +7,32 @@
     using System.Threading;
     using System.Threading.Tasks;
     using Lexicon.EntityModel;
+    using Lexicon.SqlLite;
+    using Lexicon.WebApi;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
     using SerilogTimings;
 
     /// <summary>
-    /// Words import controller.
+    /// Words quering controller.
     /// </summary>
-    [Route("api/[words]/[import]")]
+    [Route("api/words/import")]
     [ApiController]
     public class WordsImportController : ControllerBase
     {
-        private const int PageSizeMin = 4;
-        private const int PageSizeMax = 100_000;
-        private const int PageNumberMin = 0;
-        private const int PageNumberMax = 10_000;
-
-        private WordMultiSourceProvider _multiSourceProvider;
-
-//repo
+        private readonly ILogger<WordsImportController> _logger;
+        private readonly IWordRepository _repository;
 
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="multiSourceProvider"> multi source provider of words </param>
-        public WordsImportController(WordMultiSourceProvider multiSourceProvider)
+        /// <param name="repository"> word repository </param>
+        /// <param name="logger"> logger </param>
+        public WordsImportController(IWordRepository repository, ILogger<WordsImportController> logger)
         {
-            _multiSourceProvider = multiSourceProvider;
-        }
-
-        /// <summary>
-        /// Import word records to writable source.
-        /// </summary>
-        /// <param name="ct"> Cancelation token </param>
-        [HttpPost]
-        public async Task<IActionResult> Import(
-            [FromBody] MultiSourceWordFilter filter,
-            CancellationToken ct = default)
-        {
-            
+            _logger = logger;
+            _repository = repository;
         }
     }
 }

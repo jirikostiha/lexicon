@@ -7,7 +7,6 @@
     using System.Threading;
     using System.Threading.Tasks;
     using Lexicon.EntityModel;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using SerilogTimings;
@@ -28,6 +27,7 @@
         /// </summary>
         /// <param name="multiSourceProvider"> multi source provider of words </param>
         /// <param name="csvFormatter"> csv word formatter </param>
+        /// <param name="logger"> logger </param>
         public WordsExportController(WordMultiSourceProvider multiSourceProvider, ICsvFormatter csvFormatter, ILogger<WordsExportController> logger)
         {
             _logger = logger;

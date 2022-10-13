@@ -13,7 +13,7 @@
     using SerilogTimings;
 
     /// <summary>
-    /// Words quering controller.
+    /// Words controller.
     /// </summary>
     [Route("api/words")]
     [ApiController]

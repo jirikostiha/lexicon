@@ -6,8 +6,6 @@ using Serilog;
 using System.IO;
 using System.Reflection;
 using System;
-
-using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -15,8 +13,6 @@ using System.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Microsoft.OpenApi.Models;
-using Serilog.Core;
-using Serilog.Sinks.SystemConsole;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Lexicon.DependencyInjection.Autofac;

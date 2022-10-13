@@ -6,9 +6,9 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Options;
 
-    public class SqlLiteDependency : DependencyBase
+    public class SQLiteDependency : DependencyBase
     {
-        public SqlLiteDependency(IConfiguration configuration) 
+        public SQLiteDependency(IConfiguration configuration) 
             : base(configuration)
         { }
 

@@ -20,7 +20,7 @@
                 .As<ICsvFormatter>()
                 .AsSelf();
 
-            new SqlLiteDependency(Configuration).Register(builder);
+            new SQLiteDependency(Configuration).Register(builder);
 
             //todo https://docs.autofac.org/en/latest/faq/select-by-context.html
             //todo do it better

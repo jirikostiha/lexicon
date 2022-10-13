@@ -7,7 +7,7 @@
     using System.Threading;
     using System.Threading.Tasks;
     using Lexicon.EntityModel;
-    using Lexicon.SqlLite;
+    using Lexicon.SQLite;
     using Lexicon.WebApi;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;

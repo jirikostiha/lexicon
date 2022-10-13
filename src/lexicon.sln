@@ -38,6 +38,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lexicon__Tests", "quality\L
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lexicon.Data__Tests", "quality\Lexicon.Data__Tests\Lexicon.Data__Tests.csproj", "{8B99A5AE-5A90-4E37-8B8F-997B9630F6D2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ci", "ci", "{662387C7-0662-4174-9BCB-C55D393CA944}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\cd.yml = ..\.github\workflows\cd.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -98,6 +103,7 @@ Global
 		{18B2D96F-4076-4BA4-B544-6D38BFA23B74} = {0A927ED1-E2A0-4128-AF7A-CF7152E404F5}
 		{D41FB88B-E9DB-4DC5-8942-E2AA45EA4950} = {0A927ED1-E2A0-4128-AF7A-CF7152E404F5}
 		{8B99A5AE-5A90-4E37-8B8F-997B9630F6D2} = {0A927ED1-E2A0-4128-AF7A-CF7152E404F5}
+		{662387C7-0662-4174-9BCB-C55D393CA944} = {8ABEA7BE-2CB6-499A-A09E-7D836F189422}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AE703196-5935-41FB-83E8-8DC5D4797DCF}

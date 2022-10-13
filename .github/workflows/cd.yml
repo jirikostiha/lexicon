@@ -11,7 +11,8 @@ jobs:
         dotnet-version: [ '3.1.x', '6.0.x' ]
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
 
     - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
       uses: actions/setup-dotnet@v3
@@ -25,4 +26,13 @@ jobs:
       run: dotnet build "./src/lexicon.sln" --no-restore
 
     - name: Test
-      run: dotnet test "./src/lexicon.sln" --no-build --verbosity normal
+      run: dotnet test "./src/lexicon.sln" --no-build --logger "trx;LogFileName=test-results.trx" || true
+
+    - name: Test Report
+      uses: dorny/test-reporter@v1
+      if: always()
+      with:
+        name: DotNET Tests
+        path: "**/test-results.trx"                            
+        reporter: dotnet-trx
+        fail-on-error: true

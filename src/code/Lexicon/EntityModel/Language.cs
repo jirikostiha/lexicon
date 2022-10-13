@@ -4,5 +4,6 @@
     {
         English,
         Czech,
+        Greek
     }
 }

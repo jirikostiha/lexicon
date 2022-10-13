@@ -1,0 +1,1 @@
+.\asm\app\Lexicon.WebApi.exe

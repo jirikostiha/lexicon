@@ -14,7 +14,7 @@ It provides words for other services such as Markov's word generator.
 ```
 
 3. Then in browser call service to obtain a data.
-```http
+```
 https://localhost:5001/api/words?page=0&pageSize=100
 ```
 

@@ -7,7 +7,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <IsPackable>false</IsPackable>
     <IsPublishable>false</IsPublishable>
-    <IsTestProject>true</IsTestProject>
+    <IsTestProject>false</IsTestProject>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\code\Lexicon.SqlLite\Lexicon.SQLite.csproj" />
+    <ProjectReference Include="..\..\code\Lexicon.SqlLite\Lexicon.SqLite.csproj" />
     <ProjectReference Include="..\Lexicon__TestReady\Lexicon__TestReady.csproj" />
   </ItemGroup>
 

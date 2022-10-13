@@ -23,7 +23,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Lexicon.Data\Lexicon.Data.csproj" />
-      <ProjectReference Include="..\Lexicon.SqlLite\Lexicon.Sqlite.csproj" />
+      <ProjectReference Include="..\Lexicon.SqlLite\Lexicon.SqLite.csproj" />
     </ItemGroup>
 
 </Project>

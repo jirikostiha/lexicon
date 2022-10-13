@@ -32,9 +32,11 @@
             await connection.OpenAsync(ct)
                 .ConfigureAwait(false);
 
+            var query = new Query("Words").AsCount();
+            var sqlQuery = new SqliteCompiler().Compile(query).ToString();
             using var command = new SQLiteCommand(connection)
             {
-                CommandText = "Select count(*) FROM Words"
+                CommandText = sqlQuery
             };
             var count = await command.ExecuteScalarAsync(ct)
                 .ConfigureAwait(false);
@@ -57,22 +59,19 @@
                 query = query.Where("class", (int)filter.Class);
             if (!string.IsNullOrEmpty(filter.StartsWith))
                 query.WhereStarts("word", filter.StartsWith, false);
-
-            var compiler = new SqliteCompiler();
-            var sqlQuery = compiler.Compile(query).ToString();
-
+            
+            var sqlQuery = new SqliteCompiler().Compile(query).ToString();
             using var command = new SQLiteCommand(connection)
             {
                 CommandText = sqlQuery,
             };
-
             var wordRecords = await ReadWordRecordsAsync(command, ct)
                 .ConfigureAwait(false);
 
             return wordRecords;
         }
 
-        public async Task Save(WordRecord record, CancellationToken ct = default)
+        public async Task SaveAsync(WordRecord record, CancellationToken ct = default)
         {
             Guard.IsNotNull(record);
 
@@ -90,19 +89,16 @@
                     language = (long)record.Metadata.Language,
                     @class = (long)record.Metadata.Class,
                 });
-
-            var compiler = new SqliteCompiler();
-            var sqlQuery = compiler.Compile(query).ToString();
+            var sqlQuery = new SqliteCompiler().Compile(query).ToString();
             using var command = new SQLiteCommand(connection)
             {
                 CommandText = sqlQuery
             };
-
             await command.ExecuteNonQueryAsync(ct)
                 .ConfigureAwait(false);
         }
 
-        public async Task SaveAll(IEnumerable<WordRecord> records, CancellationToken ct = default)
+        public async Task SaveAllAsync(IEnumerable<WordRecord> records, CancellationToken ct = default)
         {
             Guard.IsNotNull(records);
 
@@ -120,7 +116,7 @@
 
             using var command = new SQLiteCommand(connection);
             using var transaction = connection.BeginTransaction();
-
+            var compiler = new SqliteCompiler();
             foreach (var record in records)
             {
                 var query = new Query("Words")
@@ -130,11 +126,7 @@
                     language = (long)record.Metadata.Language,
                     @class = (long)record.Metadata.Class,
                 });
-
-                var compiler = new SqliteCompiler();
-                var sqlQuery = compiler.Compile(query).ToString();
-                command.CommandText = sqlQuery;
-
+                command.CommandText = compiler.Compile(query).ToString();
                 await command.ExecuteNonQueryAsync(ct)
                     .ConfigureAwait(false);
             }
@@ -143,7 +135,7 @@
                 .ConfigureAwait(false);
         }
 
-        public async Task Remove(string word, CancellationToken ct = default)
+        public async Task RemoveAsync(string word, CancellationToken ct = default)
         {
             Guard.IsNotNullOrEmpty(word);
 
@@ -151,27 +143,30 @@
             await connection.OpenAsync(ct)
                 .ConfigureAwait(false);
 
+            var query = new Query("Words").AsDelete().Where("word", word);
+            var sqlQuery = new SqliteCompiler().Compile(query).ToString();
             using var command = new SQLiteCommand(connection)
             {
-                CommandText = "DELETE FROM Words WHERE word = @word"
+                CommandText = sqlQuery
             };
-            command.Parameters.AddWithValue("@word", word);
-            await command.PrepareAsync(ct)
-                .ConfigureAwait(false);
-
+            //command.Parameters.AddWithValue("@word", word);
+            //await command.PrepareAsync(ct)
+            //    .ConfigureAwait(false);
             await command.ExecuteNonQueryAsync(ct)
                 .ConfigureAwait(false);
         }
 
-        public async Task Clear(CancellationToken ct = default)
+        public async Task ClearAsync(CancellationToken ct = default)
         {
             using var connection = new SQLiteConnection(_options.ConnectionString);
             await connection.OpenAsync(ct)
                 .ConfigureAwait(false);
 
+            var query = new Query("Words").AsDelete();
+            var sqlQuery = new SqliteCompiler().Compile(query).ToString();
             using var command = new SQLiteCommand(connection)
             {
-                CommandText = "DELETE FROM Words"
+                CommandText = sqlQuery
             };
             await command.ExecuteNonQueryAsync(ct)
                 .ConfigureAwait(false);

@@ -48,7 +48,7 @@
         public async Task FillAsync(CancellationToken ct = default)
         {
             await new SQLiteWordRepository(_options)
-                .SaveAll(_recordsProvider(), ct)
+                .SaveAllAsync(_recordsProvider(), ct)
                 .ConfigureAwait(false);
         }
     }

@@ -12,30 +12,40 @@
     public class SQLiteWordRepositoryTests
     {
         [TestMethod]
-        public async Task Save_SingleRecord_CountIsOne()
+        public async Task CountAsync_AllRecords_Match()
+        {
+            var repo = await Helper.CreateRepoWithFilledInMemoryDbAsync();
+
+            var count = await repo.CountAsync();
+
+            Assert.AreEqual(WordSets.All.Count(), count);
+        }
+
+        [TestMethod]
+        public async Task SaveAsync_SingleRecord_CountIsOne()
         {
             var repo = await Helper.CreateRepoWithInMemoryDbAsync();
             var record1 = WordSets.CzechMaleNames.First();
 
-            await repo.Save(record1);
+            await repo.SaveAsync(record1);
 
             var count = await repo.CountAsync();
             Assert.AreEqual(1, count);
         }
 
         [TestMethod]
-        public async Task SaveAll_MultipleRecords_CountIsMatching()
+        public async Task SaveAllAsync_MultipleRecords_CountIsMatching()
         {
             var repo = await Helper.CreateRepoWithInMemoryDbAsync();
 
-            await repo.SaveAll(WordSets.CzechMaleNames);
+            await repo.SaveAllAsync(WordSets.CzechMaleNames);
             
             var count = await repo.CountAsync();
             Assert.AreEqual(WordSets.CzechMaleNames.Count(), count);
-        }
+        }      
 
         [TestMethod]
-        public async Task GetByFilter_EmptyFilter_ReturnAll()
+        public async Task GetByFilterAsync_EmptyFilter_ReturnAll()
         {
             var repo = await Helper.CreateRepoWithFilledInMemoryDbAsync();
 
@@ -46,7 +56,7 @@
         }
 
         [TestMethod]
-        public async Task GetByFilter_FullCondition_ReturnFiltered()
+        public async Task GetByFilterAsync_FullCondition_ReturnFiltered()
         {
             var repo = await Helper.CreateRepoWithFilledInMemoryDbAsync();
             var filter = new WordFilter() { 
@@ -67,24 +77,24 @@
         }
         
         [TestMethod]
-        public async Task Remove_ExistingRecord_IsNotPresent()
+        public async Task RemoveAsync_ExistingRecord_IsNotPresent()
         {
             var repo = await Helper.CreateRepoWithInMemoryDbAsync();
             var record1 = WordSets.CzechMaleNames.First();
-            await repo.Save(record1);
+            await repo.SaveAsync(record1);
 
-            await repo.Remove(record1.Word);
+            await repo.RemoveAsync(record1.Word);
 
             var count = await repo.CountAsync();
             Assert.AreEqual(0, count);
         }
         
         [TestMethod]
-        public async Task Clear_ExistingRecords_CountIsZero()
+        public async Task ClearAsync_ExistingRecords_CountIsZero()
         {
             var repo = await Helper.CreateRepoWithFilledInMemoryDbAsync();
 
-            await repo.Clear();
+            await repo.ClearAsync();
 
             var count = await repo.CountAsync();
             Assert.AreEqual(0, count);

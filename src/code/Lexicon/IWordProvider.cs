@@ -14,12 +14,12 @@
 
     public interface IWordRepository : IWordProvider
     {
-        public Task Save(WordRecord record, CancellationToken ct = default);
+        public Task SaveAsync(WordRecord record, CancellationToken ct = default);
 
-        public Task SaveAll(IEnumerable<WordRecord> record, CancellationToken ct = default);
+        public Task SaveAllAsync(IEnumerable<WordRecord> record, CancellationToken ct = default);
 
-        public Task Remove(string word, CancellationToken ct = default);
+        public Task RemoveAsync(string word, CancellationToken ct = default);
 
-        public Task Clear(CancellationToken ct = default);
+        public Task ClearAsync(CancellationToken ct = default);
     }
 }

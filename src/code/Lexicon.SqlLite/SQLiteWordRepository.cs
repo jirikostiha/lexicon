@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Data.Common;
     using System.Data.SQLite;
+    using System.Globalization;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
@@ -16,7 +17,7 @@
 
     public class SQLiteWordRepository : IWordRepository
     {
-        private SQLiteOptions _options;
+        private readonly SQLiteOptions _options;
 
         public SQLiteWordRepository(SQLiteOptions options)
         {
@@ -41,7 +42,7 @@
             var count = await command.ExecuteScalarAsync(ct)
                 .ConfigureAwait(false);
 
-            return (long)count;
+            return Convert.ToInt64(count, CultureInfo.InvariantCulture);
         }
 
         public async Task<IEnumerable<WordRecord>> GetByFilterAsync(WordFilter filter, CancellationToken ct = default)
@@ -182,7 +183,8 @@
                 .ConfigureAwait(false))
             {
                 var record = ReadSingleRecord(reader);
-                wordRecords.Add(record);
+                if (record is not null)
+                    wordRecords.Add(record);
             }
 
             if (wordRecords is null)

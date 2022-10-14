@@ -43,6 +43,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lexicon.SQLite", "code\Lexi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lexicon.SQLite__Tests", "quality\Lexicon.SQLite__Tests\Lexicon.SQLite__Tests.csproj", "{E3FBA5A3-DC79-4E43-B23D-8065EB40B329}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{74D1E24C-C8AF-4993-9EB2-4AE00C54C4D8}"
+	ProjectSection(SolutionItems) = preProject
+		..\doc\conventions.md = ..\doc\conventions.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -104,6 +109,7 @@ Global
 		{8B99A5AE-5A90-4E37-8B8F-997B9630F6D2} = {0A927ED1-E2A0-4128-AF7A-CF7152E404F5}
 		{662387C7-0662-4174-9BCB-C55D393CA944} = {8ABEA7BE-2CB6-499A-A09E-7D836F189422}
 		{E3FBA5A3-DC79-4E43-B23D-8065EB40B329} = {0A927ED1-E2A0-4128-AF7A-CF7152E404F5}
+		{74D1E24C-C8AF-4993-9EB2-4AE00C54C4D8} = {8ABEA7BE-2CB6-499A-A09E-7D836F189422}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AE703196-5935-41FB-83E8-8DC5D4797DCF}

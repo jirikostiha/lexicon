@@ -4,6 +4,7 @@
     using System.Linq;
     using global::Autofac;
     using Lexicon;
+    using Lexicon.Data;
     using Lexicon.SQLite;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Options;
@@ -16,28 +17,34 @@
 
         public override void Register(ContainerBuilder builder)
         {
-            var sections = Configuration.AsEnumerable()
-                .Where(x => x.Key.StartsWith(SQLiteOptions.BaseName, StringComparison.InvariantCulture))
-                .GroupBy(x => x.Key.Contains(':') ? x.Key.Substring(0, x.Key.IndexOf(':')) : x.Key)
+            var sectionKeys = Configuration.GetSectionKeys()
+                .Where(s => s.StartsWith(SQLiteOptions.BaseName, StringComparison.InvariantCulture))
                 .ToArray();
-            
-            foreach (var sectionName in sections.Select(s => s.Key))
+
+            foreach (var sectionKey in sectionKeys)
             {
-                var section = Configuration.GetSection(sectionName);
+                var section = Configuration.GetSection(sectionKey);
                 if (!section.Exists())
                     continue;
 
                 //options
                 builder.RegisterInstance(Options.Create(section.Get<SQLiteOptions>()))
                     .As<IOptions<SQLiteOptions>>()
+                    .Keyed<IOptions<SQLiteOptions>>(sectionKey)
                     .SingleInstance();
 
                 //repository
                 builder.Register(context =>
-                context.ComponentRegistry.Registrations
-                    new SQLiteWordRepository(context.Resolve<IOptions<SQLiteOptions>>().Value))
+                    new SQLiteWordRepository(context.ResolveKeyed<IOptions<SQLiteOptions>>(sectionKey).Value))
                     .As<IWordProvider>()
                     .As<IWordRepository>()
+                    .AsSelf();
+
+                //repository as tuple
+                builder.Register(context =>
+                    new Tuple<string, IWordProvider>(
+                        sectionKey,
+                        new SQLiteWordRepository(context.ResolveKeyed<IOptions<SQLiteOptions>>(sectionKey).Value)))
                     .AsSelf();
             }
         }

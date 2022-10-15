@@ -1,26 +1,32 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <Import Project="..\..\..\product.props" />
-    <Import Project="..\..\..\product_version.props" />
-    <Import Project="..\..\..\participants.props" />
+	<Import Project="..\..\..\product.props" />
+	<Import Project="..\..\..\product_version.props" />
+	<Import Project="..\..\..\participants.props" />
 
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <Description>Common functionalities for all data layer projects.</Description>
-        <LangVersion>latest</LangVersion>
-        <Nullable>enable</Nullable>
-        <NeutralLanguage>en-US</NeutralLanguage>
-        <AnalysisLevel>latest-recommended</AnalysisLevel>
-        <NoWarn>CA1725,CA1716</NoWarn>
-    </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Description>Common functionalities for all data layer projects.</Description>
+		<LangVersion>latest</LangVersion>
+		<Nullable>enable</Nullable>
+		<NeutralLanguage>en-US</NeutralLanguage>
+		<AnalysisLevel>latest-recommended</AnalysisLevel>
+		<NoWarn>CA1725,CA1716</NoWarn>
+	</PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="CsvHelper" Version="29.0.0" />
         <PackageReference Include="System.Linq.Async" Version="6.0.1" />
     </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\Lexicon\Lexicon.csproj" />
-    </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="CsvHelper" Version="29.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+		<PackageReference Include="System.Linq.Async" Version="6.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Lexicon\Lexicon.csproj" />
+	</ItemGroup>
 
 </Project>

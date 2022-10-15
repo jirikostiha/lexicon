@@ -1,5 +1,7 @@
 ﻿namespace Lexicon.DependencyInjection.Autofac
 {
+    using System;
+    using System.Linq;
     using global::Autofac;
     using Lexicon;
     using Lexicon.SQLite;
@@ -14,22 +16,30 @@
 
         public override void Register(ContainerBuilder builder)
         {
-            var sectionName = SQLiteOptions.Name;
-            var section = Configuration.GetSection(sectionName);
-            if (!section.Exists())
-                return;
+            var sections = Configuration.AsEnumerable()
+                .Where(x => x.Key.StartsWith(SQLiteOptions.BaseName, StringComparison.InvariantCulture))
+                .GroupBy(x => x.Key.Contains(':') ? x.Key.Substring(0, x.Key.IndexOf(':')) : x.Key)
+                .ToArray();
             
-            //options
-            builder.RegisterInstance(Options.Create(section.Get<SQLiteOptions>()))
-                .As<IOptions<SQLiteOptions>>()
-                .SingleInstance();
+            foreach (var sectionName in sections.Select(s => s.Key))
+            {
+                var section = Configuration.GetSection(sectionName);
+                if (!section.Exists())
+                    continue;
 
-            //repository
-            builder.Register(context => 
-                new SQLiteWordRepository(context.Resolve<IOptions<SQLiteOptions>>().Value))
-                .As<IWordProvider>()
-                .As<IWordRepository>()
-                .AsSelf();
+                //options
+                builder.RegisterInstance(Options.Create(section.Get<SQLiteOptions>()))
+                    .As<IOptions<SQLiteOptions>>()
+                    .SingleInstance();
+
+                //repository
+                builder.Register(context =>
+                context.ComponentRegistry.Registrations
+                    new SQLiteWordRepository(context.Resolve<IOptions<SQLiteOptions>>().Value))
+                    .As<IWordProvider>()
+                    .As<IWordRepository>()
+                    .AsSelf();
+            }
         }
     }
 }

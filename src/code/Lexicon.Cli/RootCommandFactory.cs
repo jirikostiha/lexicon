@@ -39,7 +39,7 @@
             deployCommand.SetHandler(async (sourceFile) =>
             {
                 var config = LoadConfiguration();
-                var sectionName = SQLiteOptions.Name;
+                var sectionName = SQLiteOptions.BaseName;
                 var section = config.GetSection(sectionName);
                 var options = section.Get<SQLiteOptions>();
 

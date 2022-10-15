@@ -32,16 +32,16 @@
 
             using var dropCommand = new SQLiteCommand(connection)
             {
-                CommandText = "DROP TABLE IF EXISTS Words"
+                CommandText = $"DROP TABLE IF EXISTS {Db.WordsTable.Name}"
             };
             await dropCommand.ExecuteNonQueryAsync(ct)
                 .ConfigureAwait(false);
 
-            using var creteTableCommand = new SQLiteCommand(connection)
+            using var createDbCommand = new SQLiteCommand(connection)
             {
-                CommandText = DatabaseSqlScheme.WordsTable
+                CommandText = Db.Definition
             };
-            await creteTableCommand.ExecuteNonQueryAsync(ct)
+            await createDbCommand.ExecuteNonQueryAsync(ct)
                 .ConfigureAwait(false);
         }
 

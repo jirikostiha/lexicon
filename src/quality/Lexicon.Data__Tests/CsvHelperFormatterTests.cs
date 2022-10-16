@@ -15,11 +15,11 @@
         [TestMethod()]
         public async Task FormatAsync_SeveralRecords_Formatted()
         {
-            var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
+            var options = new CsvConfiguration(CultureInfo.InvariantCulture)
             {
                 HasHeaderRecord = true,
             };
-            var formatter = new CsvHelperFormatter(csvConfig);
+            var formatter = new CsvHelperFormatter(options);
 
             var csvString = await formatter.FormatAsync(WordSets.CzechMaleNames, default);
 

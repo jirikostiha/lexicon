@@ -12,6 +12,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="AutoBogus" Version="2.13.1" />
+    </ItemGroup>
+
+    <ItemGroup>
       <ProjectReference Include="..\..\code\Lexicon\Lexicon.csproj" />
     </ItemGroup>
 

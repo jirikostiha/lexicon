@@ -24,7 +24,7 @@
         {
             Guard.IsNotNull(filter);
 
-            var words = WordRecordsFilter.Filter(_recordsProvider(), filter);
+            var words = WordFilter.Filter(_recordsProvider(), filter);
 
             return Task.FromResult(words);
         }

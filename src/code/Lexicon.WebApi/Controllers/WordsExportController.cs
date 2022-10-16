@@ -53,7 +53,7 @@
                 .ToArray();
             }
 
-            _logger.LogInformation("Got {Count} records.", records.Length);
+            _logger.GotRecordsCount(records.Length);
 
             byte[]? bytes = null;
             using (Operation.Time("Exporting {0} records to csv.", nameof(WordRecord)))
@@ -63,7 +63,7 @@
                  bytes = Encoding.ASCII.GetBytes(content);
             }
 
-            _logger.LogDebug("Exported size is {Size} bytes .", bytes.Length);
+            _logger.ExportedSize(bytes.Length);
 
             return File(bytes, "application/octet-stream", "Words.csv");
         }

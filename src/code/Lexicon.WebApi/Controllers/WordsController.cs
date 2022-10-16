@@ -65,7 +65,7 @@
                 .ToArray();
             }
 
-            _logger.LogInformation("Got {Count} records.", records.Length);
+            _logger.GotRecordsCount(records.Length);
 
             if (!records.Any())
                 return NotFound();
@@ -114,7 +114,7 @@
                 .ToArray();
             }
 
-            _logger.LogInformation("Got {Count} records.", records.Length);
+            _logger.GotRecordsCount(records.Length);
 
             if (!records.Any())
                 return NotFound();

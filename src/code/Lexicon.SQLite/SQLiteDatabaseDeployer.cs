@@ -11,8 +11,8 @@
 
     public class SQLiteDatabaseDeployer
     {
-        private SQLiteOptions _options;
-        private Func<IEnumerable<WordRecord>> _recordsProvider;
+        private readonly SQLiteOptions _options;
+        private readonly Func<IEnumerable<WordRecord>> _recordsProvider;
 
         public SQLiteDatabaseDeployer(SQLiteOptions options, Func<IEnumerable<WordRecord>>? recordsProvider = null)
         {

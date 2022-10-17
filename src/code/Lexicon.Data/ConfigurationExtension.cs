@@ -10,7 +10,7 @@
         public static IEnumerable<string> GetSectionKeys(this IConfiguration configuration)
         {
             return configuration.AsEnumerable()
-                .GroupBy(x => x.Key.Contains(':') ? x.Key.Substring(0, x.Key.IndexOf(':')) : x.Key)
+                .GroupBy(x => x.Key.Contains(':') ? x.Key[..x.Key.IndexOf(':')] : x.Key)
                 .Select(x => x.Key);
         }
     }

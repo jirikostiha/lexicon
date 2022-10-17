@@ -48,6 +48,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lexicon.Data__Tests", "qual
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lexicon.SQLite__Tests", "quality\Lexicon.SQLite__Tests\Lexicon.SQLite__Tests.csproj", "{3459A519-3709-4484-83D1-2AC01F235D7B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cmd", "cmd", "{FFC154C8-45E1-4EE4-BCE4-B12D04F46950}"
+	ProjectSection(SolutionItems) = preProject
+		..\publishAndDeploy.ps1 = ..\publishAndDeploy.ps1
+		..\run.ps1 = ..\run.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -110,6 +116,7 @@ Global
 		{74D1E24C-C8AF-4993-9EB2-4AE00C54C4D8} = {8ABEA7BE-2CB6-499A-A09E-7D836F189422}
 		{BDCC3F40-FF30-4C93-B72D-41A4443A8343} = {0A927ED1-E2A0-4128-AF7A-CF7152E404F5}
 		{3459A519-3709-4484-83D1-2AC01F235D7B} = {0A927ED1-E2A0-4128-AF7A-CF7152E404F5}
+		{FFC154C8-45E1-4EE4-BCE4-B12D04F46950} = {8ABEA7BE-2CB6-499A-A09E-7D836F189422}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AE703196-5935-41FB-83E8-8DC5D4797DCF}

@@ -12,7 +12,6 @@
     using Lexicon.EntityModel;
     using Lexicon.SQLite;
     using Microsoft.Extensions.Configuration;
-    using System.Diagnostics;
 
     /// <summary>
     /// Root command factory.
@@ -60,7 +59,8 @@
             };
             createDbCommand.SetHandler(async (configName, sectionName) =>
             {
-                await CreateDatabase(configName, sectionName);
+                await DeplyModel(configName, sectionName)
+                    .ConfigureAwait(false);
             }, 
                 configurationNameOption, sectionNameOption);
             rootCommand.AddCommand(createDbCommand);
@@ -71,7 +71,8 @@
             };
             importCommand.SetHandler(async (configName, sectionName, sourceFile) =>
             {
-                await ImportDataToDatabase(configName, sectionName, sourceFile);
+                await ImportDataToDatabase(configName, sectionName, sourceFile)
+                    .ConfigureAwait(false);
             },
                 configurationNameOption, sectionNameOption, sourceDataFileOption);
             rootCommand.AddCommand(importCommand);
@@ -79,18 +80,18 @@
             return rootCommand;
         }
 
-        public static async Task CreateDatabase(string? configName, string? sectionName, CancellationToken ct = default)
+        public static async Task DeplyModel(string? configName, string? sectionName, CancellationToken ct = default)
         {
             var config = LoadConfiguration(configName);
             var section = config.GetSection(sectionName);
             var options = section.Get<SQLiteOptions>();
 
-            Console.WriteLine("creating db: '{0}'", options.ConnectionString);
+            Console.WriteLine("Deploying model: '{0}'", options.ConnectionString);
 
-            var deployer = new SQLiteDatabaseDeployer(options);
-            await deployer.CreateDatabaseAsync(ct);
+            var modelDeployer = new SQLiteDataModelDeployer(options.ConnectionString);
+            await modelDeployer.DeployAsync(ct);
 
-            //Console.WriteLine("db file: '{0}'", dbFile);
+            Console.WriteLine("Model deployed.");
         }
 
         public static async Task ImportDataToDatabase(string? configName, string? sectionName, FileInfo sourceFile, CancellationToken ct = default)
@@ -115,10 +116,9 @@
                     .ConfigureAwait(false);
             }
 
-            var deployer = new SQLiteDataModelDeployer(options.ConnectionString);
-            await deployer.DeployAsync(ct);
             var repo = new SQLiteWordRepository(options);
             await repo.SaveAllAsync(records, ct);
+
             Console.WriteLine("Imported to: '{0}'", options.ConnectionString);
         }
 

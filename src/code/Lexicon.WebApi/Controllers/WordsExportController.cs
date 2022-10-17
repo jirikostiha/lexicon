@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Net.Mime;
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
@@ -65,7 +66,7 @@
 
             _logger.ExportedSize(bytes.Length);
 
-            return File(bytes, "application/octet-stream", "Words.csv");
+            return File(bytes, MediaTypeNames.Application.Octet, "Words.csv");
         }
     }
 }

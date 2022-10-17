@@ -12,7 +12,8 @@
     [TestClass]
     public class CsvHelperFormatterTests
     {
-        [TestMethod()]
+        [TestMethod]
+        [TestCategory("positive")]
         public async Task FormatAsync_SeveralRecords_Formatted()
         {
             var options = new CsvConfiguration(CultureInfo.InvariantCulture)

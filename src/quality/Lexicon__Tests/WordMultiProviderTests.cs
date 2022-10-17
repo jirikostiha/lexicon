@@ -11,8 +11,9 @@
     [TestClass]
     public class WordMultiProviderTests
     {
-        [TestMethod()]
-        public async Task GetByFilterAsync_NoFilter_RecordsFromAllSources()
+        [TestMethod]
+        [TestCategory("positive")]
+        public async Task GetByFilterAsync_EmptyFilter_RecordsFromAllSources()
         {
             var providers = new List<(string, IWordProvider)>() 
             { 
@@ -31,7 +32,8 @@
             Assert.AreEqual(WordSets.CzechMaleNames.Union(WordSets.EnglishMaleNames).Count(), words.Length);
         }
 
-        [TestMethod()]
+        [TestMethod]
+        [TestCategory("positive")]
         public async Task GetByFilterAsync_OnlyFromOneSource_RecordsFromThatSource()
         {
             var providers = new List<(string, IWordProvider)>()

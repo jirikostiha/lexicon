@@ -12,6 +12,7 @@
     public class SQLiteWordRepositoryTests
     {
         [TestMethod]
+        [TestCategory("positive")]
         public async Task CountAsync_AllRecords_Match()
         {
             var repo = await Helper.CreateRepoWithFilledInMemoryDbAsync();
@@ -22,6 +23,7 @@
         }
 
         [TestMethod]
+        [TestCategory("positive")]
         public async Task SaveAsync_SingleRecord_CountIsOne()
         {
             var repo = await Helper.CreateRepoWithInMemoryDbAsync();
@@ -34,6 +36,18 @@
         }
 
         [TestMethod]
+        [TestCategory("negative")]
+        [ExpectedException(typeof(FluentValidation.ValidationException))]
+        public async Task SaveAsync_InvalidRecord_Exception()
+        {
+            var repo = await Helper.CreateRepoWithInMemoryDbAsync();
+            var record = new WordRecord();
+
+            await repo.SaveAsync(record);
+        }
+
+        [TestMethod]
+        [TestCategory("positive")]
         public async Task SaveAllAsync_MultipleRecords_CountIsMatching()
         {
             var repo = await Helper.CreateRepoWithInMemoryDbAsync();
@@ -45,6 +59,7 @@
         }      
 
         [TestMethod]
+        [TestCategory("positive")]
         public async Task GetByFilterAsync_EmptyFilter_ReturnAll()
         {
             var repo = await Helper.CreateRepoWithFilledInMemoryDbAsync();
@@ -56,6 +71,7 @@
         }
 
         [TestMethod]
+        [TestCategory("positive")]
         public async Task GetByFilterAsync_FullCondition_ReturnFiltered()
         {
             var repo = await Helper.CreateRepoWithFilledInMemoryDbAsync();
@@ -75,8 +91,19 @@
             Assert.AreEqual(inputFiltered.Length, records.Length);
             CollectionAssert.AreEquivalent(inputFiltered, records);
         }
-        
+
         [TestMethod]
+        [TestCategory("negative")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public async Task GetByFilterAsync_NullFilter_Exception()
+        {
+            var repo = await Helper.CreateRepoWithFilledInMemoryDbAsync();
+
+            await repo.GetByFilterAsync(null);
+        }
+
+        [TestMethod]
+        [TestCategory("positive")]
         public async Task RemoveAsync_ExistingRecord_IsNotPresent()
         {
             var repo = await Helper.CreateRepoWithInMemoryDbAsync();
@@ -90,6 +117,7 @@
         }
         
         [TestMethod]
+        [TestCategory("positive")]
         public async Task ClearAsync_ExistingRecords_CountIsZero()
         {
             var repo = await Helper.CreateRepoWithFilledInMemoryDbAsync();

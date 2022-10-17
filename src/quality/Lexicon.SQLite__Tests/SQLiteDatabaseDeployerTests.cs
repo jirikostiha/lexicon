@@ -13,6 +13,7 @@
     public class SQLiteDatabaseDeployerTests
     {
         [TestMethod]
+        [TestCategory("positive")]
         public async Task CreateDatabaseAsync_InMemory_Empty()
         {
             var deployer = new SQLiteDatabaseDeployer(Helper.InMemoryDbOptions);
@@ -24,6 +25,7 @@
         }
 
         [TestMethod]
+        [TestCategory("positive")]
         public async Task CreateDatabaseAsync_AsFile_Empty()
         {
             var deployer = new SQLiteDatabaseDeployer(Helper.TestFileDbOptions);
@@ -36,6 +38,7 @@
         }
 
         [TestMethod]
+        [TestCategory("positive")]
         public async Task FillAsync_InMemoryFullSet_DbWithRecords()
         {
             var deployer = new SQLiteDatabaseDeployer(Helper.InMemoryDbOptions, () => WordSets.All);
@@ -48,6 +51,7 @@
         }
 
         [TestMethod]
+        [TestCategory("positive")]
         public async Task FillAsync_AsFileFullSet_FileExistsWithRecords()
         {
             var deployer = new SQLiteDatabaseDeployer(Helper.TestFileDbOptions, () => WordSets.All);

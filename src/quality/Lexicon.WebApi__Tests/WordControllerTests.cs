@@ -30,6 +30,7 @@
         }
 
         [TestMethod]
+        [TestCategory("positive")]
         public async Task Get_EmptyFilter_FirstPage()
         {
             var filter = MultiSourceWordFilter.Empty;

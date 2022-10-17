@@ -1,12 +1,8 @@
 ﻿namespace Lexicon.Data
 {
     using System;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.Text.Json;
     using System.Linq;
     using System.Threading.Tasks;
-    using CsvHelper.Configuration;
     using Lexicon.TestReady;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.Text.RegularExpressions;
@@ -15,7 +11,8 @@
     [TestClass]
     public class JsonFormatterTests
     {
-        [TestMethod()]
+        [TestMethod]
+        [TestCategory("positive")]
         public async Task FormatAsync_SeveralRecords_Formatted()
         {
             var formatter = new JsonFormatter();

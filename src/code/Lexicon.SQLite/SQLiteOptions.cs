@@ -5,6 +5,6 @@
         /// <summary> Base name </summary>
         public const string BaseName = "SQLite";
 
-        public string? ConnectionString { get; set; }
+        public string ConnectionString { get; init; }
     }
 }

@@ -61,7 +61,7 @@
             createDbCommand.SetHandler(async (configName, sectionName) =>
             {
                 await CreateDatabase(configName, sectionName);
-            },
+            }, 
                 configurationNameOption, sectionNameOption);
             rootCommand.AddCommand(createDbCommand);
 
@@ -115,9 +115,10 @@
                     .ConfigureAwait(false);
             }
 
-            var deployer = new SQLiteDatabaseDeployer(options, () => records);
-            await deployer.FillAsync(ct);
-
+            var deployer = new SQLiteDataModelDeployer(options.ConnectionString);
+            await deployer.DeployAsync(ct);
+            var repo = new SQLiteWordRepository(options);
+            await repo.SaveAllAsync(records, ct);
             Console.WriteLine("Imported to: '{0}'", options.ConnectionString);
         }
 

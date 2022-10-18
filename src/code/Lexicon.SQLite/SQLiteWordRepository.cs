@@ -27,9 +27,6 @@
             _options = options;
         }
 
-        public string DbFile
-            => new SQLiteConnection(_options.ConnectionString).FileName;
-
         public async Task<long> CountAsync(CancellationToken ct = default)
         {
             using var connection = new SQLiteConnection(_options.ConnectionString);
@@ -37,7 +34,7 @@
             await connection.OpenAsync(ct)
                 .ConfigureAwait(false);
 
-            var query = new Query(Db.WordsTable.Name).AsCount();
+            var query = new Query(DataModel.WordsTable.Name).AsCount();
             var sqlQuery = new SqliteCompiler().Compile(query).ToString();
             using var command = new SQLiteCommand(connection)
             {
@@ -57,13 +54,13 @@
             await connection.OpenAsync(ct)
                 .ConfigureAwait(false);
 
-            var query = new Query(Db.WordsTable.Name);
+            var query = new Query(DataModel.WordsTable.Name);
             if (filter.Language is not null)
-                query = query.Where(Db.WordsTable.LanguageColumnName, (int)filter.Language);
+                query = query.Where(DataModel.WordsTable.LanguageColumnName, (int)filter.Language);
             if (filter.Class is not null)
-                query = query.Where(Db.WordsTable.ClassColumnName, (int)filter.Class);
+                query = query.Where(DataModel.WordsTable.ClassColumnName, (int)filter.Class);
             if (!string.IsNullOrEmpty(filter.StartsWith))
-                query.WhereStarts(Db.WordsTable.WordColumnName, filter.StartsWith, false);
+                query.WhereStarts(DataModel.WordsTable.WordColumnName, filter.StartsWith, false);
 
             var sqlQuery = new SqliteCompiler().Compile(query).ToString();
             using var command = new SQLiteCommand(connection)
@@ -87,7 +84,7 @@
             await connection.OpenAsync(ct)
                 .ConfigureAwait(false);
 
-            var query = new Query(Db.WordsTable.Name)
+            var query = new Query(DataModel.WordsTable.Name)
                 .AsInsert(new
                 {
                     word = record.Word,
@@ -124,7 +121,7 @@
             var compiler = new SqliteCompiler();
             foreach (var record in records)
             {
-                var query = new Query(Db.WordsTable.Name)
+                var query = new Query(DataModel.WordsTable.Name)
                 .AsInsert(new
                 {
                     word = record.Word,
@@ -148,7 +145,7 @@
             await connection.OpenAsync(ct)
                 .ConfigureAwait(false);
 
-            var query = new Query(Db.WordsTable.Name).AsDelete().Where("word", word);
+            var query = new Query(DataModel.WordsTable.Name).AsDelete().Where("word", word);
             var sqlQuery = new SqliteCompiler().Compile(query).ToString();
             using var command = new SQLiteCommand(connection)
             {
@@ -167,7 +164,7 @@
             await connection.OpenAsync(ct)
                 .ConfigureAwait(false);
 
-            var query = new Query(Db.WordsTable.Name).AsDelete();
+            var query = new Query(DataModel.WordsTable.Name).AsDelete();
             var sqlQuery = new SqliteCompiler().Compile(query).ToString();
             using var command = new SQLiteCommand(connection)
             {

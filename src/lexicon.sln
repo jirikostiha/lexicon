@@ -54,6 +54,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cmd", "cmd", "{FFC154C8-45E
 		..\run.ps1 = ..\run.ps1
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lexicon.Cli__Tests", "quality\Lexicon.Cli__Tests\Lexicon.Cli__Tests.csproj", "{425E1215-AD36-44DF-8136-CDDE6BF3C305}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -104,6 +106,10 @@ Global
 		{3459A519-3709-4484-83D1-2AC01F235D7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3459A519-3709-4484-83D1-2AC01F235D7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3459A519-3709-4484-83D1-2AC01F235D7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{425E1215-AD36-44DF-8136-CDDE6BF3C305}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{425E1215-AD36-44DF-8136-CDDE6BF3C305}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{425E1215-AD36-44DF-8136-CDDE6BF3C305}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{425E1215-AD36-44DF-8136-CDDE6BF3C305}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -117,6 +123,7 @@ Global
 		{BDCC3F40-FF30-4C93-B72D-41A4443A8343} = {0A927ED1-E2A0-4128-AF7A-CF7152E404F5}
 		{3459A519-3709-4484-83D1-2AC01F235D7B} = {0A927ED1-E2A0-4128-AF7A-CF7152E404F5}
 		{FFC154C8-45E1-4EE4-BCE4-B12D04F46950} = {8ABEA7BE-2CB6-499A-A09E-7D836F189422}
+		{425E1215-AD36-44DF-8136-CDDE6BF3C305} = {0A927ED1-E2A0-4128-AF7A-CF7152E404F5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AE703196-5935-41FB-83E8-8DC5D4797DCF}

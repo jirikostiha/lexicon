@@ -7,8 +7,8 @@ namespace Lexicon.WebApi
 {
     public static class LoggerExtensions
     {
-        private static Action<ILogger, int, Exception?> _gotRecordsCount;
-        private static Action<ILogger, int, Exception?> _exportedSize;
+        private static readonly Action<ILogger, int, Exception?> _gotRecordsCount;
+        private static readonly Action<ILogger, int, Exception?> _exportedSize;
 
         static LoggerExtensions()
         {

@@ -4,9 +4,9 @@
 
     public record WordRecord
     {
-        public string Word { get; set; }
+        public string Word { get; init; }
         
-        public WordMetadata Metadata { get; set; }
+        public WordMetadata Metadata { get; init; }
     }
 
     public class WordRecordValidator : AbstractValidator<WordRecord>

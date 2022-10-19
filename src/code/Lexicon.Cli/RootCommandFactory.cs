@@ -62,9 +62,10 @@
                     .ConfigureAwait(false);
             }
 
-            var deployer = new SQLiteDatabaseDeployer(options, () => records);
+            var deployer = new SQLiteDatabaseDeployer(options);
             await deployer.CreateDatabaseAsync(ct);
-            await deployer.FillAsync(ct);
+            var repo = new SQLiteWordRepository(options);
+            await repo.SaveAllAsync(records, ct);
         }
 
         public static IConfiguration LoadConfiguration()

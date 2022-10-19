@@ -37,33 +37,6 @@
             Assert.AreEqual(0, count);
         }
 
-        [TestMethod]
-        [TestCategory("positive")]
-        public async Task FillAsync_InMemoryFullSet_DbWithRecords()
-        {
-            var deployer = new SQLiteDatabaseDeployer(Helper.InMemoryDbOptions, () => WordSets.All);
-            await deployer.CreateDatabaseAsync();
-
-            await deployer.FillAsync();
-
-            var count = Helper.GetNumberOfRecord(Helper.InMemoryDbOptions.ConnectionString, DataModel.WordsTable.Name);
-            Assert.AreEqual(WordSets.All.Count(), count);
-        }
-
-        [TestMethod]
-        [TestCategory("positive")]
-        public async Task FillAsync_AsFileFullSet_FileExistsWithRecords()
-        {
-            var deployer = new SQLiteDatabaseDeployer(Helper.TestFileDbOptions, () => WordSets.All);
-            await deployer.CreateDatabaseAsync();
-
-            await deployer.FillAsync();
-
-            Assert.IsTrue(File.Exists(Helper.TestDbFile));
-            var count = Helper.GetNumberOfRecord(Helper.TestFileDbOptions.ConnectionString, DataModel.WordsTable.Name);
-            Assert.AreEqual(WordSets.All.Count(), count);
-        }
-
         [TestCleanup]
         public void Cleanup()
         {

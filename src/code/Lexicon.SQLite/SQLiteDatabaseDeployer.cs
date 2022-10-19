@@ -1,13 +1,10 @@
 ﻿namespace Lexicon.SQLite
 {
     using System;
-    using System.Collections.Generic;
     using System.Data.SQLite;
-    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
     using CommunityToolkit.Diagnostics;
-    using Lexicon.EntityModel;
 
     //[next] deployer
     //  -model creator
@@ -16,16 +13,14 @@
 
     public class SQLiteDatabaseDeployer
     {
-        private SQLiteOptions _options;
-        private Func<IEnumerable<WordRecord>> _recordsProvider;
+        private readonly SQLiteOptions _options;
 
-        public SQLiteDatabaseDeployer(SQLiteOptions options, Func<IEnumerable<WordRecord>>? recordsProvider = null)
+        public SQLiteDatabaseDeployer(SQLiteOptions options)
         {
             Guard.IsNotNull(options);
             Guard.IsNotNull(options.ConnectionString);
 
             _options = options;
-            _recordsProvider = recordsProvider ?? (() => Enumerable.Empty<WordRecord>());
         }
 
         public async Task CreateDatabaseAsync(CancellationToken ct = default)

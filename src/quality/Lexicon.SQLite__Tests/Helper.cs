@@ -38,9 +38,9 @@
 
         public static async Task<SQLiteWordRepository> CreateRepoWithFilledInMemoryDbAsync()
         {
-            var deployer = new SQLiteDatabaseDeployer(InMemoryDbOptions, () => WordSets.All);
+            var deployer = new SQLiteDatabaseDeployer(InMemoryDbOptions);
             await deployer.CreateDatabaseAsync();
-            await deployer.FillAsync();
+            await new SQLiteWordRepository(InMemoryDbOptions).SaveAllAsync(WordSets.All);
 
             return new SQLiteWordRepository(InMemoryDbOptions);
         }

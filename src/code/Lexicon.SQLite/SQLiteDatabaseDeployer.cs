@@ -9,6 +9,11 @@
     using CommunityToolkit.Diagnostics;
     using Lexicon.EntityModel;
 
+    //[next] deployer
+    //  -model creator
+    //  -repo
+    //  -migrator
+
     public class SQLiteDatabaseDeployer
     {
         private SQLiteOptions _options;
@@ -32,23 +37,16 @@
 
             using var dropCommand = new SQLiteCommand(connection)
             {
-                CommandText = $"DROP TABLE IF EXISTS {Db.WordsTable.Name}"
+                CommandText = $"DROP TABLE IF EXISTS {DataModel.WordsTable.Name}"
             };
             await dropCommand.ExecuteNonQueryAsync(ct)
                 .ConfigureAwait(false);
 
             using var createDbCommand = new SQLiteCommand(connection)
             {
-                CommandText = Db.Definition
+                CommandText = DataModel.Sql
             };
             await createDbCommand.ExecuteNonQueryAsync(ct)
-                .ConfigureAwait(false);
-        }
-
-        public async Task FillAsync(CancellationToken ct = default)
-        {
-            await new SQLiteWordRepository(_options)
-                .SaveAllAsync(_recordsProvider(), ct)
                 .ConfigureAwait(false);
         }
     }

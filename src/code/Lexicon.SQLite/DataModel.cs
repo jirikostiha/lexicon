@@ -1,8 +1,8 @@
 ﻿namespace Lexicon.SQLite
 {
-    public static class Db
+    public static class DataModel
     {
-        public const string Definition = WordsTable.Definition;
+        public const string Sql = WordsTable.Sql;
 
         public static class WordsTable
         {
@@ -12,7 +12,7 @@
             public const string ClassColumnName = "class";
 
 
-            public const string Definition = 
+            public const string Sql =
                 $@"CREATE TABLE {Name} (
                 {WordColumnName} TEXT NOT NULL PRIMARY KEY,
                 {LanguageColumnName} INT NOT NULL,

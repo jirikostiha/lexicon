@@ -30,6 +30,7 @@
         public async Task<long> CountAsync(CancellationToken ct = default)
         {
             using var connection = new SQLiteConnection(_options.ConnectionString);
+
             await connection.OpenAsync(ct)
                 .ConfigureAwait(false);
 
@@ -60,7 +61,7 @@
                 query = query.Where(DataModel.WordsTable.ClassColumnName, (int)filter.Class);
             if (!string.IsNullOrEmpty(filter.StartsWith))
                 query.WhereStarts(DataModel.WordsTable.WordColumnName, filter.StartsWith, false);
-            
+
             var sqlQuery = new SqliteCompiler().Compile(query).ToString();
             using var command = new SQLiteCommand(connection)
             {

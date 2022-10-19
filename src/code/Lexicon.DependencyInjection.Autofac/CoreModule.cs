@@ -3,8 +3,10 @@
     using global::Autofac;
     using Lexicon.Data;
     using Microsoft.Extensions.Configuration;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    //https://github.com/autofac/Examples/blob/master/src/AspNetCoreExample/AutofacModule.cs
     public class CoreModule : Module
     {
         public CoreModule(IConfiguration configuration)
@@ -22,12 +24,13 @@
 
             new SQLiteDependency(Configuration).Register(builder);
 
-            //todo https://docs.autofac.org/en/latest/faq/select-by-context.html
-            //todo do it better
             builder.Register(context =>
-                new SourceProvider(new[] 
-                    { ("sqliteDb", context.Resolve<IWordProvider>()) }
-                ))
+            {
+                return new SourceProvider(
+                    context.Resolve<IEnumerable<Tuple<string, IWordProvider>>>()
+                    .Select(x => (x.Item1, x.Item2))
+                    .ToArray());
+            })
                 .SingleInstance();
 
             builder.RegisterType<WordMultiSourceProvider>()

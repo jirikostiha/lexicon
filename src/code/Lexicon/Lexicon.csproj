@@ -15,10 +15,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Remove="WordRecordsFilter.cs" />
-    </ItemGroup>
-
-    <ItemGroup>
         <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.0.0" />
         <PackageReference Include="FluentValidation" Version="11.2.2" />
         <PackageReference Include="IsExternalInit" Version="1.0.3">

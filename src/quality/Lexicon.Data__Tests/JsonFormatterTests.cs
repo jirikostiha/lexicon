@@ -3,9 +3,9 @@
     using System;
     using System.Linq;
     using System.Threading.Tasks;
-    using Lexicon.TestReady;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.Text.RegularExpressions;
+    using Lexicon.TestReady;
     using Lexicon.EntityModel;
 
     [TestClass]

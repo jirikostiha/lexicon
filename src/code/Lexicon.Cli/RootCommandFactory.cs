@@ -14,7 +14,7 @@
     using Microsoft.Extensions.Configuration;
 
     /// <summary>
-    /// Main command factory.
+    /// Root command factory.
     /// </summary>
     public static class RootCommandFactory
     {
@@ -22,37 +22,91 @@
 
         public static RootCommand Create()
         {
-            var sourceDataFileOption = new Option<FileInfo?>(
+            var configurationNameOption = new Option<string?>(
+            name: "--configName",
+            description: "Configuration name e.g. 'Production' or 'Development' or other.")
+            {
+                IsRequired = false,
+            };
+            configurationNameOption.AddAlias("-cn");
+
+            var sectionNameOption = new Option<string?>(
+            name: "--sectionName",
+            description: "Configuration section name in configuration file e.g. 'SQLite'.")
+            {
+                IsRequired = false
+            };
+            configurationNameOption.AddAlias("-s");
+
+            //var configurationFileOption = new Option<FileInfo?>(
+            //name: "--configFile",
+            //description: "Configuration file.");
+            //configurationFileOption.AddAlias("-cf");
+
+            var sourceDataFileOption = new Option<FileInfo>(
             name: "--dataFile",
-            description: "The file of a source data.");
+            description: "The file of a source data.")
+            {
+                IsRequired = true
+            };
             sourceDataFileOption.AddAlias("-df");
 
             var rootCommand = new RootCommand(Title);
-            rootCommand.AddOption(sourceDataFileOption);
 
-            var deployCommand = new Command("deploy", "Deploy a database.")
+            var createDbCommand = new Command("createDb", "Create database.")
             {
-                sourceDataFileOption
+                configurationNameOption, sectionNameOption
             };
-            rootCommand.AddCommand(deployCommand);
-
-            deployCommand.SetHandler(async (sourceFile) =>
+            createDbCommand.SetHandler(async (configName, sectionName) =>
             {
-                var config = LoadConfiguration();
-                var sectionName = SQLiteOptions.Name;
-                var section = config.GetSection(sectionName);
-                var options = section.Get<SQLiteOptions>();
+                await DeplyModel(configName, sectionName)
+                    .ConfigureAwait(false);
+            }, 
+                configurationNameOption, sectionNameOption);
+            rootCommand.AddCommand(createDbCommand);
 
-                await DeploySqlDatabase(options, sourceFile ?? new FileInfo("data.csv"), default);
-
+            var importCommand = new Command("import", "Import data to database.")
+            {
+                configurationNameOption, sectionNameOption, sourceDataFileOption
+            };
+            importCommand.SetHandler(async (configName, sectionName, sourceFile) =>
+            {
+                await ImportDataToDatabase(configName, sectionName, sourceFile)
+                    .ConfigureAwait(false);
             },
-                sourceDataFileOption);
+                configurationNameOption, sectionNameOption, sourceDataFileOption);
+            rootCommand.AddCommand(importCommand);
 
             return rootCommand;
         }
 
-        public static async Task DeploySqlDatabase(SQLiteOptions options, FileInfo csvDataFile, CancellationToken ct)
+        public static async Task DeplyModel(string? configName, string? sectionName, CancellationToken ct = default)
         {
+            var config = LoadConfiguration(configName);
+            var section = config.GetSection(sectionName);
+            var options = section.Get<SQLiteOptions>();
+
+            Console.WriteLine("Deploying model: '{0}'", options.ConnectionString);
+
+            var modelDeployer = new SQLiteDataModelDeployer(options.ConnectionString);
+            await modelDeployer.DeployAsync(ct);
+
+            Console.WriteLine("Model deployed.");
+        }
+
+        public static async Task ImportDataToDatabase(string? configName, string? sectionName, FileInfo sourceFile, CancellationToken ct = default)
+        {
+            var config = LoadConfiguration(configName);
+            var section = config.GetSection(sectionName);
+            var options = section.Get<SQLiteOptions>();
+
+            await ImportDataToDatabase(options, sourceFile, ct);
+        }
+
+        public static async Task ImportDataToDatabase(SQLiteOptions options, FileInfo csvDataFile, CancellationToken ct = default)
+        {
+            Console.WriteLine("Importing data from '{0}'", csvDataFile.FullName);
+            
             var records = new List<WordRecord>();
             using (var reader = new StreamReader(csvDataFile.FullName))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
@@ -62,19 +116,21 @@
                     .ConfigureAwait(false);
             }
 
-            var deployer = new SQLiteDataModelDeployer(options.ConnectionString);
-            await deployer.DeployAsync(ct);
             var repo = new SQLiteWordRepository(options);
             await repo.SaveAllAsync(records, ct);
+
+            Console.WriteLine("Imported to: '{0}'", options.ConnectionString);
         }
 
-        public static IConfiguration LoadConfiguration()
+        public static IConfiguration LoadConfiguration(string? configurationName)
         {
-            var cd = Directory.GetCurrentDirectory();
+            var configName = configurationName 
+                ?? Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")
+                ?? "Production";
+
             IConfiguration config = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
-                //.AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}.json", optional: true)
-                .AddJsonFile($"appsettings.Development.json", optional: false)
+                .AddJsonFile($"appsettings.{configName}.json", optional: true)
                 .Build();
 
             return config;

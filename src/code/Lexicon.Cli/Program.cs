@@ -1,20 +1,23 @@
 ﻿using System.Collections.Generic;
 using System;
 using System.CommandLine;
-using Microsoft.Extensions.Configuration;
-using System.IO;
+using System.Threading.Tasks;
 
 namespace Lexicon.Cli;
 
 class Program
 {
-    static int Main(string[] args)
+    static async Task<int> Main(string[] args)
     {
+        //args = @"createDb --sectionName SQLite-gr".Split(" ", StringSplitOptions.RemoveEmptyEntries);
+        args = @"import --sectionName SQLite-gr --dataFile .\data-greek_gods.csv"
+            .Split(" ", StringSplitOptions.RemoveEmptyEntries);
+
         try
         {
             var rootCommand = RootCommandFactory.Create();
 
-            return rootCommand.InvokeAsync(args).Result;
+            return await rootCommand.InvokeAsync(args);
         }
         catch (Exception ex)
         {

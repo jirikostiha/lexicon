@@ -11,9 +11,9 @@ Using [semantic versioning](https://semver.org/).
 
 ### Naming
 **project folders**
-* folder starting with a big letter is namespace maker
-* folder starting with a small letter is not namespace maker and its purpose is only to keep related files together
+* a folder starting with a capital letter is a namespace maker  
+* a folder starting with a small letter is not a namespace maker and its purpose is only to keep related files together  
 
 **projects**  
-* Projects containing production code uses clasical dot notation `[Product].[Project]`.
-* Projects containing non-production code uses notation `[Product].[Project]__[Test]`
+* Projects containing production code use the clasical dot notation `[Product].[Project]`.
+* Projects containing non-production code use notation `[Product].[Project]__[Test]`

@@ -48,6 +48,24 @@
 
         [TestMethod]
         [TestCategory("positive")]
+        public async Task SaveAsync_ConflictingRecord_Updated()
+        {
+            var repo = await Helper.CreateRepoWithInMemoryDbAsync();
+            var record1 = WordSets.CzechMaleNames.First();
+            await repo.SaveAsync(record1);
+            var record2 = record1 with { Metadata = new WordMetadata { Language = Language.Greek } };
+
+            await repo.SaveAsync(record2);
+
+            var count = await repo.CountAsync();
+            Assert.AreEqual(1, count);
+            var dbRecords = await repo.GetByFilterAsync(WordFilter.Empty);
+            Assert.AreEqual(record2.Metadata.Language, dbRecords.First().Metadata.Language);
+            Assert.AreEqual(record2.Metadata.Class, dbRecords.First().Metadata.Class);
+        }
+
+        [TestMethod]
+        [TestCategory("positive")]
         public async Task SaveAllAsync_MultipleRecords_CountIsMatching()
         {
             var repo = await Helper.CreateRepoWithInMemoryDbAsync();

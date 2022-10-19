@@ -18,7 +18,7 @@
 
             await deployer.DeployAsync();
 
-            var count = Helper.GetNumberOfRecord(Helper.InMemoryDbOptions.ConnectionString, DataModel.WordsTable.Name);
+            var count = Helper.GetNumberOfRecord(Helper.InMemoryDbOptions.ConnectionString, DM.TWords.Name);
             Assert.AreEqual(0, count);
         }
 
@@ -31,7 +31,7 @@
             await deployer.DeployAsync();
 
             Assert.IsTrue(File.Exists(Helper.TestDbFile));
-            var count = Helper.GetNumberOfRecord(Helper.TestFileDbOptions.ConnectionString, DataModel.WordsTable.Name);
+            var count = Helper.GetNumberOfRecord(Helper.TestFileDbOptions.ConnectionString, DM.TWords.Name);
             Assert.AreEqual(0, count);
         }
 

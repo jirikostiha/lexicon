@@ -1,22 +1,25 @@
 ﻿namespace Lexicon.SQLite
 {
-    public static class DataModel
+    /// <summary>
+    /// Data model
+    /// </summary>
+    public static class DM
     {
-        public const string Sql = WordsTable.Sql;
+        public const string Sql = TWords.Sql;
 
-        public static class WordsTable
+        /// <summary> Table </summary>
+        public static class TWords
         {
             public const string Name = "Words";
-            public const string WordColumnName = "word";
-            public const string LanguageColumnName = "language";
-            public const string ClassColumnName = "class";
-
+            public const string CWord = "word";
+            public const string CLanguage = "language";
+            public const string CClass = "class";
 
             public const string Sql =
                 $@"CREATE TABLE {Name} (
-                {WordColumnName} TEXT NOT NULL PRIMARY KEY,
-                {LanguageColumnName} INT NOT NULL,
-                {ClassColumnName} INT NOT NULL)";
+                {CWord} TEXT NOT NULL PRIMARY KEY,
+                {CLanguage} INT NOT NULL,
+                {CClass} INT NOT NULL)";
         }
     }
 }

@@ -38,11 +38,6 @@
             };
             configurationNameOption.AddAlias("-s");
 
-            //var configurationFileOption = new Option<FileInfo?>(
-            //name: "--configFile",
-            //description: "Configuration file.");
-            //configurationFileOption.AddAlias("-cf");
-
             var sourceDataFileOption = new Option<FileInfo>(
             name: "--dataFile",
             description: "The file of a source data.")
@@ -86,12 +81,10 @@
             var section = config.GetSection(sectionName);
             var options = section.Get<SQLiteOptions>();
 
-            Console.WriteLine("Deploying model: '{0}'", options.ConnectionString);
+            Console.WriteLine("Deploying model to target '{0}'", options.ConnectionString);
 
             var modelDeployer = new SQLiteDataModelDeployer(options.ConnectionString);
             await modelDeployer.DeployAsync(ct);
-
-            Console.WriteLine("Model deployed.");
         }
 
         public static async Task ImportDataToDatabase(string? configName, string? sectionName, FileInfo sourceFile, CancellationToken ct = default)
@@ -105,7 +98,7 @@
 
         public static async Task ImportDataToDatabase(SQLiteOptions options, FileInfo csvDataFile, CancellationToken ct = default)
         {
-            Console.WriteLine("Importing data from '{0}'", csvDataFile.FullName);
+            Console.WriteLine("Importing data from '{0}' to target '{1}'", csvDataFile.FullName, options.ConnectionString);
             
             var records = new List<WordRecord>();
             using (var reader = new StreamReader(csvDataFile.FullName))
@@ -118,8 +111,6 @@
 
             var repo = new SQLiteWordRepository(options);
             await repo.SaveAllAsync(records, ct);
-
-            Console.WriteLine("Imported to: '{0}'", options.ConnectionString);
         }
 
         public static IConfiguration LoadConfiguration(string? configurationName)

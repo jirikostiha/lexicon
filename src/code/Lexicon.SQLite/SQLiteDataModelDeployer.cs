@@ -6,11 +6,6 @@
     using System.Threading.Tasks;
     using CommunityToolkit.Diagnostics;
 
-    //[next] db deployer
-    //  -model deployer
-    //  -repo
-    //  -migrator
-
     public class SQLiteDataModelDeployer
     {
         private readonly string _connectionString;
@@ -31,14 +26,14 @@
 
             using var dropCommand = new SQLiteCommand(connection)
             {
-                CommandText = $"DROP TABLE IF EXISTS {DataModel.WordsTable.Name}"
+                CommandText = $"DROP TABLE IF EXISTS {DM.TWords.Name}"
             };
             await dropCommand.ExecuteNonQueryAsync(ct)
                 .ConfigureAwait(false);
 
             using var createDbCommand = new SQLiteCommand(connection)
             {
-                CommandText = DataModel.Sql
+                CommandText = DM.Sql
             };
             await createDbCommand.ExecuteNonQueryAsync(ct)
                 .ConfigureAwait(false);

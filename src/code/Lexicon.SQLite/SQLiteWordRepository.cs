@@ -17,6 +17,12 @@
 
     public class SQLiteWordRepository : IWordRepository
     {
+        private const string Upsert = $"INSERT INTO {DM.TWords.Name} " +
+            $"({DM.TWords.CWord}, {DM.TWords.CLanguage}, {DM.TWords.CClass}) " +
+            $"VALUES (@{DM.TWords.CWord}, @{DM.TWords.CLanguage}, @{DM.TWords.CClass})" +
+            $"ON CONFLICT({DM.TWords.CWord}) DO " +
+            $"UPDATE SET {DM.TWords.CLanguage}=excluded.{DM.TWords.CLanguage}, {DM.TWords.CClass}=excluded.{DM.TWords.CClass};";
+
         private readonly SQLiteOptions _options;
 
         public SQLiteWordRepository(SQLiteOptions options)
@@ -34,7 +40,7 @@
             await connection.OpenAsync(ct)
                 .ConfigureAwait(false);
 
-            var query = new Query(DataModel.WordsTable.Name).AsCount();
+            var query = new Query(DM.TWords.Name).AsCount();
             var sqlQuery = new SqliteCompiler().Compile(query).ToString();
             using var command = new SQLiteCommand(connection)
             {
@@ -54,13 +60,13 @@
             await connection.OpenAsync(ct)
                 .ConfigureAwait(false);
 
-            var query = new Query(DataModel.WordsTable.Name);
+            var query = new Query(DM.TWords.Name);
             if (filter.Language is not null)
-                query = query.Where(DataModel.WordsTable.LanguageColumnName, (int)filter.Language);
+                query = query.Where(DM.TWords.CLanguage, (int)filter.Language);
             if (filter.Class is not null)
-                query = query.Where(DataModel.WordsTable.ClassColumnName, (int)filter.Class);
+                query = query.Where(DM.TWords.CClass, (int)filter.Class);
             if (!string.IsNullOrEmpty(filter.StartsWith))
-                query.WhereStarts(DataModel.WordsTable.WordColumnName, filter.StartsWith, false);
+                query.WhereStarts(DM.TWords.CWord, filter.StartsWith, false);
 
             var sqlQuery = new SqliteCompiler().Compile(query).ToString();
             using var command = new SQLiteCommand(connection)
@@ -84,18 +90,9 @@
             await connection.OpenAsync(ct)
                 .ConfigureAwait(false);
 
-            var query = new Query(DataModel.WordsTable.Name)
-                .AsInsert(new
-                {
-                    word = record.Word,
-                    language = (long)record.Metadata.Language,
-                    @class = (long)record.Metadata.Class,
-                });
-            var sqlQuery = new SqliteCompiler().Compile(query).ToString();
-            using var command = new SQLiteCommand(connection)
-            {
-                CommandText = sqlQuery
-            };
+            var command = new SQLiteCommand(connection);
+            await PrepareUpsertCommand(record, command, ct)
+                .ConfigureAwait(false);
             await command.ExecuteNonQueryAsync(ct)
                 .ConfigureAwait(false);
         }
@@ -121,14 +118,8 @@
             var compiler = new SqliteCompiler();
             foreach (var record in records)
             {
-                var query = new Query(DataModel.WordsTable.Name)
-                .AsInsert(new
-                {
-                    word = record.Word,
-                    language = (long)record.Metadata.Language,
-                    @class = (long)record.Metadata.Class,
-                });
-                command.CommandText = compiler.Compile(query).ToString();
+                await PrepareUpsertCommand(record, command, ct)
+                    .ConfigureAwait(false);
                 await command.ExecuteNonQueryAsync(ct)
                     .ConfigureAwait(false);
             }
@@ -145,15 +136,12 @@
             await connection.OpenAsync(ct)
                 .ConfigureAwait(false);
 
-            var query = new Query(DataModel.WordsTable.Name).AsDelete().Where("word", word);
+            var query = new Query(DM.TWords.Name).AsDelete().Where("word", word);
             var sqlQuery = new SqliteCompiler().Compile(query).ToString();
             using var command = new SQLiteCommand(connection)
             {
                 CommandText = sqlQuery
             };
-            //command.Parameters.AddWithValue("@word", word);
-            //await command.PrepareAsync(ct)
-            //    .ConfigureAwait(false);
             await command.ExecuteNonQueryAsync(ct)
                 .ConfigureAwait(false);
         }
@@ -164,7 +152,7 @@
             await connection.OpenAsync(ct)
                 .ConfigureAwait(false);
 
-            var query = new Query(DataModel.WordsTable.Name).AsDelete();
+            var query = new Query(DM.TWords.Name).AsDelete();
             var sqlQuery = new SqliteCompiler().Compile(query).ToString();
             using var command = new SQLiteCommand(connection)
             {
@@ -205,6 +193,19 @@
                     Class = (WordClass)reader.GetInt32(2),
                 }
             };
+        }
+
+
+        private static async Task<SQLiteCommand> PrepareUpsertCommand(WordRecord record, SQLiteCommand command, CancellationToken ct = default)
+        {
+            command.CommandText = Upsert;
+            command.Parameters.AddWithValue($"@{DM.TWords.CWord}", record.Word);
+            command.Parameters.AddWithValue($"@{DM.TWords.CLanguage}", record.Metadata.Language);
+            command.Parameters.AddWithValue($"@{DM.TWords.CClass}", record.Metadata.Class);
+            await command.PrepareAsync(ct)
+                .ConfigureAwait(false);
+
+            return command;
         }
     }
 }

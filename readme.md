@@ -1,20 +1,20 @@
 # Lexicon
-![CI workflow](https://github.com/jirikostiha/lexicon/actions/workflows/ci.yml/badge.svg)  
+![Build workflow](https://github.com/jirikostiha/lexicon/actions/workflows/build.yml/badge.svg)  
 Is a demonstration project. It shows the possibility of implementing the service with a database.  
 It provides words for other services such as Markov's word generator.  
 
 ## Usage
-1. To run a server first deploy a database.  
+1. To start the server, first deploy the database.  
 ```powershell
 .\publishAndDeploy.ps1 
 ```
 
-2. Run server.
+2. Start the server.
 ```powershell
 .\run.ps1  
 ```
 
-3. Then in browser call service to obtain a data.
+3. Then call the service in the browser to retrieve the data.
 ```
 https://localhost:5001/api/words?page=0&pageSize=100
 ```

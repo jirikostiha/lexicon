@@ -6,26 +6,25 @@
     using System.Threading.Tasks;
     using CommunityToolkit.Diagnostics;
 
-    //[next] deployer
-    //  -model creator
+    //[next] db deployer
+    //  -model deployer
     //  -repo
     //  -migrator
 
-    public class SQLiteDatabaseDeployer
+    public class SQLiteDataModelDeployer
     {
-        private readonly SQLiteOptions _options;
+        private readonly string _connectionString;
 
-        public SQLiteDatabaseDeployer(SQLiteOptions options)
+        public SQLiteDataModelDeployer(string connectionString)
         {
-            Guard.IsNotNull(options);
-            Guard.IsNotNull(options.ConnectionString);
+            Guard.IsNotNull(connectionString);
 
-            _options = options;
+            _connectionString = connectionString;
         }
 
-        public async Task CreateDatabaseAsync(CancellationToken ct = default)
+        public async Task DeployAsync(CancellationToken ct = default)
         {
-            using var connection = new SQLiteConnection(_options.ConnectionString);
+            using var connection = new SQLiteConnection(_connectionString);
             
             await connection.OpenAsync(ct)
                 .ConfigureAwait(false);

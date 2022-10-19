@@ -5,20 +5,18 @@
     using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
-    using Lexicon.SQLite;
-    using Lexicon.TestReady;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
-    public class SQLiteDatabaseDeployerTests
+    public class SQLiteDataModelDeployerTests
     {
         [TestMethod]
         [TestCategory("positive")]
-        public async Task CreateDatabaseAsync_InMemory_Empty()
+        public async Task DeployAsync_InMemory_Empty()
         {
-            var deployer = new SQLiteDatabaseDeployer(Helper.InMemoryDbOptions);
+            var deployer = new SQLiteDataModelDeployer(Helper.InMemoryDbConnectionString);
 
-            await deployer.CreateDatabaseAsync();
+            await deployer.DeployAsync();
 
             var count = Helper.GetNumberOfRecord(Helper.InMemoryDbOptions.ConnectionString, DataModel.WordsTable.Name);
             Assert.AreEqual(0, count);
@@ -26,11 +24,11 @@
 
         [TestMethod]
         [TestCategory("positive")]
-        public async Task CreateDatabaseAsync_AsFile_Empty()
+        public async Task DeployAsync_AsFile_Empty()
         {
-            var deployer = new SQLiteDatabaseDeployer(Helper.TestFileDbOptions);
+            var deployer = new SQLiteDataModelDeployer(Helper.TestDbConnectionString);
 
-            await deployer.CreateDatabaseAsync();
+            await deployer.DeployAsync();
 
             Assert.IsTrue(File.Exists(Helper.TestDbFile));
             var count = Helper.GetNumberOfRecord(Helper.TestFileDbOptions.ConnectionString, DataModel.WordsTable.Name);

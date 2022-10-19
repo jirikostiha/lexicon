@@ -25,8 +25,8 @@
 
         public static async Task PrepareInMemoryDbAsync()
         {
-            var deployer = new SQLiteDatabaseDeployer(InMemoryDbOptions);
-            await deployer.CreateDatabaseAsync();
+            var deployer = new SQLiteDataModelDeployer(InMemoryDbConnectionString);
+            await deployer.DeployAsync();
         }
 
         public static async Task<SQLiteWordRepository> CreateRepoWithInMemoryDbAsync()
@@ -38,8 +38,8 @@
 
         public static async Task<SQLiteWordRepository> CreateRepoWithFilledInMemoryDbAsync()
         {
-            var deployer = new SQLiteDatabaseDeployer(InMemoryDbOptions);
-            await deployer.CreateDatabaseAsync();
+            var deployer = new SQLiteDataModelDeployer(InMemoryDbConnectionString);
+            await deployer.DeployAsync();
             await new SQLiteWordRepository(InMemoryDbOptions).SaveAllAsync(WordSets.All);
 
             return new SQLiteWordRepository(InMemoryDbOptions);

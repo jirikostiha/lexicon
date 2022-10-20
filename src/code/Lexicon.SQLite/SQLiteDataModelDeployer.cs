@@ -6,7 +6,7 @@
     using System.Threading.Tasks;
     using CommunityToolkit.Diagnostics;
 
-    public class SQLiteDataModelDeployer
+    public sealed class SQLiteDataModelDeployer
     {
         private readonly string _connectionString;
 

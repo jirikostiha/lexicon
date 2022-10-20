@@ -9,7 +9,7 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Options;
 
-    public class SQLiteDependency : DependencyBase
+    public sealed class SQLiteDependency : DependencyBase
     {
         public SQLiteDependency(IConfiguration configuration) 
             : base(configuration)

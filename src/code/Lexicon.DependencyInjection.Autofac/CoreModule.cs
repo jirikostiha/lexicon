@@ -7,7 +7,7 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    public class CoreModule : Module
+    public sealed class CoreModule : Module
     {
         public CoreModule(IConfiguration configuration)
         {

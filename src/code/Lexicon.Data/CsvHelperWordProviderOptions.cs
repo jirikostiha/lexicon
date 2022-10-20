@@ -4,7 +4,7 @@
     using System.Globalization;
     using CsvHelper.Configuration;
 
-    public class CsvHelperWordProviderOptions
+    public sealed record CsvHelperWordProviderOptions
     {
         /// <summary> Base name </summary>
         public const string BaseName = "CsvHelper";

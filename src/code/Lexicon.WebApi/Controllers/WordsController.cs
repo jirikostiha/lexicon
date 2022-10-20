@@ -17,7 +17,7 @@
     /// </summary>
     [Route("api/words")]
     [ApiController]
-    public class WordsController : ControllerBase
+    public sealed class WordsController : ControllerBase
     {
         private readonly ILogger<WordsController> _logger;
         private readonly WordMultiSourceProvider _multiSourceProvider;

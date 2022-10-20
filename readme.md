@@ -1,3 +1,7 @@
+<div align="center" style="color:magenta">
+  <font size=4> Demo Project </font>
+</div>  
+
 # Lexicon
 ![Build workflow](https://github.com/jirikostiha/lexicon/actions/workflows/build.yml/badge.svg)  
 It's a demonstration project. It shows the possibility of implementing the service with a database.  

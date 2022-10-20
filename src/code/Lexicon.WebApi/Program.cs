@@ -168,6 +168,12 @@ try
 
     app.Run();
 }
+catch (OperationCanceledException)
+{
+    Log.Warning("Cancelled.");
+
+    return ExitCode.Canceled;
+}
 catch (Exception ex)
 {
     Log.Fatal(ex, "Host terminated unexpectedly.");

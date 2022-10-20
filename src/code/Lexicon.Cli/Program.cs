@@ -15,6 +15,11 @@ sealed class Program
 
             return await rootCommand.InvokeAsync(args);
         }
+        catch (OperationCanceledException)
+        {
+            Console.WriteLine("Cancelled.");
+            return ExitCode.Canceled;
+        }
         catch (Exception ex)
         {
             Console.WriteLine(ex.Message);

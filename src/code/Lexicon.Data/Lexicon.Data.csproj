@@ -11,7 +11,7 @@
 		<Nullable>enable</Nullable>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<AnalysisLevel>latest-recommended</AnalysisLevel>
-		<NoWarn>CA1725,CA1716</NoWarn>
+		<NoWarn>CA1725,CA1716,CS8618</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>

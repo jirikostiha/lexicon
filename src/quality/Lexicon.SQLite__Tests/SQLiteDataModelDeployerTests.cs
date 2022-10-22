@@ -14,7 +14,10 @@
         [TestCategory("positive")]
         public async Task DeployAsync_InMemory_Empty()
         {
-            var deployer = new SQLiteDataModelDeployer(Helper.InMemoryDbConnectionString);
+            var deployer = new SQLiteModelDeployer(DM.Sql, Helper.InMemoryDbOptions)
+            {
+                TablesOrderToDrop = DM.TableNames.ToArray()
+            };
 
             await deployer.DeployAsync();
 
@@ -26,7 +29,10 @@
         [TestCategory("positive")]
         public async Task DeployAsync_AsFile_Empty()
         {
-            var deployer = new SQLiteDataModelDeployer(Helper.TestDbConnectionString);
+            var deployer = new SQLiteModelDeployer(DM.Sql, Helper.TestFileDbOptions)
+            {
+                TablesOrderToDrop = DM.TableNames.ToArray()
+            };
 
             await deployer.DeployAsync();
 

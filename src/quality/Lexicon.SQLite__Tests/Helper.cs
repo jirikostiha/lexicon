@@ -2,6 +2,7 @@
 {
     using System;
     using System.Data.SQLite;
+    using System.Linq;
     using System.Threading.Tasks;
     using Lexicon.SQLite;
     using Lexicon.TestReady;
@@ -25,7 +26,10 @@
 
         public static async Task PrepareInMemoryDbAsync()
         {
-            var deployer = new SQLiteDataModelDeployer(InMemoryDbConnectionString);
+            var deployer = new SQLiteModelDeployer(DM.Sql, InMemoryDbOptions)
+            {
+                TablesOrderToDrop = DM.TableNames.ToArray()
+            };
             await deployer.DeployAsync();
         }
 
@@ -38,7 +42,10 @@
 
         public static async Task<SQLiteWordRepository> CreateRepoWithFilledInMemoryDbAsync()
         {
-            var deployer = new SQLiteDataModelDeployer(InMemoryDbConnectionString);
+            var deployer = new SQLiteModelDeployer(DM.Sql, InMemoryDbOptions)
+            {
+                TablesOrderToDrop = DM.TableNames.ToArray()
+            };
             await deployer.DeployAsync();
             await new SQLiteWordRepository(InMemoryDbOptions).SaveAllAsync(WordSets.All);
 

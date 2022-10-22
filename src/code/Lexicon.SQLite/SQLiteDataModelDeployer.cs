@@ -1,41 +1,58 @@
 ﻿namespace Lexicon.SQLite
 {
     using System;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Data.SQLite;
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
     using CommunityToolkit.Diagnostics;
 
-    public sealed class SQLiteDataModelDeployer
+    public sealed class SQLiteModelDeployer
     {
-        private readonly string _connectionString;
+        private readonly SQLiteOptions _options;
 
-        public SQLiteDataModelDeployer(string connectionString)
+        public SQLiteModelDeployer(string sqlModel, SQLiteOptions options)
         {
-            Guard.IsNotNull(connectionString);
+            Guard.IsNotNull(sqlModel);
+            Guard.IsNotNull(options);
 
-            _connectionString = connectionString;
+            SqlModel = sqlModel;
+            _options = options;
         }
+
+        public string SqlModel { get; }
+
+        public string ConnectionString => _options.ConnectionString;
+
+        public TimeSpan ConnectionTimeout => _options.ConnectionTimeout;
+
+        public IList<string> TablesOrderToDrop { get; set; } = new List<string>();
 
         public async Task DeployAsync(CancellationToken ct = default)
         {
-            using var connection = new SQLiteConnection(_connectionString);
-            
-            await connection.OpenAsync(ct)
+            using var connection = new SQLiteConnection(_options.ConnectionString);
+
+            using var timeoutCts = new CancellationTokenSource(_options.ConnectionTimeout);
+            using var ctsWithTimeout = CancellationTokenSource.CreateLinkedTokenSource(timeoutCts.Token, ct);
+
+            await connection.OpenAsync(ctsWithTimeout.Token)
                 .ConfigureAwait(false);
 
-            using var dropCommand = new SQLiteCommand(connection)
+            using var command = new SQLiteCommand(connection);
+            // Drop tables one by one. Currently sqlite has no drop all alternative command.
+            foreach (var table in TablesOrderToDrop)
             {
-                CommandText = $"DROP TABLE IF EXISTS {DM.TWords.Name}"
-            };
-            await dropCommand.ExecuteNonQueryAsync(ct)
-                .ConfigureAwait(false);
+                command.CommandText = $"DROP TABLE IF EXISTS {table}";
+                timeoutCts.TryReset();
+                await command.ExecuteNonQueryAsync(ctsWithTimeout.Token)
+                    .ConfigureAwait(false);
+            }
 
-            using var createDbCommand = new SQLiteCommand(connection)
-            {
-                CommandText = DM.Sql
-            };
-            await createDbCommand.ExecuteNonQueryAsync(ct)
+            command.CommandText = SqlModel;
+            timeoutCts.TryReset();
+            await command.ExecuteNonQueryAsync(ctsWithTimeout.Token)
                 .ConfigureAwait(false);
         }
     }

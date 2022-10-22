@@ -83,7 +83,10 @@
 
             Console.WriteLine("Deploying model to target '{0}'", options.ConnectionString);
 
-            var modelDeployer = new SQLiteDataModelDeployer(options.ConnectionString);
+            var modelDeployer = new SQLiteModelDeployer(DM.Sql, options) 
+            { 
+                TablesOrderToDrop = DM.TableNames.ToArray() 
+            };
             await modelDeployer.DeployAsync(ct);
         }
 

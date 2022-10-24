@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Text.RegularExpressions;
     using System.Threading;
     using System.Threading.Tasks;
     using CsvHelper;
@@ -49,6 +50,17 @@
                 .ConfigureAwait(false);
             
             return records;
+        }
+
+        private static WordMetadata ParseTemplate(string rawTemplateString)
+        {
+            var templateString = Regex.Match(rawTemplateString, @".*\[.*\]", RegexOptions.CultureInvariant, TimeSpan.FromSeconds(1)).Value;
+            var splittedValues = templateString.Split(',', StringSplitOptions.RemoveEmptyEntries);
+
+            var template = new WordMetadata();
+
+
+            return template;
         }
     }
 }

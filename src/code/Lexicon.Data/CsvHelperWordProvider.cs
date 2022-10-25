@@ -51,20 +51,13 @@
             Language? templateLanguage = (Language)templateData.FirstOrDefault(x => x.Name == nameof(WordMetadata.Language)).Value;
             WordClass? templateClass = (WordClass)templateData.FirstOrDefault(x => x.Name == nameof(WordMetadata.Class)).Value;
 
-            var templateRecord = new WordRecord 
-            { 
-                Metadata = new() 
-                { 
-                    Language = templateLanguage.Value,
-                    Class = templateClass.Value
-                } 
-            };
-            var records = await csvReader.GetRecordsAsync<WordRecord>(templateRecord, ct).Select(x =>
+            var records = await csvReader.GetRecordsAsync<WordRecord>(ct).Select(x =>
             {
                 if (templateLanguage is not null)
-                {
+                    x.Metadata.Language = templateLanguage.Value;
+                if (templateClass is not null)
+                    x.Metadata.Class = templateClass.Value;
 
-                }
                 return x;
             })
                 .ToArrayAsync(ct)

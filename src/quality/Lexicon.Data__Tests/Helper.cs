@@ -4,6 +4,7 @@
     using System.IO;
     using System.Threading.Tasks;
     using Lexicon.Data;
+    using Microsoft.Extensions.Caching.Memory;
 
     public static class Helper
     {
@@ -14,7 +15,7 @@
             $"word1,0,0\n" +
             $"word2,1,1";
 
-        public static CsvHelperWordProviderOptions TestOptions => new()
+        public static CsvHelperWordProviderOptions CsvTestOptions => new()
         {
             File = TestCsvFile
         };
@@ -24,7 +25,17 @@
             File.WriteAllText(TestCsvFile, TestCsvFileContent);
         }
 
-        public static CsvHelperWordProvider CreateProvider()
-            => new CsvHelperWordProvider(TestOptions);
+        public static CsvHelperWordProvider CreateCsvProvider()
+            => new CsvHelperWordProvider(CsvTestOptions);
+
+        public static CachingProvider CreateCachingProviderWithCsvProvider()
+        {
+            //todo
+            var memoryCache = new MemoryCache(new MemoryCacheOptions() { });
+            var cachingProvider = new CachingProvider(Helper.CreateCsvProvider(), memoryCache);
+
+            new CsvHelperWordProvider(CsvTestOptions);
+            return default;
+        }
     }
 }

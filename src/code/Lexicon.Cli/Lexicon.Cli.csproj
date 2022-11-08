@@ -16,6 +16,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Remove="Commands\RootCommandFactory.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
       <Content Include="..\Lexicon.WebApi\appsettings.Development.json" Link="appsettings.Development.json">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>

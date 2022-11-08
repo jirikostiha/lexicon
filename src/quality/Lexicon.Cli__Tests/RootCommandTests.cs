@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.CommandLine;
     using System.Threading.Tasks;
-    using Lexicon.Cli;
+    using Lexicon.Cli.Commands;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]

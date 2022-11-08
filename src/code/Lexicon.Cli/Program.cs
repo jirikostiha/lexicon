@@ -2,6 +2,8 @@
 using System;
 using System.CommandLine;
 using System.Threading.Tasks;
+using Lexicon.Cli.Commands;
+using System.CommandLine.Builder;
 
 namespace Lexicon.Cli;
 
@@ -11,7 +13,7 @@ sealed class Program
     {
         try
         {
-            var rootCommand = RootCommandFactory.Create();
+            var rootCommand = CreateRootCommand();
 
             return await rootCommand.InvokeAsync(args);
         }
@@ -25,5 +27,17 @@ sealed class Program
             Console.WriteLine(ex.Message);
             return ExitCode.GeneralError;
         }
+    }
+
+    private static CommandLineBuilder CommandLineBuilder => new(CreateRootCommand());
+
+    private static RootCommand CreateRootCommand()
+    {
+        var rootCommand = new RootCommand("Lexicon Cli")
+        {
+            new CreateDbCommand(),
+        };
+        
+        return rootCommand;
     }
 }

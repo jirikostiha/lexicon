@@ -3,6 +3,14 @@
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
         <Description> Asp core Web Api. </Description>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <AnalysisLevel>latest-recommended</AnalysisLevel>
+        <NoWarn>CA1725,CA1716</NoWarn>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <UserSecretsId>80415471-0ea1-430e-ab47-39ad8dee2a8b</UserSecretsId>
+        <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+        <DockerfileContext>..\..</DockerfileContext>
     </PropertyGroup>
 
     <ItemGroup>
@@ -15,6 +23,8 @@
         <PackageReference Include="Autofac" Version="6.5.0" />
         <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
         <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+        <PackageReference Include="Serilog.AspNetCore" Version="6.0.1" />
         <PackageReference Include="Serilog.Enrichers.Thread" Version="3.1.0" />
         <PackageReference Include="SerilogTimings" Version="3.0.1" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />

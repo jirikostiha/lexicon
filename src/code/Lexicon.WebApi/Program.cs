@@ -1,22 +1,23 @@
-﻿using Autofac.Extensions.DependencyInjection;
-using Autofac;
+﻿using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Lexicon;
+using Lexicon.DependencyInjection.Autofac;
 using Microsoft.AspNetCore.Builder;
-using Serilog.Events;
-using Serilog;
-using System.IO;
-using System.Reflection;
-using System;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Diagnostics;
-using Microsoft.Extensions.Configuration;
-using Swashbuckle.AspNetCore.SwaggerGen;
 using Microsoft.OpenApi.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
-using Lexicon.DependencyInjection.Autofac;
-using Lexicon;
+using Serilog;
+using Serilog.Events;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Reflection;
+using System.Text.Json;
 
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
@@ -28,7 +29,7 @@ try
 {
     Log.Information("Starting web host.");
     Log.Information("WorkingDir: {0}", Directory.GetCurrentDirectory());
-    
+
     var appPath = Path.GetDirectoryName(Assembly.GetAssembly(typeof(Program))?.Location);
     Log.Information("AppPath:    {0}", appPath);
 
@@ -98,7 +99,7 @@ try
 
         options.IncludeXmlComments(xmlPath);
 
-        options.CustomOperationIds(apiDescription 
+        options.CustomOperationIds(apiDescription
             => apiDescription.TryGetMethodInfo(out MethodInfo mi) ? mi.Name : null);
     });
 
@@ -157,7 +158,9 @@ try
                     Status = StatusCodes.Status500InternalServerError,
                 };
                 pd.Extensions.Add("RequestId", context.TraceIdentifier);
-                await context.Response.WriteAsJsonAsync(pd, pd.GetType(), null, contentType: "application/problem+json");
+
+                var options = new JsonSerializerOptions();
+                await context.Response.WriteAsJsonAsync(pd, pd.GetType(), options, contentType: "application/problem+json");
             });
         });
     }

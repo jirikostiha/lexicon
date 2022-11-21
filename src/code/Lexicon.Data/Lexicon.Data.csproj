@@ -5,7 +5,7 @@
 	<Import Project="..\..\..\participants.props" />
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net7.0</TargetFramework>
 		<Description>Common functionalities for all data layer projects.</Description>
 		<LangVersion>latest</LangVersion>
 		<Nullable>enable</Nullable>

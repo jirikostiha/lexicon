@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Lexicon.SQLite
+﻿namespace Lexicon.SQLite
 {
     public record SQLiteOptions
     {

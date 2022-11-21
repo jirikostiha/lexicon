@@ -1,19 +1,7 @@
 ﻿namespace Lexicon.SQLite
 {
-    using System;
-    using System.Collections.Generic;
     using System.Data.Common;
-    using System.Data.SQLite;
     using System.Globalization;
-    using System.Linq;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using CommunityToolkit.Diagnostics;
-    using FluentValidation;
-    using Lexicon;
-    using Lexicon.EntityModel;
-    using SqlKata;
-    using SqlKata.Compilers;
 
     public class SQLiteWordRepository : IWordRepository
     {

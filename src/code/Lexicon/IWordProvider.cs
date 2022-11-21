@@ -1,8 +1,5 @@
 ﻿namespace Lexicon
 {
-    using System.Collections.Generic;
-    using System.Threading;
-    using System.Threading.Tasks;
     using Lexicon.EntityModel;
 
     public interface IWordProvider

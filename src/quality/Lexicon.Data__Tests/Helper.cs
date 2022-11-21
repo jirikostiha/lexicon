@@ -1,9 +1,6 @@
 ﻿namespace Lexicon
 {
-    using System;
     using System.IO;
-    using System.Threading.Tasks;
-    using Lexicon.Data;
 
     public static class Helper
     {

@@ -1,8 +1,7 @@
 ﻿namespace Lexicon
 {
-    using System.Collections.Concurrent;
-    using System.Collections.Generic;
     using CommunityToolkit.Diagnostics;
+    using System.Collections.Concurrent;
 
     public class SourceProvider
     {

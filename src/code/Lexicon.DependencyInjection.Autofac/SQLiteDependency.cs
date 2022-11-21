@@ -1,12 +1,6 @@
 ﻿namespace Lexicon.DependencyInjection.Autofac
 {
-    using System;
-    using System.Linq;
-    using global::Autofac;
-    using Lexicon;
-    using Lexicon.Data;
     using Lexicon.SQLite;
-    using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Options;
 
     public sealed class SQLiteDependency : DependencyBase

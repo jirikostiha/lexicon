@@ -1,8 +1,5 @@
 ﻿namespace Lexicon.Data
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using Microsoft.Extensions.Configuration;
 
     public static class ConfigurationExtension

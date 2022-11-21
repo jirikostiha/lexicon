@@ -1,11 +1,7 @@
 ﻿namespace Lexicon
 {
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-    using System.Threading;
     using CommunityToolkit.Diagnostics;
     using Lexicon.EntityModel;
-    using System.Linq;
 
     public class WordMultiSourceProvider
     {

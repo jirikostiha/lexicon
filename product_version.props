@@ -1,6 +1,5 @@
 <Project>
 	<PropertyGroup>
-		<ProductVersion>prerelease</ProductVersion>
 		<VersionPrefix>0.3.0</VersionPrefix>
 		<VersionSuffix>devel</VersionSuffix>
 	</PropertyGroup>

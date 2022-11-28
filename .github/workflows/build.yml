@@ -3,7 +3,11 @@ name: Build
 env:
   sln-path: "./src/lexicon.sln"
 
-on: [push]
+on: 
+  push:
+    paths:
+      - 'src/**'
+      - '!src/**.sln' #ignore sln changes
 
 jobs:
   build:
@@ -25,7 +29,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore "${{ env.sln-path }}"
 
-    - name: Build
+    - name: Build #debug build
       run: dotnet build "${{ env.sln-path }}" --no-restore
 
     - name: Test

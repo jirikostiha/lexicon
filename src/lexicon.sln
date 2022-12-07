@@ -69,6 +69,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lexicon.EntityFramework", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lexicon.EntityFramework__Tests", "quality\Lexicon.EntityFramework__Tests\Lexicon.EntityFramework__Tests.csproj", "{7B85092B-9EE9-45E8-8F46-006AF5FD07CB}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lexicon.MinimalWebApi", "code\Lexicon.MinimalWebApi\Lexicon.MinimalWebApi.csproj", "{8C2C5A8F-DB02-4629-B1CB-978F14836659}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -131,6 +133,10 @@ Global
 		{7B85092B-9EE9-45E8-8F46-006AF5FD07CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B85092B-9EE9-45E8-8F46-006AF5FD07CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B85092B-9EE9-45E8-8F46-006AF5FD07CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C2C5A8F-DB02-4629-B1CB-978F14836659}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C2C5A8F-DB02-4629-B1CB-978F14836659}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C2C5A8F-DB02-4629-B1CB-978F14836659}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C2C5A8F-DB02-4629-B1CB-978F14836659}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

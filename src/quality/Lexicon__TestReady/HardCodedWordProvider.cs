@@ -12,7 +12,7 @@
     {
         private Func<IEnumerable<WordRecord>> _recordsProvider;
 
-        public HardCodedWordProvider(Func<IEnumerable<WordRecord>>? recordsProvider = null)
+        public HardCodedWordProvider(Func<IEnumerable<WordRecord>> recordsProvider = null)
         {
             _recordsProvider = recordsProvider ?? (() => Enumerable.Empty<WordRecord>());
         }

@@ -15,6 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution Items", "solution 
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "quality", "quality", "{0A927ED1-E2A0-4128-AF7A-CF7152E404F5}"
+	ProjectSection(SolutionItems) = preProject
+		quality\directory.build.props = quality\directory.build.props
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lexicon", "code\Lexicon\Lexicon.csproj", "{E78D3E9D-DCE3-4A06-9383-1748B154CA63}"
 EndProject
@@ -34,8 +37,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cicd", "cicd", "{662387C7-0
 	ProjectSection(SolutionItems) = preProject
 		..\.github\workflows\build.yml = ..\.github\workflows\build.yml
 		..\.github\workflows\codeql-analysis.yml = ..\.github\workflows\codeql-analysis.yml
-		..\.github\dependabot.yml = ..\.github\dependabot.yml
 		..\.github\workflows\create-release.yml = ..\.github\workflows\create-release.yml
+		..\.github\dependabot.yml = ..\.github\dependabot.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lexicon.Cli", "code\Lexicon.Cli\Lexicon.Cli.csproj", "{988E4650-20F4-47EA-AA8C-05E8A0FDA427}"

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
@@ -31,17 +32,12 @@ try
         Args = args
     });
 
-    builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
-    {
-        config.Sources.Clear();
-        var env = hostingContext.HostingEnvironment;
-        Log.Information("HostingEnvironment: {0}", env.EnvironmentName);
-
-        config.SetBasePath(appPath)
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
-            .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: false, reloadOnChange: false)
-            .AddCommandLine(args);
-    });
+    Log.Information("HostingEnvironment: {0}", builder.Environment);
+    builder.Configuration.Sources.Clear();
+    builder.Configuration.SetBasePath(appPath ?? string.Empty);
+    builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: false);
+    builder.Configuration.AddJsonFile($"appsettings.{builder.Environment}.json", optional: false, reloadOnChange: false);
+    builder.Configuration.AddCommandLine(args);
 
     builder.Host.UseSerilog((hostingContext, loggerConfiguration) =>
     {

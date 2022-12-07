@@ -7,7 +7,7 @@
             Configuration = configuration;
         }
 
-        protected IConfiguration Configuration { get; set; }
+        public IConfiguration Configuration { get; set; }
 
         protected override void Load(ContainerBuilder builder)
         {

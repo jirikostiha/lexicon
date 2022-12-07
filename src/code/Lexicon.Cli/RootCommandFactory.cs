@@ -54,7 +54,7 @@
             };
             createDbCommand.SetHandler(async (configName, sectionName) =>
             {
-                await DeplyModel(configName, sectionName)
+                await DeployModel(configName, sectionName)
                     .ConfigureAwait(false);
             }, 
                 configurationNameOption, sectionNameOption);
@@ -75,7 +75,7 @@
             return rootCommand;
         }
 
-        public static async Task DeplyModel(string? configName, string? sectionName, CancellationToken ct = default)
+        public static async Task DeployModel(string? configName, string? sectionName, CancellationToken ct = default)
         {
             var config = LoadConfiguration(configName);
             var section = config.GetSection(sectionName);

@@ -3,8 +3,8 @@
 
 	<PropertyGroup>
 		<SolutionDir Condition=" '$(SolutionDir)' == '' ">$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildProjectDirectory), MySolution.sln))\</SolutionDir>
-		<BaseOutputPath>..\..\asm\$(MSBuildProjectName)\bin\</BaseOutputPath>
-		<BaseIntermediateOutputPath>..\..\asm\$(MSBuildProjectName)\obj\</BaseIntermediateOutputPath>
+		<BaseOutputPath>..\..\..\asm\$(MSBuildProjectName)\bin\</BaseOutputPath>
+		<BaseIntermediateOutputPath>..\..\..\asm\$(MSBuildProjectName)\obj\</BaseIntermediateOutputPath>
 		<Deterministic>true</Deterministic>
 	</PropertyGroup>
 

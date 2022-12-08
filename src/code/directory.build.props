@@ -10,8 +10,8 @@
 		<!-- SolutionDir is not defined when building projects explicitly -->
 		<SolutionDir Condition=" '$(SolutionDir)' == '' ">$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildProjectDirectory), MySolution.sln))\</SolutionDir>
 		<!-- Output paths -->
-		<BaseOutputPath>..\..\asm\$(MSBuildProjectName)\bin\</BaseOutputPath>
-		<BaseIntermediateOutputPath>..\..\asm\$(MSBuildProjectName)\obj\</BaseIntermediateOutputPath>
+		<BaseOutputPath>..\..\..\asm\$(MSBuildProjectName)\bin\</BaseOutputPath>
+		<BaseIntermediateOutputPath>..\..\..\asm\$(MSBuildProjectName)\obj\</BaseIntermediateOutputPath>
 		<Deterministic>true</Deterministic>
 	</PropertyGroup>
 

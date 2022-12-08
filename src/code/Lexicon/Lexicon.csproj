@@ -3,6 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <Description> Core abstractions and functionalities. </Description>
+		<LangVersion>10.0</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>

@@ -1,6 +1,9 @@
 ## Conventions
 ### Versioning
-Using [semantic versioning](https://semver.org/).
+Using [semantic versioning](https://semver.org/).  
+
+### Committing
+Using [conventional commits](https://www.conventionalcommits.org/).  
 
 ### Folder structure  
 * src - source code  

@@ -16,13 +16,13 @@
     public record WordFilter
     {
         public Language? Language { get; set; }
-        
+
         public WordClass? Class { get; set; }
 
         public string? StartsWith { get; set; }
 
-        public static WordFilter Empty => new() 
-        { 
+        public static WordFilter Empty => new()
+        {
             Language = default,
             Class = default,
             StartsWith = default

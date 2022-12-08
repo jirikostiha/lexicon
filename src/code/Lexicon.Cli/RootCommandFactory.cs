@@ -56,7 +56,7 @@
             {
                 await DeployModel(configName, sectionName)
                     .ConfigureAwait(false);
-            }, 
+            },
                 configurationNameOption, sectionNameOption);
             rootCommand.AddCommand(createDbCommand);
 
@@ -83,9 +83,9 @@
 
             Console.WriteLine("Deploying model to target '{0}'", options.ConnectionString);
 
-            var modelDeployer = new SQLiteModelDeployer(DM.Sql, options) 
-            { 
-                TablesOrderToDrop = DM.TableNames.ToArray() 
+            var modelDeployer = new SQLiteModelDeployer(DM.Sql, options)
+            {
+                TablesOrderToDrop = DM.TableNames.ToArray()
             };
             await modelDeployer.DeployAsync(ct);
         }
@@ -102,7 +102,7 @@
         public static async Task ImportDataToDatabase(SQLiteOptions options, FileInfo csvDataFile, CancellationToken ct = default)
         {
             Console.WriteLine("Importing data from '{0}' to target '{1}'", csvDataFile.FullName, options.ConnectionString);
-            
+
             var records = new List<WordRecord>();
             using (var reader = new StreamReader(csvDataFile.FullName))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
@@ -118,7 +118,7 @@
 
         public static IConfiguration LoadConfiguration(string? configurationName)
         {
-            var configName = configurationName 
+            var configName = configurationName
                 ?? Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")
                 ?? "Production";
 

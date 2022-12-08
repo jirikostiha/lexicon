@@ -17,7 +17,7 @@
     {
         private readonly ILogger<WordsController> _logger = new NullLogger<WordsController>();
         private readonly IWordProvider _provider = A.Fake<IWordProvider>();
-        
+
         private WordMultiSourceProvider _multiSourceProvider;
         private WordsController _controller;
 
@@ -36,7 +36,7 @@
             var filter = MultiSourceWordFilter.Empty;
             A.CallTo(() => _provider.GetByFilterAsync(filter.WordFilter, default))
                 .Returns(Task.FromResult(WordSets.All));
-            
+
             var result = await _controller.Get(0, 10, filter);
 
             Assert.IsNotNull(result);

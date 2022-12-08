@@ -5,7 +5,7 @@
 
     public sealed class SQLiteDependency : DependencyBase
     {
-        public SQLiteDependency(IConfiguration configuration) 
+        public SQLiteDependency(IConfiguration configuration)
             : base(configuration)
         { }
 

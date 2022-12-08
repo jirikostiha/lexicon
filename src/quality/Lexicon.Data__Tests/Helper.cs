@@ -6,7 +6,7 @@
     {
         public static string TestCsvFile => @"testCsv.csv";
 
-        public static string TestCsvFileContent => 
+        public static string TestCsvFileContent =>
             $"Word,Language,Class\n" +
             $"word1,0,0\n" +
             $"word2,1,1";

@@ -32,8 +32,8 @@
         {
             Guard.IsNotNullOrEmpty(providerId);
 
-            return _providers.TryGetValue(providerId, out var provider) 
-                ? provider 
+            return _providers.TryGetValue(providerId, out var provider)
+                ? provider
                 : null;
         }
     }

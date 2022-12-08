@@ -18,7 +18,7 @@
             using var stream = new MemoryStream();
             await JsonSerializer.SerializeAsync(stream, items, _options, ct)
                 .ConfigureAwait(false);
-            
+
             return Encoding.UTF8.GetString(stream.ToArray());
         }
     }

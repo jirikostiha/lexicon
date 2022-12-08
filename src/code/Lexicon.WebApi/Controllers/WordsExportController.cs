@@ -59,7 +59,7 @@
             {
                 var content = await _csvFormatter.FormatAsync(records, ct)
                     .ConfigureAwait(false);
-                 bytes = Encoding.ASCII.GetBytes(content);
+                bytes = Encoding.ASCII.GetBytes(content);
             }
 
             _logger.ExportedSize(bytes.Length);

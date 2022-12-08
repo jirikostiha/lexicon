@@ -20,7 +20,7 @@
         {
             var records = await GetRecordsAsync(ct)
                 .ConfigureAwait(false);
-            
+
             return records.Count();
         }
 
@@ -28,7 +28,7 @@
         {
             var records = await GetRecordsAsync(ct)
                 .ConfigureAwait(false);
-            
+
             return WordFilter.Filter(records, filter);
         }
 
@@ -41,7 +41,7 @@
             var records = await csvReader.GetRecordsAsync<WordRecord>(ct)
                 .ToArrayAsync(ct)
                 .ConfigureAwait(false);
-            
+
             return records;
         }
     }

@@ -1,6 +1,6 @@
 ﻿public class WordRecordContext : DbContext
 {
-    public WordRecordContext(DbContextOptions options) 
+    public WordRecordContext(DbContextOptions options)
         : base(options)
     {
     }

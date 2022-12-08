@@ -6,7 +6,7 @@
 
     public static class WordSets
     {
-        public static IEnumerable<WordRecord> All => 
+        public static IEnumerable<WordRecord> All =>
             CzechMaleNames
             .Union(EnglishMaleNames)
             .Union(EnglishSolarSystemPlanetNames);

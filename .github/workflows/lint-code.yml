@@ -18,6 +18,7 @@ jobs:
       - name: Run linters
         uses: wearerequired/lint-action@v2
         with:
+          commit_message: "style: code style issues with ${linter}"
           dotnet_format: true
           dotnet_format_dir: src
           dotnet_format_auto_fix: true

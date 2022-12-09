@@ -5,9 +5,15 @@ updates:
     directory: "/"
     schedule:
       interval: daily
+    commit-message:
+      prefix: "build(dependency)"
+      include: "scope"
     open-pull-requests-limit: 5
 
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+    commit-message:
+      prefix: "ci"
+      include: "scope"

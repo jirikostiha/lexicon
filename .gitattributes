@@ -1,57 +1,95 @@
+# Set default behavior to automatically normalize line endings.
 * text=auto
 
+*.doc  diff=astextplain
+*.DOC	diff=astextplain
+*.docx	diff=astextplain
+*.DOCX	diff=astextplain
+*.dot	diff=astextplain
+*.DOT	diff=astextplain
+*.pdf	diff=astextplain
+*.PDF	diff=astextplain
+*.rtf	diff=astextplain
+*.RTF	diff=astextplain
 
-*.doc diff=astextplain
-*.DOC diff=astextplain
-*.docx diff=astextplain
-*.DOCX diff=astextplain
-*.dot diff=astextplain
-*.DOT diff=astextplain
-*.pdf diff=astextplain
-*.PDF diff=astextplain
-*.rtf diff=astextplain
-*.RTF diff=astextplain
+# Force bash scripts to always use lf line endings so that if a repo is accessed
+# in Unix via a file share from Windows, the scripts will work.
+*.in text eol=lf
+*.sh text eol=lf
 
+# Force batch scripts to always use CRLF line endings so that if a repo is accessed
+# in Windows via a file share from Linux, the scripts will work.
+*.{cmd,[cC][mM][dD]} text eol=crlf
+*.{bat,[bB][aA][tT]} text eol=crlf
 
-*.cs text diff=csharp eol=crlf
-*.vb text
-*.c text
-*.cpp text
-*.cxx text
-*.h text
-*.hxx text
-*.py text
-*.rb text
-*.java text
-*.html text
-*.htm text
-*.css text
-*.scss text
-*.sass text
-*.less text
-*.js text
-*.lisp text
-*.clj text
-*.sql text
-*.php text
-*.lua text
-*.m text
-*.asm text
-*.erl text
-*.fs text
-*.fsx text
-*.hs text
-*.ps1 text eol=crlf
-*.psm1 text
+*.cs text=auto diff=csharp
+*.vb text=auto
+*.resx text=auto
+*.c text=auto
+*.cpp text=auto
+*.cxx text=auto
+*.h text=auto
+*.hxx text=auto
+*.py text=auto
+*.rb text=auto
+*.java text=auto
+*.html text=auto
+*.htm text=auto
+*.css text=auto
+*.scss text=auto
+*.sass text=auto
+*.less text=auto
+*.js text=auto
+*.lisp text=auto
+*.clj text=auto
+*.sql text=auto
+*.php text=auto
+*.lua text=auto
+*.m text=auto
+*.asm text=auto
+*.erl text=auto
+*.fs text=auto
+*.fsx text=auto
+*.hs text=auto
 
-*.csproj text merge=union 
-*.vbproj text merge=union 
-*.fsproj text merge=union 
-*.dbproj text merge=union 
-*.sln text eol=crlf merge=union 
-
+*.csproj text=auto
+*.vbproj text=auto
+*.fsproj text=auto
+*.dbproj text=auto
+*.sln text=auto eol=crlf
 
 *.png binary
 *.jpg binary
 *.gif binary
+
 *.dll binary
+
+
+###############################
+# Git Large File System (LFS) #
+###############################
+
+# Archives
+#*.7z filter=lfs diff=lfs merge=lfs -text
+#*.br filter=lfs diff=lfs merge=lfs -text
+#*.gz filter=lfs diff=lfs merge=lfs -text
+#*.tar filter=lfs diff=lfs merge=lfs -text
+#*.zip filter=lfs diff=lfs merge=lfs -text
+
+# Documents
+#*.pdf filter=lfs diff=lfs merge=lfs -text
+
+# Images
+#*.gif filter=lfs diff=lfs merge=lfs -text
+#*.ico filter=lfs diff=lfs merge=lfs -text
+#*.jpg filter=lfs diff=lfs merge=lfs -text
+#*.pdf filter=lfs diff=lfs merge=lfs -text
+#*.png filter=lfs diff=lfs merge=lfs -text
+#*.psd filter=lfs diff=lfs merge=lfs -text
+#*.webp filter=lfs diff=lfs merge=lfs -text
+
+# Fonts
+#*.woff2 filter=lfs diff=lfs merge=lfs -text
+
+# Other
+#*.exe filter=lfs diff=lfs merge=lfs -text

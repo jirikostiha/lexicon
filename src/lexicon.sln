@@ -9,7 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution Items", "solution 
 		..\.gitignore = ..\.gitignore
 		code\directory.build.props = code\directory.build.props
 		..\license.txt = ..\license.txt
-		..\participants.props = ..\participants.props
 		..\product.props = ..\product.props
 		..\product_version.props = ..\product_version.props
 	EndProjectSection

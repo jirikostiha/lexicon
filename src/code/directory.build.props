@@ -3,7 +3,6 @@
 
 	<Import Project="..\..\product.props" />
 	<Import Project="..\..\product_version.props" />
-	<Import Project="..\..\participants.props" />
 
 	<!-- Common properties -->
 	<PropertyGroup>

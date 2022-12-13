@@ -6,7 +6,7 @@ updates:
     schedule:
       interval: daily
     commit-message:
-      prefix: "build(dependency)"
+      prefix: "build"
       include: "scope"
     open-pull-requests-limit: 5
 
@@ -15,5 +15,5 @@ updates:
     schedule:
       interval: "weekly"
     commit-message:
-      prefix: "ci(dependency)"
+      prefix: "ci"
       include: "scope"

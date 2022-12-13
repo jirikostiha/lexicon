@@ -26,6 +26,4 @@ https://localhost:5001/api/words?page=0&pageSize=100
 ```
 
 
-## Conventions
-see [conventions](./doc/conventions.md)
-  
+## [Conventions](./doc/conventions.md)

@@ -1,6 +1,16 @@
 version: 2
-updates:
 
+registries:
+  nuget-org:
+    type: nuget-feed
+    url: https://api.nuget.org/v3/index.json
+  nuget-github:
+    type: nuget-feed
+    url: https://nuget.pkg.github.com/jirikostiha/index.json
+    username: ijkdata@gmail.com
+    password: ${{ secrets.GITHUB_PACKAGE_FEED_PAT }}
+
+updates:
   - package-ecosystem: nuget
     directory: "/"
     schedule:

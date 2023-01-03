@@ -1,8 +1,7 @@
 ﻿namespace Lexicon
 {
-    using System.Collections.Concurrent;
-    using System.Collections.Generic;
     using CommunityToolkit.Diagnostics;
+    using System.Collections.Concurrent;
 
     public class SourceProvider
     {
@@ -33,8 +32,8 @@
         {
             Guard.IsNotNullOrEmpty(providerId);
 
-            return _providers.TryGetValue(providerId, out var provider) 
-                ? provider 
+            return _providers.TryGetValue(providerId, out var provider)
+                ? provider
                 : null;
         }
     }

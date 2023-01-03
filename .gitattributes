@@ -1,31 +1,41 @@
+# Set default behavior to automatically normalize line endings.
 * text=auto
 
+*.doc  diff=astextplain
+*.DOC	diff=astextplain
+*.docx	diff=astextplain
+*.DOCX	diff=astextplain
+*.dot	diff=astextplain
+*.DOT	diff=astextplain
+*.pdf	diff=astextplain
+*.PDF	diff=astextplain
+*.rtf	diff=astextplain
+*.RTF	diff=astextplain
 
-*.doc diff=astextplain
-*.DOC diff=astextplain
-*.docx diff=astextplain
-*.DOCX diff=astextplain
-*.dot diff=astextplain
-*.DOT diff=astextplain
-*.pdf diff=astextplain
-*.PDF diff=astextplain
-*.rtf diff=astextplain
-*.RTF diff=astextplain
+# Force bash scripts to always use lf line endings so that if a repo is accessed
+# in Unix via a file share from Windows, the scripts will work.
+*.in text eol=lf
+*.sh text eol=lf
 
+# Force batch scripts to always use CRLF line endings so that if a repo is accessed
+# in Windows via a file share from Linux, the scripts will work.
+*.{cmd,[cC][mM][dD]} text eol=crlf
+*.{bat,[bB][aA][tT]} text eol=crlf
 
-*.cs text diff=csharp eol=crlf
+*.cs text diff=csharp
 *.vb text
+*.resx text
 *.c text
-*.cpp text
+*.cpp text diff=cpp
 *.cxx text
 *.h text
 *.hxx text
 *.py text
 *.rb text
 *.java text
-*.html text
-*.htm text
-*.css text
+*.html text diff=html
+*.htm text diff=html
+*.css text diff=css
 *.scss text
 *.sass text
 *.less text
@@ -43,13 +53,14 @@
 *.hs text
 *.ps1 text eol=crlf
 *.psm1 text
+*.md text diff=markdown
 
 *.csproj text merge=union 
 *.vbproj text merge=union 
 *.fsproj text merge=union 
 *.dbproj text merge=union 
+*.props text merge=union 
 *.sln text eol=crlf merge=union 
-
 
 *.png binary
 *.jpg binary

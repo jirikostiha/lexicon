@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-
-namespace Lexicon.SQLite
+﻿namespace Lexicon.SQLite
 {
     /// <summary>
     /// Data model

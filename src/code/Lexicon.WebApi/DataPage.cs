@@ -1,7 +1,5 @@
 ﻿namespace Lexicon.WebApi
 {
-    using System.Collections.Generic;
-
     /// <summary>
     /// Represent segment of data.
     /// </summary>

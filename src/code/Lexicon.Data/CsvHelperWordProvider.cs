@@ -1,14 +1,8 @@
 ﻿namespace Lexicon.Data
 {
-    using System;
-    using System.Collections.Generic;
     using System.IO;
-    using System.Linq;
     using System.Text.RegularExpressions;
-    using System.Threading;
-    using System.Threading.Tasks;
     using CsvHelper;
-    using CsvHelper.Configuration;
     using Lexicon.EntityModel;
 
     /// <summary>
@@ -27,7 +21,7 @@
         {
             var records = await GetRecordsAsync(ct)
                 .ConfigureAwait(false);
-            
+
             return records.Count();
         }
 
@@ -35,7 +29,7 @@
         {
             var records = await GetRecordsAsync(ct)
                 .ConfigureAwait(false);
-            
+
             return WordFilter.Filter(records, filter);
         }
 
@@ -62,7 +56,7 @@
             })
                 .ToArrayAsync(ct)
                 .ConfigureAwait(false);
-            
+
             return records;
         }
 

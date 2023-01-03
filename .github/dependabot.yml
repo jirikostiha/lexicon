@@ -1,7 +1,29 @@
 version: 2
+
+registries:
+  nuget-org:
+    type: nuget-feed
+    url: https://api.nuget.org/v3/index.json
+  nuget-github:
+    type: nuget-feed
+    url: https://nuget.pkg.github.com/jirikostiha/index.json
+    username: ijkdata@gmail.com
+    password: ${{ secrets.GITHUB_PACKAGE_FEED_PAT }}
+
 updates:
-- package-ecosystem: nuget
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 5
+  - package-ecosystem: nuget
+    directory: "/"
+    schedule:
+      interval: daily
+    commit-message:
+      prefix: "build"
+      include: "scope"
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "ci"
+      include: "scope"

@@ -1,8 +1,5 @@
 ﻿namespace Lexicon.DependencyInjection.Autofac
 {
-    using global::Autofac;
-    using Microsoft.Extensions.Configuration;
-
     public abstract class DependencyBase
     {
         protected DependencyBase(IConfiguration configuration)

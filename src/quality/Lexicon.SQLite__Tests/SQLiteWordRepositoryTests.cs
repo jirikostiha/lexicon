@@ -71,10 +71,10 @@
             var repo = await Helper.CreateRepoWithInMemoryDbAsync();
 
             await repo.SaveAllAsync(WordSets.CzechMaleNames);
-            
+
             var count = await repo.CountAsync();
             Assert.AreEqual(WordSets.CzechMaleNames.Count(), count);
-        }      
+        }
 
         [TestMethod]
         [TestCategory("positive")]
@@ -93,7 +93,8 @@
         public async Task GetByFilterAsync_FullCondition_ReturnFiltered()
         {
             var repo = await Helper.CreateRepoWithFilledInMemoryDbAsync();
-            var filter = new WordFilter() { 
+            var filter = new WordFilter()
+            {
                 Language = Language.Czech,
                 Class = WordClass.Noun,
                 StartsWith = "J"
@@ -101,7 +102,7 @@
 
             var records = (await repo.GetByFilterAsync(filter)).ToArray();
 
-            var inputFiltered = WordSets.All.Where(x => 
+            var inputFiltered = WordSets.All.Where(x =>
                 x.Metadata.Language == Language.Czech
                 && x.Metadata.Class == WordClass.Noun
                 && x.Word.StartsWith("J")
@@ -133,7 +134,7 @@
             var count = await repo.CountAsync();
             Assert.AreEqual(0, count);
         }
-        
+
         [TestMethod]
         [TestCategory("positive")]
         public async Task ClearAsync_ExistingRecords_CountIsZero()

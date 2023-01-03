@@ -1,23 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <Import Project="..\..\..\product.props" />
-    <Import Project="..\..\..\product_version.props" />
-    <Import Project="..\..\..\participants.props" />
-
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net7.0</TargetFramework>
         <Description> SQLite adapter based on 'System.Data.SQLite'. </Description>
-        <LangVersion>latest</LangVersion>
-        <Nullable>enable</Nullable>
-        <NeutralLanguage>en-US</NeutralLanguage>
-        <AnalysisLevel>latest-recommended</AnalysisLevel>
-        <NoWarn>CA1725,CA1716,CS8618</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.0.0" />
         <PackageReference Include="SqlKata" Version="2.4.0" />
-        <PackageReference Include="System.Data.SQLite" Version="1.0.116" />
+        <PackageReference Include="System.Data.SQLite" Version="1.0.117" />
     </ItemGroup>
 
     <ItemGroup>

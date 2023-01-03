@@ -14,9 +14,9 @@
         public static string InMemoryDbConnectionString => "Data Source = InMemoryDb; Mode = Memory; Cache = Shared";
         public static string TestDbConnectionString => $"Data Source = {TestDbFile}";
 
-        public static SQLiteOptions InMemoryDbOptions => new SQLiteOptions 
-        { 
-            ConnectionString = InMemoryDbConnectionString 
+        public static SQLiteOptions InMemoryDbOptions => new SQLiteOptions
+        {
+            ConnectionString = InMemoryDbConnectionString
         };
 
         public static SQLiteOptions TestFileDbOptions => new SQLiteOptions

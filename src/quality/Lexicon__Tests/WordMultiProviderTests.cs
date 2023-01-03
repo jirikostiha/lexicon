@@ -15,8 +15,8 @@
         [TestCategory("positive")]
         public async Task GetByFilterAsync_EmptyFilter_RecordsFromAllSources()
         {
-            var providers = new List<(string, IWordProvider)>() 
-            { 
+            var providers = new List<(string, IWordProvider)>()
+            {
                 ("source1", new HardCodedWordProvider(() => WordSets.CzechMaleNames)),
                 ("source2", new HardCodedWordProvider(() => WordSets.EnglishMaleNames)),
                 ("source3", new NullWordProvider())

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Lexicon.EntityModel
+﻿namespace Lexicon.EntityModel
 {
     public record MultiSourceWordFilter
     {
@@ -20,13 +16,13 @@ namespace Lexicon.EntityModel
     public record WordFilter
     {
         public Language? Language { get; set; }
-        
+
         public WordClass? Class { get; set; }
 
         public string? StartsWith { get; set; }
 
-        public static WordFilter Empty => new() 
-        { 
+        public static WordFilter Empty => new()
+        {
             Language = default,
             Class = default,
             StartsWith = default

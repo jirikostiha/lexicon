@@ -1,9 +1,5 @@
 ﻿namespace Lexicon.Data
 {
-    using System;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.Text.RegularExpressions;
     using Lexicon.TestReady;
     using Lexicon.EntityModel;
@@ -19,9 +15,9 @@
 
             var jsonString = await formatter.FormatAsync(WordSets.CzechMaleNames, default);
 
-            Assert.AreEqual(WordSets.CzechMaleNames.Count(), 
+            Assert.AreEqual(WordSets.CzechMaleNames.Count(),
                 Regex.Matches(jsonString, nameof(WordRecord.Word)).Count);
-            Assert.AreEqual(WordSets.CzechMaleNames.Count(), 
+            Assert.AreEqual(WordSets.CzechMaleNames.Count(),
                 Regex.Matches(jsonString, nameof(WordRecord.Metadata.Language)).Count);
             Assert.AreEqual(WordSets.CzechMaleNames.Count(),
                 Regex.Matches(jsonString, nameof(WordRecord.Metadata.Class)).Count);

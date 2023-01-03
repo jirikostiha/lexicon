@@ -1,24 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <Import Project="..\..\..\product.props" />
-    <Import Project="..\..\..\product_version.props" />
-    <Import Project="..\..\..\participants.props" />
-
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net7.0</TargetFramework>
         <Description>Autofac dependency injection container initialization.</Description>
-        <LangVersion>latest</LangVersion>
-        <Nullable>enable</Nullable>
-        <NeutralLanguage>en-US</NeutralLanguage>
-        <AnalysisLevel>latest-recommended</AnalysisLevel>
-        <NoWarn>CA1725,CA1716</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Autofac" Version="6.4.0" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
+        <PackageReference Include="Autofac" Version="6.5.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.1" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.0" />
     </ItemGroup>
 
     <ItemGroup>

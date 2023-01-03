@@ -1,22 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <Import Project="..\..\..\product.props" />
-    <Import Project="..\..\..\product_version.props" />
-    <Import Project="..\..\..\participants.props" />
-
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <Description> Core abstractions and functionalities. </Description>
-        <LangVersion>latest</LangVersion>
-        <Nullable>enable</Nullable>
-        <NeutralLanguage>en-US</NeutralLanguage>
-        <AnalysisLevel>latest-recommended</AnalysisLevel>
-        <NoWarn>CA1725,CA1716,CS8618</NoWarn>
+		<LangVersion>10.0</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.0.0" />
-        <PackageReference Include="FluentValidation" Version="11.2.2" />
+        <PackageReference Include="FluentValidation" Version="11.4.0" />
         <PackageReference Include="IsExternalInit" Version="1.0.3">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

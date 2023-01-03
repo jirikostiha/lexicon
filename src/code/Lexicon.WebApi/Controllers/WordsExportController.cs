@@ -1,7 +1,5 @@
 ﻿namespace Lexicon.WebApi.Controllers
 {
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Net.Mime;
     using System.Text;
@@ -61,7 +59,7 @@
             {
                 var content = await _csvFormatter.FormatAsync(records, ct)
                     .ConfigureAwait(false);
-                 bytes = Encoding.ASCII.GetBytes(content);
+                bytes = Encoding.ASCII.GetBytes(content);
             }
 
             _logger.ExportedSize(bytes.Length);

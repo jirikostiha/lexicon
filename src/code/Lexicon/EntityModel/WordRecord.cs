@@ -5,7 +5,7 @@
     public record WordRecord
     {
         public string Word { get; init; }
-        
+
         public WordMetadata Metadata { get; init; }
     }
 

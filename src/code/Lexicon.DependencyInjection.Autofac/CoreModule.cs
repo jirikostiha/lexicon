@@ -1,12 +1,5 @@
 ﻿namespace Lexicon.DependencyInjection.Autofac
 {
-    using global::Autofac;
-    using Lexicon.Data;
-    using Microsoft.Extensions.Configuration;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-
     public sealed class CoreModule : Module
     {
         public CoreModule(IConfiguration configuration)
@@ -14,7 +7,7 @@
             Configuration = configuration;
         }
 
-        protected IConfiguration Configuration { get; set; }
+        public IConfiguration Configuration { get; set; }
 
         protected override void Load(ContainerBuilder builder)
         {

@@ -3,7 +3,9 @@
 </div>  
 
 # Lexicon
-![Build workflow](https://github.com/jirikostiha/lexicon/actions/workflows/build.yml/badge.svg)  
+![Build workflow](https://github.com/jirikostiha/lexicon/actions/workflows/build.yml/badge.svg)
+![GitHub repo size](https://img.shields.io/github/repo-size/jirikostiha/lexicon)  
+
 It's a demonstration project. It shows the possibility of implementing the service with a database.  
 It provides words for other services, for example Markov word generator.  
 
@@ -24,6 +26,4 @@ https://localhost:5001/api/words?page=0&pageSize=100
 ```
 
 
-## Conventions
-see [conventions](/doc/conventions.md)
-  
+## [Conventions](./doc/conventions.md)

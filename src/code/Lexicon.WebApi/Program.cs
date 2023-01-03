@@ -1,22 +1,17 @@
-﻿using Autofac.Extensions.DependencyInjection;
-using Autofac;
-using Microsoft.AspNetCore.Builder;
-using Serilog.Events;
-using Serilog;
-using System.IO;
-using System.Reflection;
-using System;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Diagnostics;
-using Microsoft.Extensions.Configuration;
-using Swashbuckle.AspNetCore.SwaggerGen;
 using Microsoft.OpenApi.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
-using Lexicon.DependencyInjection.Autofac;
-using Lexicon;
+using Serilog;
+using Serilog.Events;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using System.Diagnostics;
+using System.IO;
+using System.Reflection;
 
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
@@ -28,7 +23,7 @@ try
 {
     Log.Information("Starting web host.");
     Log.Information("WorkingDir: {0}", Directory.GetCurrentDirectory());
-    
+
     var appPath = Path.GetDirectoryName(Assembly.GetAssembly(typeof(Program))?.Location);
     Log.Information("AppPath:    {0}", appPath);
 
@@ -37,17 +32,12 @@ try
         Args = args
     });
 
-    builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
-    {
-        config.Sources.Clear();
-        var env = hostingContext.HostingEnvironment;
-        Log.Information("HostingEnvironment: {0}", env.EnvironmentName);
-
-        config.SetBasePath(appPath)
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
-            .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: false, reloadOnChange: false)
-            .AddCommandLine(args);
-    });
+    Log.Information("HostingEnvironment: {0}", builder.Environment);
+    builder.Configuration.Sources.Clear();
+    builder.Configuration.SetBasePath(appPath ?? string.Empty);
+    builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: false);
+    builder.Configuration.AddJsonFile($"appsettings.{builder.Environment}.json", optional: false, reloadOnChange: false);
+    builder.Configuration.AddCommandLine(args);
 
     builder.Host.UseSerilog((hostingContext, loggerConfiguration) =>
     {
@@ -98,7 +88,7 @@ try
 
         options.IncludeXmlComments(xmlPath);
 
-        options.CustomOperationIds(apiDescription 
+        options.CustomOperationIds(apiDescription
             => apiDescription.TryGetMethodInfo(out MethodInfo mi) ? mi.Name : null);
     });
 
@@ -157,7 +147,9 @@ try
                     Status = StatusCodes.Status500InternalServerError,
                 };
                 pd.Extensions.Add("RequestId", context.TraceIdentifier);
-                await context.Response.WriteAsJsonAsync(pd, pd.GetType(), null, contentType: "application/problem+json");
+
+                var options = new JsonSerializerOptions();
+                await context.Response.WriteAsJsonAsync(pd, pd.GetType(), options, contentType: "application/problem+json");
             });
         });
     }

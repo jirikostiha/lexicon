@@ -54,7 +54,7 @@
             };
             createDbCommand.SetHandler(async (configName, sectionName) =>
             {
-                await DeployModel(configName, sectionName)
+                await DeployModel(configName!, sectionName!)
                     .ConfigureAwait(false);
             },
                 configurationNameOption, sectionNameOption);
@@ -66,7 +66,7 @@
             };
             importCommand.SetHandler(async (configName, sectionName, sourceFile) =>
             {
-                await ImportDataToDatabase(configName, sectionName, sourceFile)
+                await ImportDataToDatabase(configName!, sectionName!, sourceFile)
                     .ConfigureAwait(false);
             },
                 configurationNameOption, sectionNameOption, sourceDataFileOption);
@@ -75,11 +75,16 @@
             return rootCommand;
         }
 
-        public static async Task DeployModel(string? configName, string? sectionName, CancellationToken ct = default)
+        public static async Task DeployModel(string configName, string sectionName, CancellationToken ct = default)
         {
+            Guard.IsNotNullOrWhiteSpace(configName);
+            Guard.IsNotNullOrWhiteSpace(sectionName);
+
             var config = LoadConfiguration(configName);
-            var section = config.GetSection(sectionName);
+            var section = config.GetRequiredSection(sectionName);
             var options = section.Get<SQLiteOptions>();
+
+            Guard.IsNotNull(options);
 
             Console.WriteLine("Deploying model to target '{0}'", options.ConnectionString);
 
@@ -90,11 +95,16 @@
             await modelDeployer.DeployAsync(ct);
         }
 
-        public static async Task ImportDataToDatabase(string? configName, string? sectionName, FileInfo sourceFile, CancellationToken ct = default)
+        public static async Task ImportDataToDatabase(string configName, string sectionName, FileInfo sourceFile, CancellationToken ct = default)
         {
+            Guard.IsNotNullOrWhiteSpace(configName);
+            Guard.IsNotNullOrWhiteSpace(sectionName);
+
             var config = LoadConfiguration(configName);
             var section = config.GetSection(sectionName);
             var options = section.Get<SQLiteOptions>();
+
+            Guard.IsNotNull(options);
 
             await ImportDataToDatabase(options, sourceFile, ct);
         }

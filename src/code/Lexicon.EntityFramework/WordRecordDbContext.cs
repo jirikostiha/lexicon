@@ -1,4 +1,6 @@
-﻿public class WordRecordContext : DbContext
+﻿namespace Lexicon.EntityFramework;
+
+public class WordRecordContext : DbContext
 {
     public WordRecordContext(DbContextOptions options)
         : base(options)

@@ -6,8 +6,8 @@
 ![Build workflow](https://github.com/jirikostiha/lexicon/actions/workflows/build.yml/badge.svg)
 ![GitHub repo size](https://img.shields.io/github/repo-size/jirikostiha/lexicon)  
 
-It's a demonstration project. It shows the possibility of implementing the service with a database.  
-It provides words for other services, for example Markov word generator.  
+Lexicon is a service that provides words for other services/consuments, such as a Markov word generator.  
+It demonstrates the possibilities of implementing the service with a different data sources.  
 
 ## Usage
 1. To start the server, first deploy the database.  

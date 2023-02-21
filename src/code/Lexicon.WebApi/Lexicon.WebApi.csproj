@@ -1,28 +1,36 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-    <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
-        <Description> Asp core Web Api. </Description>
-    </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<Description> Asp core Web Api. </Description>
+		<LangVersion>latest</LangVersion>
+		<Nullable>enable</Nullable>
+		<AnalysisLevel>latest-recommended</AnalysisLevel>
+		<NoWarn>CA1725,CA1716</NoWarn>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<UserSecretsId>80415471-0ea1-430e-ab47-39ad8dee2a8b</UserSecretsId>
+		<!--<DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>-->
+		<DockerfileContext>..\..</DockerfileContext>
+	</PropertyGroup>
 
-    <ItemGroup>
-      <Compile Remove="Controllers\WordsImportController.cs" />
-    </ItemGroup>
+	<ItemGroup>
+		<Compile Remove="Controllers\WordsImportController.cs" />
+	</ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
-        <PackageReference Include="Autofac" Version="6.5.0" />
-        <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
-        <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
-        <PackageReference Include="Serilog.Enrichers.Thread" Version="3.1.0" />
-        <PackageReference Include="SerilogTimings" Version="3.0.1" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-        <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.1.0" />
-    </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+		<PackageReference Include="Autofac" Version="6.5.0" />
+		<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
+		<PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+		<PackageReference Include="Serilog.Enrichers.Thread" Version="3.1.0" />
+		<PackageReference Include="SerilogTimings" Version="3.0.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+		<PackageReference Include="CommunityToolkit.Diagnostics" Version="8.1.0" />
+	</ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\Lexicon.DependencyInjection.Autofac\Lexicon.DependencyInjection.Autofac.csproj" />
-    </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Lexicon.DependencyInjection.Autofac\Lexicon.DependencyInjection.Autofac.csproj" />
+	</ItemGroup>
 
 </Project>

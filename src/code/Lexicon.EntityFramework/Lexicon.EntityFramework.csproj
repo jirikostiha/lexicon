@@ -1,18 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
-        <Description> Entity framework. </Description>
-    </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<Description> Entity framework. </Description>
+	</PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.1.0" />
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Diagnostics" Version="8.1.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.3" PrivateAssets="all" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.3" />
-    </ItemGroup>
+	</ItemGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\Lexicon\Lexicon.csproj" />
-    </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Lexicon\Lexicon.csproj" />
+	</ItemGroup>
 
 </Project>

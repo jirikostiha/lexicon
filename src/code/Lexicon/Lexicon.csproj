@@ -1,18 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
-        <Description> Core abstractions and functionalities. </Description>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<Description> Core abstractions and functionalities. </Description>
 		<LangVersion>10.0</LangVersion>
-    </PropertyGroup>
+	</PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.1.0" />
-        <PackageReference Include="FluentValidation" Version="11.5.0" />
-        <PackageReference Include="IsExternalInit" Version="1.0.3">
-          <PrivateAssets>all</PrivateAssets>
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-    </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Diagnostics" Version="8.1.0" />
+		<PackageReference Include="FluentValidation" Version="11.5.0" />
+		<PackageReference Include="IsExternalInit" Version="1.0.3">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
 
 </Project>

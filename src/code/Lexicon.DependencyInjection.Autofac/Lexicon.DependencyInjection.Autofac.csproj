@@ -1,20 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
-        <Description>Autofac dependency injection container initialization.</Description>
-    </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<Description>Autofac dependency injection container initialization.</Description>
+	</PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Autofac" Version="6.5.0" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.3" />
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.1" />
-    </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Autofac" Version="6.5.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.3" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Options" Version="7.0.1" />
+	</ItemGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\Lexicon.SQLite\Lexicon.SQLite.csproj" />
-        <ProjectReference Include="..\Lexicon.Data\Lexicon.Data.csproj" />
-    </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Lexicon.SQLite\Lexicon.SQLite.csproj" />
+		<ProjectReference Include="..\Lexicon.Data\Lexicon.Data.csproj" />
+	</ItemGroup>
 
 </Project>

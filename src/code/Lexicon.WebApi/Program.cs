@@ -38,11 +38,11 @@ internal sealed class Program
                 Args = args
             });
 
-            Log.Information("HostingEnvironment: {0}", builder.Environment);
+            Log.Information("HostingEnvironment: {0}", builder.Environment.EnvironmentName);
             builder.Configuration.Sources.Clear();
             builder.Configuration.SetBasePath(appPath ?? string.Empty);
             builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: false);
-            builder.Configuration.AddJsonFile($"appsettings.{builder.Environment}.json", optional: false, reloadOnChange: false);
+            builder.Configuration.AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: false, reloadOnChange: false);
             builder.Configuration.AddCommandLine(args);
 
             builder.Host.UseSerilog((hostingContext, loggerConfiguration) =>

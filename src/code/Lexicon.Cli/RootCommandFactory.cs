@@ -77,9 +77,6 @@
 
         public static async Task DeployModel(string configName, string sectionName, CancellationToken ct = default)
         {
-            Guard.IsNotNullOrWhiteSpace(configName);
-            Guard.IsNotNullOrWhiteSpace(sectionName);
-
             var config = LoadConfiguration(configName);
             var section = config.GetRequiredSection(sectionName);
             var options = section.Get<SQLiteOptions>();
@@ -97,9 +94,6 @@
 
         public static async Task ImportDataToDatabase(string configName, string sectionName, FileInfo sourceFile, CancellationToken ct = default)
         {
-            Guard.IsNotNullOrWhiteSpace(configName);
-            Guard.IsNotNullOrWhiteSpace(sectionName);
-
             var config = LoadConfiguration(configName);
             var section = config.GetSection(sectionName);
             var options = section.Get<SQLiteOptions>();

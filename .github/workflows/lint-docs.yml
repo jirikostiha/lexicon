@@ -1,0 +1,25 @@
+name: Lint Documentation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Spellcheck
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+    
+      - name: Markdown lint
+        uses: nosborn/github-action-markdown-cli@v3.2.0
+        with:
+          files: .
+          config_file: ".markdownlint.json"
+
+      - name: Spellcheck
+        uses: rojopolis/spellcheck-github-actions@0.30.0

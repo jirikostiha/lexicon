@@ -3,6 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>net7.0</TargetFramework>
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+		<IsPackable>false</IsPackable>
+		<IsPublishable>false</IsPublishable>
 		<IsTestProject>false</IsTestProject>
 	</PropertyGroup>
 

@@ -7,12 +7,5 @@
 		<BaseIntermediateOutputPath>..\..\..\asm\$(MSBuildProjectName)\obj\</BaseIntermediateOutputPath>
 		<Deterministic>true</Deterministic>
 	</PropertyGroup>
-
-	<PropertyGroup>
-		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-		<IsPackable>false</IsPackable>
-		<IsPublishable>false</IsPublishable>
-		<IsTestProject>true</IsTestProject>
-	</PropertyGroup>
 	
 </Project>

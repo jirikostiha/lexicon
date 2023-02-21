@@ -22,7 +22,7 @@ It demonstrates the possibilities of implementing the service with a different d
 
 3. Then call the service in the browser to retrieve the data.
 ```
-https://localhost:5001/api/words?page=0&pageSize=100
+localhost:5000/api/words?page=0&pageSize=100
 ```
 
 

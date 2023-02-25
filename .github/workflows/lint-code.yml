@@ -1,4 +1,4 @@
-name: Lint Source Code and Fix
+name: Source Code Lint and Fix
 
 on:
   push:
@@ -12,14 +12,14 @@ on:
 
 jobs:
   run-linters:
-    name: Run source code linters
+    name: Source code linters
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Run linters
+      - name: Lint C#
         uses: wearerequired/lint-action@v2
         with:
           commit_message: "style: code style issues with ${linter}"
@@ -28,3 +28,6 @@ jobs:
           dotnet_format_auto_fix: true
           auto_fix: true
           git_name: "C# linter"
+
+      - name: Lint yaml
+        uses: ibiqlik/action-yamllint@v3

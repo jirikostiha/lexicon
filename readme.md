@@ -15,20 +15,20 @@ the service with a different data sources.
 
 1. To start the server, first deploy the database.  
 
-```powershell
-.\publishAndDeploy.ps1 
-```
+  ```powershell
+  .\publishAndDeploy.ps1 
+  ```
 
 2. Start the server.
 
-```powershell
-.\run.ps1  
-```
+  ```powershell
+  .\run.ps1  
+  ```
 
 3. Then call the service in the browser to retrieve the data.
 
-```html
-localhost:5000/api/words?page=0&pageSize=100
-```
+  ```html
+  localhost:5000/api/words?page=0&pageSize=100
+  ```
 
 ## [Conventions](./doc/conventions.md)

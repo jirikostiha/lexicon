@@ -1,3 +1,6 @@
+# rules: https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
+# default config: https://github.com/DavidAnson/markdownlint/blob/main/schema/.markdownlint.yaml
+
 # MD013/line-length - Line length
 MD013:
   # Number of characters

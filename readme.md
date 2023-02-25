@@ -7,28 +7,28 @@
   <font size=4> Demo Project </font>
 </div>  
 
-Lexicon is a service that provides words for other services/consuments, 
-such as a Markov word generator. It demonstrates the possibilities of implementing 
+Lexicon is a service that provides words for other services/consuments,
+such as a Markov word generator. It demonstrates the possibilities of implementing
 the service with a different data sources.  
 
 ## Usage
 
-1. To start the server, first deploy the database.  
+1. To start the server, first deploy the database.
 
-  ```powershell
-  .\publishAndDeploy.ps1 
-  ```
+   ```powershell
+   .\publishAndDeploy.ps1 
+   ```
 
 2. Start the server.
 
-  ```powershell
-  .\run.ps1  
-  ```
+   ```powershell
+   .\run.ps1  
+   ```
 
 3. Then call the service in the browser to retrieve the data.
 
-  ```html
-  localhost:5000/api/words?page=0&pageSize=100
-  ```
+   ```html
+   localhost:5000/api/words?page=0&pageSize=100
+   ```
 
 ## [Conventions](./doc/conventions.md)

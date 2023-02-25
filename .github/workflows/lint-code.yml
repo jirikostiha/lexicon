@@ -3,8 +3,12 @@ name: Lint Source Code and Fix
 on:
   push:
     branches: [ main ]
+    paths:
+      - '**.cs'
   pull_request:
     branches: [ main ]
+    paths:
+      - '**.cs'
 
 jobs:
   run-linters:

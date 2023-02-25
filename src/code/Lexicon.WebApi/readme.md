@@ -1,12 +1,11 @@
-## REST API  
+# REST API  
 
-### Techs  
+## Techs  
 
-#### ASP.NET
+### ASP.NET
 
 doc: https://learn.microsoft.com/en-us/aspnet/core/?view=aspnetcore-6.0  
 
-
-#### Serilog  
+### Serilog  
 
 home: https://serilog.net  

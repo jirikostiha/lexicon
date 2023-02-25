@@ -14,12 +14,16 @@ Using [semantic versioning](https://semver.org/).
 * asm - is generated, contains assemblies
     * app - published application
 
+
 ## Naming
 
-**project folders**
+### Project folders
+
 * a folder starting with a capital letter is a namespace maker  
 * a folder starting with a small letter is not a namespace maker and its purpose is only to keep related files together  
 
-**projects**  
+
+### Projects
+
 * Projects containing production code use the clasical dot notation `[Product].[Project]`.  
 * Projects containing non-production code use notation `[Product].[Project]__[Test]`  

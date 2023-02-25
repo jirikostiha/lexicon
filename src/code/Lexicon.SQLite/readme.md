@@ -2,7 +2,6 @@
 
 Based on SQLite database engine via System.Data.SQLite api.
 
-
 ## Techs
 
 ### SQLite

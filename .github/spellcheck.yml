@@ -8,14 +8,20 @@ matrix:
     - .github/wordlist.txt
     encoding: utf-8
   pipeline:
+  - pyspelling.filters.url:
   - pyspelling.filters.markdown:
       markdown_extensions:
+      - pymdownx.superfences:
       - markdown.extensions.extra:
   - pyspelling.filters.html:
       comments: false
+      attributes:
+      - alt
       ignores:
-      - code
-      - pre
+      - ':matches(code, pre)'
+      - 'code'
+      - 'pre'
+      - 'blockquote'
   sources:
   - '**/*.md'
   default_encoding: utf-8

@@ -1,0 +1,11 @@
+aspnet
+aspnetcore
+https
+serilog
+aspx
+ef
+efcore
+entityframeworktutorial
+src
+asm
+namespace

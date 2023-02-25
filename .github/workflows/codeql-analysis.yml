@@ -4,13 +4,11 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'src/**'
-      - '!src/**.md' #ignore md changes
+      - 'src/**.cs'
   pull_request:
     branches: [ main ]
     paths:
-      - 'src/**'
-      - '!src/**.md' #ignore md changes
+      - 'src/**.cs'
   schedule:
     - cron: '40 14 * * 6'
 

@@ -24,5 +24,5 @@ purpose is only to keep related files together
 
 ### Projects
 
-* Projects containing production code use the clasical dot notation `[Product].[Project]`.  
+* Projects containing production code use the classic dot notation `[Product].[Project]`.  
 * Projects containing non-production code use notation `[Product].[Project]__[Test]`  

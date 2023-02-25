@@ -7,7 +7,7 @@
   <font size=4> Demo Project </font>
 </div>  
 
-Lexicon is a service that provides words for other services/consuments,
+Lexicon is a service that provides words for other services/consumers,
 such as a Markov word generator. It demonstrates the possibilities of implementing
 the service with a different data sources.  
 

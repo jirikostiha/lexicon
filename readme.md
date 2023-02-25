@@ -1,14 +1,15 @@
-<div align="center" style="color:magenta">
-  <font size=4> Demo Project </font>
-</div>  
-
 # Lexicon
 
 ![Build workflow](https://github.com/jirikostiha/lexicon/actions/workflows/build.yml/badge.svg)
 ![GitHub repo size](https://img.shields.io/github/repo-size/jirikostiha/lexicon)  
 
-Lexicon is a service that provides words for other services/consuments, such as a Markov word generator.  
-It demonstrates the possibilities of implementing the service with a different data sources.  
+<div align="center" style="color:magenta">
+  <font size=4> Demo Project </font>
+</div>  
+
+Lexicon is a service that provides words for other services/consuments, 
+such as a Markov word generator. It demonstrates the possibilities of implementing 
+the service with a different data sources.  
 
 ## Usage
 

@@ -7,18 +7,20 @@ Using [semantic versioning](https://semver.org/).
 ## Folder structure
 
 * src - source code  
-    * code - production code only
-    * quality - everything related to quality (tests, benchmarks, testable types, ..)
+  * code - production code only
+  * quality - everything related to quality (tests, benchmarks, testable types,
+    ..)
 * doc - documentation
 * asm - is generated, contains assemblies
-    * app - published application
+  * app - published application
 
 ## Naming
 
 ### Project folders
 
 * a folder starting with a capital letter is a namespace maker  
-* a folder starting with a small letter is not a namespace maker and its purpose is only to keep related files together  
+* a folder starting with a small letter is not a namespace maker and its 
+purpose is only to keep related files together  
 
 ### Projects
 

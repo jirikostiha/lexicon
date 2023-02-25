@@ -6,4 +6,4 @@ Contains basic and shared logic for all data adapter projects.
 
 ### CsvHelper
 
-home: https://joshclose.github.io/CsvHelper  
+home: <https://joshclose.github.io/CsvHelper>  

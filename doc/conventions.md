@@ -4,7 +4,6 @@
 
 Using [semantic versioning](https://semver.org/).  
 
-
 ## Folder structure
 
 * src - source code  
@@ -14,14 +13,12 @@ Using [semantic versioning](https://semver.org/).
 * asm - is generated, contains assemblies
     * app - published application
 
-
 ## Naming
 
 ### Project folders
 
 * a folder starting with a capital letter is a namespace maker  
 * a folder starting with a small letter is not a namespace maker and its purpose is only to keep related files together  
-
 
 ### Projects
 

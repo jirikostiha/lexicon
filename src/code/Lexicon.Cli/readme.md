@@ -6,6 +6,5 @@ Cli deployment of database and access to data.
 
 ### System.CommandLine
 
-doc: https://learn.microsoft.com/en-us/dotnet/standard/commandline  
-github: https://github.com/dotnet/command-line-api  
-
+doc: <https://learn.microsoft.com/en-us/dotnet/standard/commandline>  
+github: <https://github.com/dotnet/command-line-api>  

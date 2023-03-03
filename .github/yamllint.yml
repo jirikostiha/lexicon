@@ -1,0 +1,15 @@
+#doc: https://yamllint.readthedocs.io
+
+extends: default
+
+rules:
+  line-length:
+    max: 80
+    level: warning
+  brackets:
+    min-spaces-inside: 0
+    max-spaces-inside: 1
+  comments:
+    min-spaces-from-content: 1
+  truthy: disable
+  document-start: disable

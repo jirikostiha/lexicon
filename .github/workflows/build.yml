@@ -13,38 +13,38 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     strategy:
       fail-fast: false
       matrix:
         dotnet-version: [ '2.0.x', '7.0.x' ]
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
-    - name: Setup .Net ${{ matrix.dotnet-version }}
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: ${{ matrix.dotnet-version }}
-    
-    - name: Dotnet Info
-      run: dotnet --info
+      - name: Setup .Net ${{ matrix.dotnet-version }}
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
 
-    - name: Restore dependencies
-      run: dotnet restore "${{ env.sln-path }}"
+      - name: .Net Info
+        run: dotnet --info
 
-    - name: Build debug
-      run: dotnet build "${{ env.sln-path }}" --no-restore
+      - name: Restore dependencies
+        run: dotnet restore "${{ env.sln-path }}"
 
-    - name: Test
-      run: dotnet test "${{ env.sln-path }}" --no-build --logger "trx;LogFileName=test-results.trx" || true
+      - name: Build debug
+        run: dotnet build "${{ env.sln-path }}" --no-restore
 
-    #- name: Test Report
-    #  uses: dorny/test-reporter@v1
-    #  if: always()
-    #  with:
-    #    name: Tests ${{ matrix.dotnet-version }}
-    #    path: "**/test-results.trx"                            
-    #    reporter: dotnet-trx
-    #    fail-on-error: true
+      - name: Test
+        run: dotnet test "${{ env.sln-path }}" --no-build --logger "trx;LogFileName=test-results.trx" || true
+
+      # - name: Test Report
+      #   uses: dorny/test-reporter@v1
+      #   if: always()
+      #   with:
+      #     name: Tests ${{ matrix.dotnet-version }}
+      #     path: "**/test-results.trx"
+      #     reporter: dotnet-trx
+      #     fail-on-error: true

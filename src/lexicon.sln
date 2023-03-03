@@ -78,6 +78,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "configs", "configs", "{B7C9
 		..\.github\wordlist.txt = ..\.github\wordlist.txt
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "templates", "templates", "{1788F87E-39C5-4639-8106-ECADB5BD9F62}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\ISSUE_TEMPLATE\bug_report.md = ..\.github\ISSUE_TEMPLATE\bug_report.md
+		..\.github\ISSUE_TEMPLATE\documentation.md = ..\.github\ISSUE_TEMPLATE\documentation.md
+		..\.github\ISSUE_TEMPLATE\feature_request.md = ..\.github\ISSUE_TEMPLATE\feature_request.md
+		..\.github\pull_request_template.md = ..\.github\pull_request_template.md
+		..\.github\ISSUE_TEMPLATE\question.md = ..\.github\ISSUE_TEMPLATE\question.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,6 +162,7 @@ Global
 		{425E1215-AD36-44DF-8136-CDDE6BF3C305} = {0A927ED1-E2A0-4128-AF7A-CF7152E404F5}
 		{7B85092B-9EE9-45E8-8F46-006AF5FD07CB} = {0A927ED1-E2A0-4128-AF7A-CF7152E404F5}
 		{B7C9E064-D4BE-469C-B811-8415F5DC79AD} = {662387C7-0662-4174-9BCB-C55D393CA944}
+		{1788F87E-39C5-4639-8106-ECADB5BD9F62} = {662387C7-0662-4174-9BCB-C55D393CA944}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AE703196-5935-41FB-83E8-8DC5D4797DCF}

@@ -4,11 +4,11 @@
 # MD013/line-length - Line length
 MD013:
   # Number of characters
-  line_length: 100
+  line_length: 120
   # Number of characters for headings
   heading_line_length: 100
   # Number of characters for code blocks
-  code_block_line_length: 100
+  code_block_line_length: 120
 
 # MD033/no-inline-html - Inline HTML
 MD033:

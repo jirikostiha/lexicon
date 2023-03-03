@@ -1,7 +1,8 @@
 # Lexicon
 
-![Build workflow](https://github.com/jirikostiha/lexicon/actions/workflows/build.yml/badge.svg)
 ![GitHub repo size](https://img.shields.io/github/repo-size/jirikostiha/lexicon)  
+![Build workflow](https://github.com/jirikostiha/lexicon/actions/workflows/build.yml/badge.svg)
+![Code Analysis](https://github.com/jirikostiha/lexicon/actions/workflows/analyse-code.yml/badge.svg)
 
 <div align="center" style="color:magenta">
   <font size=4> Demo Project </font>

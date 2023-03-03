@@ -4,6 +4,9 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/jirikostiha/lexicon)  
 ![Build workflow](https://github.com/jirikostiha/lexicon/actions/workflows/build.yml/badge.svg)
 ![Code Analysis](https://github.com/jirikostiha/lexicon/actions/workflows/analyse-code.yml/badge.svg)
+![Code Lint](https://github.com/jirikostiha/lexicon/actions/workflows/lint-code.yml/badge.svg?colorB=orange)
+![Documentation Lint](https://github.com/jirikostiha/lexicon/actions/workflows/lint-docs.yml/badge.svg?label=Docs+Lint&colorB=orange)
+![Configuration Lint](https://github.com/jirikostiha/lexicon/actions/workflows/lint-config.yml/badge.svg?label=Config+Lint&colorB=orange)
 
 <div align="center" style="color:magenta">
   <font size=4> Demo Project </font>

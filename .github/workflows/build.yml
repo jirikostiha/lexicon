@@ -8,7 +8,7 @@ on:
   push:
     paths:
       - 'src/**'
-      - '!src/**.sln' #ignore sln changes
+      - '!src/**.sln' # ignore sln changes
 
 jobs:
   build:
@@ -23,18 +23,18 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Install .Net ${{ matrix.dotnet-version }}
+    - name: Setup .Net ${{ matrix.dotnet-version }}
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ matrix.dotnet-version }}
     
-    - name: Dotnet Installation Info
+    - name: Dotnet Info
       run: dotnet --info
 
     - name: Restore dependencies
       run: dotnet restore "${{ env.sln-path }}"
 
-    - name: Build #debug build
+    - name: Build debug
       run: dotnet build "${{ env.sln-path }}" --no-restore
 
     - name: Test

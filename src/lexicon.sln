@@ -36,11 +36,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cicd", "cicd", "{662387C7-0
 	ProjectSection(SolutionItems) = preProject
 		..\.github\workflows\analyse-code.yml = ..\.github\workflows\analyse-code.yml
 		..\.github\workflows\build.yml = ..\.github\workflows\build.yml
-		..\.github\workflows\create-release.yml = ..\.github\workflows\create-release.yml
 		..\.github\dependabot.yml = ..\.github\dependabot.yml
 		..\.github\workflows\lint-code.yml = ..\.github\workflows\lint-code.yml
 		..\.github\workflows\lint-commit.yml = ..\.github\workflows\lint-commit.yml
+		..\.github\workflows\lint-config.yml = ..\.github\workflows\lint-config.yml
 		..\.github\workflows\lint-docs.yml = ..\.github\workflows\lint-docs.yml
+		..\.github\workflows\release.yml = ..\.github\workflows\release.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lexicon.Cli", "code\Lexicon.Cli\Lexicon.Cli.csproj", "{988E4650-20F4-47EA-AA8C-05E8A0FDA427}"
@@ -76,6 +77,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "configs", "configs", "{B7C9
 		..\.github\markdownlint.yml = ..\.github\markdownlint.yml
 		..\.github\spellcheck.yml = ..\.github\spellcheck.yml
 		..\.github\wordlist.txt = ..\.github\wordlist.txt
+		..\.github\yamllint.yml = ..\.github\yamllint.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "templates", "templates", "{1788F87E-39C5-4639-8106-ECADB5BD9F62}"

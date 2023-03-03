@@ -1,4 +1,4 @@
-name: Source Code Lint and Fix
+name: Code Lint
 
 on:
   workflow_dispatch:
@@ -23,12 +23,9 @@ jobs:
       - name: Lint C#
         uses: wearerequired/lint-action@v2
         with:
-          commit_message: "style: code style issues with ${linter}"
+          commit_message: "style(code): code style issues with ${linter}"
           dotnet_format: true
           dotnet_format_dir: src
           dotnet_format_auto_fix: true
           auto_fix: true
           git_name: "C# linter"
-
-      - name: Lint yaml
-        uses: ibiqlik/action-yamllint@v3

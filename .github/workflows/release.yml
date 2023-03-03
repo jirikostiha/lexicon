@@ -1,4 +1,4 @@
-name: Release Creation
+name: Release
 
 env:
   sln-path: "./src/lexicon.sln"
@@ -21,12 +21,12 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Install .Net ${{ matrix.dotnet-version }}
+    - name: Setup .Net ${{ matrix.dotnet-version }}
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ matrix.dotnet-version }}
     
-    - name: Dotnet Installation Info
+    - name: Dotnet Info
       run: dotnet --info
 
     - name: Restore

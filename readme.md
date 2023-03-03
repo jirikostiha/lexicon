@@ -1,6 +1,7 @@
 # Lexicon
 
-![GitHub repo size](https://img.shields.io/github/repo-size/jirikostiha/lexicon)  
+![GitHub repo size](https://img.shields.io/github/repo-size/jirikostiha/lexicon)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/jirikostiha/lexicon)  
 ![Build workflow](https://github.com/jirikostiha/lexicon/actions/workflows/build.yml/badge.svg)
 ![Code Analysis](https://github.com/jirikostiha/lexicon/actions/workflows/analyse-code.yml/badge.svg)
 

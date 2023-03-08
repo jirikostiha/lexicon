@@ -28,7 +28,7 @@ jobs:
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
 
-      - name: .Net Info
+      - name: .Net info
         run: dotnet --info
 
       - name: Restore dependencies

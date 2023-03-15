@@ -6,8 +6,8 @@ env:
   package-dir: "packages"
 
 on:
-  push:
   workflow_dispatch:
+  push:
     tags:
       - "v*.*.*"
 

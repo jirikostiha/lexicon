@@ -84,10 +84,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "templates", "templates", "{1788F87E-39C5-4639-8106-ECADB5BD9F62}"
 	ProjectSection(SolutionItems) = preProject
 		..\.github\ISSUE_TEMPLATE\bug_report.md = ..\.github\ISSUE_TEMPLATE\bug_report.md
-		..\.github\ISSUE_TEMPLATE\documentation.md = ..\.github\ISSUE_TEMPLATE\documentation.md
 		..\.github\ISSUE_TEMPLATE\feature_request.md = ..\.github\ISSUE_TEMPLATE\feature_request.md
+		..\.github\ISSUE_TEMPLATE\documentation_request.md = ..\.github\ISSUE_TEMPLATE\documentation_request.md
 		..\.github\pull_request_template.md = ..\.github\pull_request_template.md
-		..\.github\ISSUE_TEMPLATE\question.md = ..\.github\ISSUE_TEMPLATE\question.md
+		..\.github\ISSUE_TEMPLATE\question_request.md = ..\.github\ISSUE_TEMPLATE\question_request.md
 	EndProjectSection
 EndProject
 Global

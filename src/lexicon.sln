@@ -37,7 +37,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cicd", "cicd", "{662387C7-0
 		..\.github\workflows\analyse-code.yml = ..\.github\workflows\analyse-code.yml
 		..\.github\workflows\build.yml = ..\.github\workflows\build.yml
 		..\.github\workflows\clean-history.yml = ..\.github\workflows\clean-history.yml
-		..\.github\dependabot.yml = ..\.github\dependabot.yml
 		..\.github\workflows\lint-code.yml = ..\.github\workflows\lint-code.yml
 		..\.github\workflows\lint-commit.yml = ..\.github\workflows\lint-commit.yml
 		..\.github\workflows\lint-config.yml = ..\.github\workflows\lint-config.yml
@@ -76,6 +75,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "configs", "configs", "{B7C9E064-D4BE-469C-B811-8415F5DC79AD}"
 	ProjectSection(SolutionItems) = preProject
 		..\.github\commitlint_config.js = ..\.github\commitlint_config.js
+		..\.github\dependabot.yml = ..\.github\dependabot.yml
 		..\.github\markdownlint.yml = ..\.github\markdownlint.yml
 		..\.github\spellcheck.yml = ..\.github\spellcheck.yml
 		..\.github\wordlist.txt = ..\.github\wordlist.txt
@@ -85,8 +85,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "templates", "templates", "{1788F87E-39C5-4639-8106-ECADB5BD9F62}"
 	ProjectSection(SolutionItems) = preProject
 		..\.github\ISSUE_TEMPLATE\bug_report.md = ..\.github\ISSUE_TEMPLATE\bug_report.md
-		..\.github\ISSUE_TEMPLATE\feature_request.md = ..\.github\ISSUE_TEMPLATE\feature_request.md
 		..\.github\ISSUE_TEMPLATE\documentation_request.md = ..\.github\ISSUE_TEMPLATE\documentation_request.md
+		..\.github\ISSUE_TEMPLATE\feature_request.md = ..\.github\ISSUE_TEMPLATE\feature_request.md
 		..\.github\pull_request_template.md = ..\.github\pull_request_template.md
 		..\.github\ISSUE_TEMPLATE\question_request.md = ..\.github\ISSUE_TEMPLATE\question_request.md
 	EndProjectSection

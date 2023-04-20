@@ -1,0 +1,24 @@
+name: Issues Update
+
+on:
+  workflow_dispatch:
+  [push, pull_request]:
+    paths:
+      - 'src/**'
+      - '!src/**.sln'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Turn todos to issues
+      uses: ribtoks/tdg-github-action@master
+      with:
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        REPO: ${{ github.repository }}
+        SHA: ${{ github.sha }}
+        REF: ${{ github.ref }}

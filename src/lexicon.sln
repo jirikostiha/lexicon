@@ -43,6 +43,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cicd", "cicd", "{662387C7-0
 		..\.github\workflows\lint-config.yml = ..\.github\workflows\lint-config.yml
 		..\.github\workflows\lint-docs.yml = ..\.github\workflows\lint-docs.yml
 		..\.github\workflows\release.yml = ..\.github\workflows\release.yml
+		..\.github\uptade-issues.yml = ..\.github\uptade-issues.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lexicon.Cli", "code\Lexicon.Cli\Lexicon.Cli.csproj", "{988E4650-20F4-47EA-AA8C-05E8A0FDA427}"

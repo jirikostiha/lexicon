@@ -5,6 +5,7 @@ VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution Items", "solution Items", "{8ABEA7BE-2CB6-499A-A09E-7D836F189422}"
 	ProjectSection(SolutionItems) = preProject
+		..\.dockerignore = ..\.dockerignore
 		..\.gitattributes = ..\.gitattributes
 		..\.gitignore = ..\.gitignore
 		code\directory.build.props = code\directory.build.props
@@ -35,13 +36,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cicd", "cicd", "{662387C7-0662-4174-9BCB-C55D393CA944}"
 	ProjectSection(SolutionItems) = preProject
 		..\.github\workflows\analyse-code.yml = ..\.github\workflows\analyse-code.yml
-		..\.github\workflows\build.yml = ..\.github\workflows\build.yml
 		..\.github\workflows\auto-approve.yml = ..\.github\workflows\auto-approve.yml
+		..\.github\workflows\build.yml = ..\.github\workflows\build.yml
 		..\.github\workflows\clean-history.yml = ..\.github\workflows\clean-history.yml
 		..\.github\workflows\lint-code.yml = ..\.github\workflows\lint-code.yml
 		..\.github\workflows\lint-commit.yml = ..\.github\workflows\lint-commit.yml
 		..\.github\workflows\lint-config.yml = ..\.github\workflows\lint-config.yml
 		..\.github\workflows\lint-docs.yml = ..\.github\workflows\lint-docs.yml
+		..\.github\workflows\publish.yml = ..\.github\workflows\publish.yml
 		..\.github\workflows\release.yml = ..\.github\workflows\release.yml
 		..\.github\uptade-issues.yml = ..\.github\uptade-issues.yml
 	EndProjectSection
@@ -62,6 +64,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lexicon.SQLite__Tests", "qu
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cmd", "cmd", "{FFC154C8-45E1-4EE4-BCE4-B12D04F46950}"
 	ProjectSection(SolutionItems) = preProject
+		..\buildDockerImage.ps1 = ..\buildDockerImage.ps1
 		..\publishAndDeploy.ps1 = ..\publishAndDeploy.ps1
 		..\run.ps1 = ..\run.ps1
 		..\cmd\tagCommitAsRelease.ps1 = ..\cmd\tagCommitAsRelease.ps1

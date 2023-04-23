@@ -9,8 +9,9 @@
 		<NoWarn>CA1725,CA1716</NoWarn>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<UserSecretsId>80415471-0ea1-430e-ab47-39ad8dee2a8b</UserSecretsId>
-		<!--<DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>-->
-		<DockerfileContext>..\..</DockerfileContext>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<DockerfileContext>..\..\..\.</DockerfileContext>
+		<DockerfileTag>lexicon</DockerfileTag>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -22,6 +23,7 @@
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
 		<PackageReference Include="Autofac" Version="7.0.1" />
 		<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.2" />
 		<PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
 		<PackageReference Include="Serilog.Enrichers.Thread" Version="3.1.0" />
 		<PackageReference Include="SerilogTimings" Version="3.0.1" />

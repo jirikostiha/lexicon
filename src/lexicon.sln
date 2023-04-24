@@ -79,6 +79,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lexicon.EntityFramework__Te
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "configs", "configs", "{B7C9E064-D4BE-469C-B811-8415F5DC79AD}"
 	ProjectSection(SolutionItems) = preProject
+		..\.github\CODEOWNERS = ..\.github\CODEOWNERS
 		..\.github\commitlint_config.js = ..\.github\commitlint_config.js
 		..\.github\dependabot.yml = ..\.github\dependabot.yml
 		..\.github\markdownlint.yml = ..\.github\markdownlint.yml

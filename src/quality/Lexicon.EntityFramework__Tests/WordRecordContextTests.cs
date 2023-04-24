@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Xunit;
+using FluentAssertions;
 
 namespace Lexicon.EntityFramework;
 

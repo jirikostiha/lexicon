@@ -14,7 +14,7 @@ using System.Reflection;
 
 namespace Lexicon.WebApi;
 
-internal sealed class Program
+public sealed class Program
 {
     private static int Main(string[] args)
     {

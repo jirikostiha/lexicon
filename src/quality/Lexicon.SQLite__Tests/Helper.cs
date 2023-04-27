@@ -1,11 +1,10 @@
 ﻿namespace Lexicon
 {
-    using System;
+    using Lexicon.SQLite;
+    using Lexicon.TestReady;
     using System.Data.SQLite;
     using System.Linq;
     using System.Threading.Tasks;
-    using Lexicon.SQLite;
-    using Lexicon.TestReady;
 
     public static class Helper
     {

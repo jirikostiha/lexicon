@@ -1,11 +1,9 @@
 ﻿namespace Lexicon.SQLite
 {
-    using System;
-    using System.Collections.Generic;
-    using System.CommandLine;
-    using System.Threading.Tasks;
     using Lexicon.Cli;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System.CommandLine;
+    using System.Threading.Tasks;
 
     [TestClass]
     public class RootCommandTests

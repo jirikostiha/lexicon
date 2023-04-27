@@ -1,13 +1,10 @@
-﻿using System.Collections.Generic;
-using System;
-using System.CommandLine;
-using System.Threading.Tasks;
+﻿using System.CommandLine;
 
 namespace Lexicon.Cli;
 
-sealed class Program
+internal sealed class Program
 {
-    static async Task<int> Main(string[] args)
+    private static async Task<int> Main(string[] args)
     {
         try
         {

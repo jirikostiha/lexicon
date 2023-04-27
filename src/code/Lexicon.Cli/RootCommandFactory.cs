@@ -1,17 +1,17 @@
 ﻿namespace Lexicon.Cli
 {
-    using System;
-    using System.Linq;
-    using System.Collections.Generic;
-    using System.CommandLine;
-    using System.Globalization;
-    using System.IO;
-    using System.Threading;
-    using System.Threading.Tasks;
     using CsvHelper;
     using Lexicon.EntityModel;
     using Lexicon.SQLite;
     using Microsoft.Extensions.Configuration;
+    using System;
+    using System.Collections.Generic;
+    using System.CommandLine;
+    using System.Globalization;
+    using System.IO;
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Root command factory.

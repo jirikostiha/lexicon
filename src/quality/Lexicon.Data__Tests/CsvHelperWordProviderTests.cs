@@ -1,7 +1,7 @@
 ﻿namespace Lexicon.Data
 {
-    using System.IO;
     using Lexicon.EntityModel;
+    using System.IO;
 
     [TestClass]
     public class CsvHelperWordProviderTests

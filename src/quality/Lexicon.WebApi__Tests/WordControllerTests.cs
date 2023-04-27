@@ -1,16 +1,15 @@
 ﻿namespace Lexicon.WebApi
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
     using FakeItEasy;
     using Lexicon.EntityModel;
     using Lexicon.TestReady;
     using Lexicon.WebApi.Controllers;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Logging.Abstractions;
     using Microsoft.Extensions.Logging;
+    using Microsoft.Extensions.Logging.Abstractions;
+    using System.Collections.Generic;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System.Threading.Tasks;
 
     [TestClass]
     public class WordControllerTests

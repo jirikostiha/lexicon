@@ -1,10 +1,8 @@
 ﻿namespace Lexicon.TestReady
 {
-    using System.Collections.Generic;
-    using System.Linq;
-    using Lexicon.EntityModel;
     using AutoBogus;
-    using Bogus;
+    using Lexicon.EntityModel;
+    using System.Collections.Generic;
 
     public static class WordRecordGenerator
     {

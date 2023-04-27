@@ -1,12 +1,11 @@
 ﻿namespace Lexicon.SQLite
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
     using Lexicon.EntityModel;
     using Lexicon.TestReady;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
 
     [TestClass]
     public class SQLiteWordRepositoryTests

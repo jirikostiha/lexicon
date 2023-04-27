@@ -183,7 +183,6 @@
             };
         }
 
-
         private static async Task<SQLiteCommand> PrepareUpsertCommand(WordRecord record, SQLiteCommand command, CancellationToken ct = default)
         {
             command.CommandText = Upsert;

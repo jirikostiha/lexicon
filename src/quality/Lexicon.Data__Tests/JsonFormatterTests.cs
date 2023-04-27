@@ -1,8 +1,8 @@
 ﻿namespace Lexicon.Data
 {
-    using System.Text.RegularExpressions;
-    using Lexicon.TestReady;
     using Lexicon.EntityModel;
+    using Lexicon.TestReady;
+    using System.Text.RegularExpressions;
 
     [TestClass]
     public class JsonFormatterTests

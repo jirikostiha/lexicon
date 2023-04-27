@@ -1,8 +1,8 @@
 ﻿namespace Lexicon.Data
 {
     using System.IO;
-    using System.Text.Json;
     using System.Text;
+    using System.Text.Json;
 
     public class JsonFormatter : IJsonFormatter
     {

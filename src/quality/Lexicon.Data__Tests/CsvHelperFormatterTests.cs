@@ -1,8 +1,8 @@
 ﻿namespace Lexicon.Data
 {
-    using System.Globalization;
     using CsvHelper.Configuration;
     using Lexicon.TestReady;
+    using System.Globalization;
 
     [TestClass]
     public class CsvHelperFormatterTests

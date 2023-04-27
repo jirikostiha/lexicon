@@ -1,7 +1,7 @@
 ﻿namespace Lexicon.Data
 {
-    using System.Globalization;
     using CsvHelper.Configuration;
+    using System.Globalization;
 
     public sealed record CsvHelperWordProviderOptions
     {

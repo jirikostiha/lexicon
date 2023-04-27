@@ -1,11 +1,9 @@
 ﻿namespace Lexicon.SQLite
 {
-    using System;
-    using System.Collections.Generic;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class SQLiteDataModelDeployerTests

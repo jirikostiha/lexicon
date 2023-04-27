@@ -1,8 +1,8 @@
 ﻿namespace Lexicon.TestReady
 {
+    using Lexicon.EntityModel;
     using System.Collections.Generic;
     using System.Linq;
-    using Lexicon.EntityModel;
 
     public static class WordSets
     {

@@ -1,8 +1,8 @@
 ﻿namespace Lexicon.Data
 {
-    using System.IO;
     using CsvHelper;
     using Lexicon.EntityModel;
+    using System.IO;
 
     /// <summary>
     /// Naive Csv Word Provider implementation.

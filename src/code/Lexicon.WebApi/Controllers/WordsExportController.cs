@@ -1,14 +1,14 @@
 ﻿namespace Lexicon.WebApi.Controllers
 {
+    using Lexicon.EntityModel;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
+    using SerilogTimings;
     using System.Linq;
     using System.Net.Mime;
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
-    using Lexicon.EntityModel;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Logging;
-    using SerilogTimings;
 
     /// <summary>
     /// Words export controller.

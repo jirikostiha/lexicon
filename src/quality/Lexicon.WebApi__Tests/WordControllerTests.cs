@@ -17,8 +17,8 @@
         private readonly ILogger<WordsController> _logger = new NullLogger<WordsController>();
         private readonly IWordProvider _provider = A.Fake<IWordProvider>();
 
-        private readonly WordMultiSourceProvider _multiSourceProvider;
-        private readonly WordsController _controller;
+        private WordMultiSourceProvider _multiSourceProvider;
+        private WordsController _controller;
 
         [TestInitialize]
         public void SetUp()

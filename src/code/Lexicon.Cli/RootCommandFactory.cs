@@ -107,7 +107,7 @@
         {
             Console.WriteLine("Importing data from '{0}' to target '{1}'", csvDataFile.FullName, options.ConnectionString);
 
-            var records = new List<WordRecord>();
+            List<WordRecord> records;
             using (var reader = new StreamReader(csvDataFile.FullName))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {

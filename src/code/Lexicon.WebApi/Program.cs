@@ -85,7 +85,7 @@ internal sealed class Program
                             Name = "MIT",
                             Url = new Uri("https://github.com/jirikostiha/lexicon/blob/main/license.txt")
                         },
-                    }); ;
+                    });
 
                 //generate xml docs
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";

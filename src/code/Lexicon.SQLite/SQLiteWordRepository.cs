@@ -13,6 +13,8 @@
 
         private readonly SQLiteOptions _options;
 
+        private readonly WordRecordValidator _validator = new();
+
         public SQLiteWordRepository(SQLiteOptions options)
         {
             Guard.IsNotNull(options);
@@ -71,8 +73,7 @@
         {
             Guard.IsNotNull(record);
 
-            var validator = new WordRecordValidator();
-            validator.ValidateAndThrow(record);
+            _validator.ValidateAndThrow(record);
 
             using var connection = new SQLiteConnection(_options.ConnectionString);
             await connection.OpenAsync(ct)
@@ -92,10 +93,9 @@
             if (!records.Any())
                 return;
 
-            var validator = new WordRecordValidator();
             // How to validate and throw errors of all items at once?
             foreach (var record in records)
-                validator.ValidateAndThrow(record);
+                _validator.ValidateAndThrow(record);
 
             using var connection = new SQLiteConnection(_options.ConnectionString);
             await connection.OpenAsync(ct)

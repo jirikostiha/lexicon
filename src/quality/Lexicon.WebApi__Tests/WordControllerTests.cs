@@ -7,12 +7,10 @@
     using Lexicon.WebApi.Controllers;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Mvc.Testing;
     using Microsoft.Extensions.Logging.Abstractions;
     using System.Collections.Generic;
-    using Xunit;
     using System.Threading.Tasks;
+    using Xunit;
 
     public class WordControllerTests
     {

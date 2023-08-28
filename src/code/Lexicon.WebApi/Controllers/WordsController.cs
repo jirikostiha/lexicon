@@ -31,7 +31,7 @@
         /// </summary>
         /// <param name="page"> page number starting from 0 </param>
         /// <param name="pageSize"> page size </param>
-        /// <param name="ct"> Cancelation token </param>
+        /// <param name="ct"> Cancellation token </param>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -79,7 +79,7 @@
         /// <param name="page"> page number starting from 0 </param>
         /// <param name="pageSize"> page size </param>
         /// <param name="filter"> Data filter </param>
-        /// <param name="ct"> Cancelation token </param>
+        /// <param name="ct"> Cancellation token </param>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

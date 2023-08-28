@@ -38,7 +38,7 @@
         /// Export filtered word records.
         /// </summary>
         /// <param name="filter"> Data filter </param>
-        /// <param name="ct"> Cancelation token </param>
+        /// <param name="ct"> Cancellation token </param>
         [HttpPost]
         public async Task<IActionResult> ExportToCsv(
             [FromBody] MultiSourceWordFilter filter,

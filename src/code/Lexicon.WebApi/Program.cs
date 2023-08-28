@@ -14,8 +14,14 @@ using System.Reflection;
 
 namespace Lexicon.WebApi;
 
+/// <summary>
+/// Entry point class.
+/// </summary>
 public sealed class Program
 {
+    /// <summary>
+    /// Entry point.
+    /// </summary>
     private static int Main(string[] args)
     {
         Log.Logger = new LoggerConfiguration()
@@ -167,7 +173,7 @@ public sealed class Program
         }
         catch (OperationCanceledException)
         {
-            Log.Warning("Cancelled.");
+            Log.Warning("Canceled.");
 
             return ExitCode.Canceled;
         }

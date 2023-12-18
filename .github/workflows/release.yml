@@ -62,14 +62,14 @@ jobs:
         run: dotnet pack "${{ env.sln-path }}" -c Release -o "${{ env.build-dir }}" --no-build
 
       - name: Upload artifact - binaries
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: binaries
           path: "${{ env.build-dir }}"
           retention-days: 90
 
       - name: Upload artifact - packages
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: packages
           path: "${{ env.package-dir }}"
